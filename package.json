@@ -1,0 +1,41 @@
+{
+  "name": "dr-utils",
+  "version": "0.0.1",
+  "description": "Set of utilities relevant to the Dominican Republic",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": ["lib/**/*"],
+  "scripts": {
+    "generate-rnc-cedulas": "ts-node scripts/generate-rnc-cedulas.ts",
+    "preversion": "npm run lint",
+    "prepublishOnly": "npm run lint && npm run build",
+    "postversion": "git push --follow-tags",
+    "prebuild": "rimraf lib",
+    "build": "tsc -p tsconfig.build.json",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "lint": "eslint \"{src,scripts,tests}/**/*.ts\" --fix",
+    "test": "jest",
+    "test:c": "jest --coverage"
+  },
+  "keywords": [],
+  "author": "Miguel Araujo",
+  "license": "GPL-3.0-or-later",
+  "devDependencies": {
+    "@types/jest": "^27.0.1",
+    "@types/node": "^16.9.1",
+    "@typescript-eslint/eslint-plugin": "^4.31.0",
+    "@typescript-eslint/parser": "^4.31.0",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-airbnb-typescript": "^14.0.0",
+    "eslint-plugin-import": "^2.24.2",
+    "extract-zip": "^2.0.1",
+    "got": "^11.8.2",
+    "jest": "^27.2.0",
+    "prettier": "^2.4.0",
+    "rimraf": "^3.0.2",
+    "ts-jest": "^27.0.5",
+    "ts-node": "^10.2.1",
+    "typescript": "^4.4.3"
+  }
+}
