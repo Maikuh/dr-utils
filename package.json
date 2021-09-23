@@ -1,10 +1,12 @@
 {
   "name": "dr-utils",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Set of utilities relevant to the Dominican Republic",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
-  "files": ["lib/**/*"],
+  "files": [
+    "lib/**/*"
+  ],
   "scripts": {
     "generate-rnc-cedulas": "ts-node scripts/generate-rnc-cedulas.ts",
     "preversion": "npm run lint",
