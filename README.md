@@ -31,20 +31,20 @@ const ncf = 'E319123402392'
 const isNCFValid = validateNCF(ncf) // true
 ```
 
-### `formatCedula(cedula: string)`
+### `formatCedula(cedula: string, removeOrAddDashes? = 'remove')`
 ```ts
 import { formatCedula } from 'dr-utils'
 
 const noDashes = formatCedula('402-2057991-2') // 40220579912
-const withDashes = formatCedula('40220579912') // 402-2057991-2
+const withDashes = formatCedula('40220579912', 'add') // 402-2057991-2
 ```
 
-### `formatRNC(cedula: string)`
+### `formatRNC(cedula: string, removeOrAddDashes? = 'remove')`
 ```ts
 import { formatRNC } from 'dr-utils'
 
 const noDashes = formatRNC('130-50029-2') // 130500292
-const withDashes = formatRNC('130500292') // 130-50029-2
+const withDashes = formatRNC('130500292', 'add') // 130-50029-2
 ```
 
 ## Copyright
