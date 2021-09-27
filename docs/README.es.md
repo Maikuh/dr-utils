@@ -6,11 +6,11 @@
 <a href="https://bundlephobia.com/package/dr-utils" target="_blank"><img src="https://badgen.net/bundlephobia/minzip/dr-utils"></a>
 ![Release and NPM Publish Action](https://github.com/Maikuh/dr-utils/actions/workflows/release-and-publish.yaml/badge.svg)
 
-Language: **English** / [Español](docs/README.es.md)
+Idioma: [English](../README.md) / **Español**
 
-Dominican Republic Utils (hence, `dr-utils`) is a JavaScript library built with TypeScript for utilities relevant to the Dominican Republic, such as Cedula, RNC, and NCF validation and formatting.
+Dominican Republic Utils (por eso, `dr-utils`) es una libreria de JavaScript hecha con Typescript con utilidades relevantes para la República Dominicana, tales como validación y formato de Cedula, RNC y NCF.
 
-## Installation
+## Instalación
 
 ```bash
 # Via NPM
@@ -23,7 +23,7 @@ $ yarn add dr-utils
 $ pnpm add dr-utils
 ```
 
-## Usage
+## Uso
 
 ### `validateCedula(cedula: string)`
 ```ts
@@ -68,8 +68,8 @@ const noDashes = formatRNC('130-50029-2') // 130500292
 const withDashes = formatRNC('130500292', 'add') // 130-50029-2
 ```
 
-## Contributing
-See [CONTRIBUTING](CONTRIBUTING.md)
+## Contribuciones
+Ver [CONTRIBUTING](../CONTRIBUTING.md)
 
 ## Copyright
-See [LICENSE](./LICENSE)
+Ver [LICENSE](../LICENSE)

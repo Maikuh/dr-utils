@@ -19,7 +19,18 @@
     "test": "jest",
     "test:c": "jest --coverage"
   },
-  "keywords": [],
+  "keywords": [
+    "dominican republic",
+    "cedula",
+    "rnc",
+    "registro nacional de contribuyentes",
+    "ncf",
+    "numero de comprobante fiscal",
+    "validation",
+    "validator",
+    "formatter",
+    "utils"
+  ],
   "author": "Miguel Araujo",
   "license": "GPL-3.0-or-later",
   "devDependencies": {
