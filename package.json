@@ -1,6 +1,6 @@
 {
   "name": "dr-utils",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Set of utilities relevant to the Dominican Republic",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
