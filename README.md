@@ -52,6 +52,14 @@ const ncf = 'E319123402392'
 const isNCFValid = validateNCF(ncf) // true
 ```
 
+### `validatePhoneNumber(number: string)`
+```ts
+import { validatePhoneNumber } from 'dr-utils'
+
+const isPhoneNumberOneValid = validatePhoneNumber('8092201111') // true
+const isPhoneNumberTwoValid = validatePhoneNumber('+1 (781) 575 4238') // false
+```
+
 ### `formatCedula(cedula: string, removeOrAddDashes? = 'remove')`
 ```ts
 import { formatCedula } from 'dr-utils'
@@ -66,6 +74,16 @@ import { formatRNC } from 'dr-utils'
 
 const noDashes = formatRNC('130-50029-2') // 130500292
 const withDashes = formatRNC('130500292', 'add') // 130-50029-2
+```
+
+### `formatPhoneNumber(number: string)`
+```ts
+import { formatPhoneNumber } from 'dr-utils'
+
+const phoneNumber = '8092201111'
+
+const formatted = formatPhoneNumber(phoneNumber) // (809) 220-1111
+const formattedInternational = formatPhoneNumber(phoneNumber, true) // +1 809 220 1111
 ```
 
 ## Contributing

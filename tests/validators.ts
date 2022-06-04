@@ -34,10 +34,10 @@ describe('Validators', () => {
     rncs = JSON.parse((await readFile('assets/rncs.json')).toString())
     cedulas = JSON.parse((await readFile('assets/cedulas.json')).toString())
     phoneNumbers = JSON.parse(
-      (await readFile('assets/phone-numbers.json')).toString()
+      (await readFile('assets/phone-numbers.json')).toString(),
     )
     invalidPhoneNumbers = JSON.parse(
-      (await readFile('assets/invalid-phone-numbers.json')).toString()
+      (await readFile('assets/invalid-phone-numbers.json')).toString(),
     )
   })
 
