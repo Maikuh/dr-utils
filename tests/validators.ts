@@ -17,15 +17,28 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import { readFile } from 'fs/promises'
-import { validateCedula, validateNCF, validateRNC } from '../src'
+import {
+  validateCedula,
+  validateNCF,
+  validatePhoneNumber,
+  validateRNC,
+} from '../src'
 
 describe('Validators', () => {
   let rncs: string[]
   let cedulas: string[]
+  let phoneNumbers: string[]
+  let invalidPhoneNumbers: string[]
 
   beforeAll(async () => {
     rncs = JSON.parse((await readFile('assets/rncs.json')).toString())
     cedulas = JSON.parse((await readFile('assets/cedulas.json')).toString())
+    phoneNumbers = JSON.parse(
+      (await readFile('assets/phone-numbers.json')).toString()
+    )
+    invalidPhoneNumbers = JSON.parse(
+      (await readFile('assets/invalid-phone-numbers.json')).toString()
+    )
   })
 
   it('All Cedulas should be valid', () => {
@@ -50,6 +63,30 @@ describe('Validators', () => {
     })
 
     expect(allValid).toBeTruthy()
+  })
+
+  it('All phone numbers should be valid', () => {
+    const allValid = phoneNumbers.every((phoneNumber) => {
+      const isValid = validatePhoneNumber(phoneNumber)
+
+      if (!isValid) console.log('Failed Phone Number:', phoneNumber)
+
+      return isValid
+    })
+
+    expect(allValid).toBeTruthy()
+  })
+
+  it('All phone numbers should be invalid', () => {
+    const allValid = invalidPhoneNumbers.every((invalidPhoneNumber) => {
+      const isValid = validatePhoneNumber(invalidPhoneNumber)
+
+      if (isValid) console.log('Failed Phone Number:', invalidPhoneNumber)
+
+      return isValid
+    })
+
+    expect(allValid).toBeFalsy()
   })
 
   it('Cedula "40213094215" should be invalid', () => {

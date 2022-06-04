@@ -16,24 +16,19 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import {
+  PHONE_NUMBER_EXTRACT_REGEX,
+  PHONE_NUMBER_VALID_REGEX,
+} from '../constants/phone-number.regex'
+
 /**
- * @param cedula {string} the person's Cedula
- * @param removeOrAddDashes determines if dashes are to be removed or added
- * @returns {string} the formatted cedula
+ * @param phoneNumber {string} the phone number
+ * @returns {boolean} `true` if the number is valid, `false` otherwise
  */
-export function formatCedula(
-  cedula: string,
-  removeOrAddDashes: 'remove' | 'add' = 'remove',
-) {
-  if (removeOrAddDashes === 'remove') {
-    if (!cedula.includes('-')) throw new Error(`The Cedula ${cedula} does not contain dashes.`)
+export function validatePhoneNumber(phoneNumber: string): boolean {
+  const stripped = phoneNumber.replace(PHONE_NUMBER_EXTRACT_REGEX, '')
 
-    return cedula.replaceAll('-', '')
-  }
-
-  if (cedula.includes('-')) throw new Error(`The Cedula ${cedula} already contains dashes.`)
-
-  return `${cedula.slice(0, 3)}-${cedula.slice(3, 10)}-${cedula.slice(10, 11)}`
+  return new RegExp(PHONE_NUMBER_VALID_REGEX).test(stripped)
 }
 
-export default formatCedula
+export default validatePhoneNumber

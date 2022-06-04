@@ -16,24 +16,5 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-/**
- * @param cedula {string} the person's Cedula
- * @param removeOrAddDashes determines if dashes are to be removed or added
- * @returns {string} the formatted cedula
- */
-export function formatCedula(
-  cedula: string,
-  removeOrAddDashes: 'remove' | 'add' = 'remove',
-) {
-  if (removeOrAddDashes === 'remove') {
-    if (!cedula.includes('-')) throw new Error(`The Cedula ${cedula} does not contain dashes.`)
-
-    return cedula.replaceAll('-', '')
-  }
-
-  if (cedula.includes('-')) throw new Error(`The Cedula ${cedula} already contains dashes.`)
-
-  return `${cedula.slice(0, 3)}-${cedula.slice(3, 10)}-${cedula.slice(10, 11)}`
-}
-
-export default formatCedula
+export const PHONE_NUMBER_VALID_REGEX = new RegExp(/^1?(8[024]9)(\d{3})(\d{4})$/, 'm')
+export const PHONE_NUMBER_EXTRACT_REGEX = new RegExp(/\D+/, 'g')

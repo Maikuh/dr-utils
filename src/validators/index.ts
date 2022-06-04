@@ -19,3 +19,4 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 export * from './rnc.validator'
 export * from './ncf.validator'
 export * from './cedula.validator'
+export * from './phone.validator'
