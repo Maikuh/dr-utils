@@ -30,6 +30,10 @@ jobs:
         run: bun ci
       - name: Run tests
         run: bun test
-      - name: Publish to NPM
-        run: bunx npm@latest publish --tag ${{ github.ref_name }} # Pre script runs lint and build, no need to explicitly run them here
+      - name: Publish to NPM (Pre-release)
+        run: bunx npm@latest publish --tag next # 
+        if: contains(github.ref_name, '-')
+      - name: Publish to NPM (Stable)
+        run: bunx npm@latest publish
+        if: "!contains(github.ref_name, '-')"
         
