@@ -31,4 +31,4 @@ jobs:
       - name: Run tests
         run: bun test
       - name: Publish to NPM
-        run: bun publish # Pre script runs lint and build, no need to explicitly run them here
+        run: npm publish # Pre script runs lint and build, no need to explicitly run them here
