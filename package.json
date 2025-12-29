@@ -2,10 +2,14 @@
   "name": "dr-utils",
   "version": "2.0.0-beta.9",
   "description": "Set of utilities relevant to the Dominican Republic",
+  "author": "Miguel Araujo",
+  "license": "MIT",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "files": [
-    "lib/**/*"
+    "lib/**/*",
+    "LICENSE",
+    "README.md"
   ],
   "type": "module",
   "scripts": {
@@ -20,6 +24,13 @@
     "biome": "biome check --write",
     "biome:ci": "biome ci",
     "test:coverage": "bun test --coverage"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.3.10",
+    "@types/bun": "^1.3.5",
+    "extract-zip": "^2.0.1",
+    "rimraf": "^6.1.2",
+    "typescript": "^5.9.3"
   },
   "keywords": [
     "dominican republic",
@@ -50,17 +61,8 @@
     "utilidades",
     "helpers"
   ],
-  "author": "Miguel Araujo",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Maikuh/dr-utils"
-  },
-  "license": "MIT",
-  "devDependencies": {
-    "@biomejs/biome": "2.3.10",
-    "@types/bun": "^1.3.5",
-    "extract-zip": "^2.0.1",
-    "rimraf": "^6.1.2",
-    "typescript": "^5.9.3"
+    "url": "git+https://github.com/Maikuh/dr-utils.git"
   }
 }
