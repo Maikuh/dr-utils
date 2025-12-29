@@ -1,6 +1,6 @@
 /*
 dr-utils: Utilities relevant to the Dominican Republic
-Copyright (C) 2021  Miguel Araujo
+Copyright (C) 2026  Miguel Araujo
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -17,12 +17,12 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 export default function durstenfeldShuffle<T>(arr: T[]): T[] {
-  const array = arr
+	const array = arr
 
-  for (let i = array.length - 1; i > 0; i -= 1) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]]
-  }
+	for (let i = array.length - 1; i > 0; i -= 1) {
+		const j = Math.floor(Math.random() * (i + 1))
+		;[array[i], array[j]] = [array[j], array[i]]
+	}
 
-  return array
+	return array
 }

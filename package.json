@@ -7,21 +7,26 @@
   "files": [
     "lib/**/*"
   ],
+  "type": "module",
   "scripts": {
-    "generate-rnc-cedulas": "ts-node scripts/generate-rnc-cedulas.ts",
-    "preversion": "npm run lint",
-    "prepublishOnly": "npm run lint && npm run build",
+    "generate-rnc-cedulas": "bun run ./scripts/generate-rnc-cedulas.ts",
+    "preversion": "bun run lint",
+    "prepublishOnly": "bun run lint && bun run build",
     "postversion": "git push --follow-tags",
     "prebuild": "rimraf lib",
     "build": "tsc -p tsconfig.build.json",
-    "format": "prettier --write \"src/**/*.ts\"",
-    "lint": "eslint \"{src,scripts,tests}/**/*.ts\" --fix",
-    "test": "jest",
-    "test:c": "jest --coverage"
+    "format": "biome format --write",
+    "lint": "biome lint --write",
+    "biome": "biome check --write",
+    "biome:ci": "biome ci",
+    "test:coverage": "bun test --coverage"
   },
   "keywords": [
     "dominican republic",
     "republica dominicana",
+    "dr",
+    "rd",
+    "rep dom",
     "dominicano",
     "dominicana",
     "identification",
@@ -39,27 +44,19 @@
     "validador",
     "formatter",
     "formateador",
+    "util",
     "utils",
-    "utilidades"
+    "utilidad",
+    "utilidades",
+    "helpers"
   ],
   "author": "Miguel Araujo",
   "license": "GPL-3.0-or-later",
   "devDependencies": {
-    "@types/jest": "^28.1.0",
-    "@types/node": "^16.11.38",
-    "@typescript-eslint/eslint-plugin": "^4.33.0",
-    "@typescript-eslint/parser": "^4.33.0",
-    "eslint": "^7.32.0",
-    "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-config-airbnb-typescript": "^14.0.2",
-    "eslint-plugin-import": "^2.26.0",
+    "@biomejs/biome": "2.3.10",
+    "@types/bun": "^1.3.5",
     "extract-zip": "^2.0.1",
-    "got": "^12.1.0",
-    "jest": "^28.1.0",
-    "prettier": "^2.6.2",
-    "rimraf": "^3.0.2",
-    "ts-jest": "^28.0.4",
-    "ts-node": "^10.8.1",
-    "typescript": "^4.7.3"
+    "rimraf": "^6.1.2",
+    "typescript": "^5.9.3"
   }
 }

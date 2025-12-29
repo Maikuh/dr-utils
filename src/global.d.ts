@@ -16,21 +16,6 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-/**
- * @param cedula the person's Cedula
- * @param removeOrAddDashes determines if dashes are to be removed or added
- * @returns the formatted cedula
- */
-export function formatCedula(cedula: string, removeOrAddDashes: 'remove' | 'add' = 'remove') {
-	if (removeOrAddDashes === 'remove') {
-		if (!cedula.includes('-')) throw new Error(`The Cedula ${cedula} does not contain dashes.`)
-
-		return cedula.replaceAll('-', '')
-	}
-
-	if (cedula.includes('-')) throw new Error(`The Cedula ${cedula} already contains dashes.`)
-
-	return `${cedula.slice(0, 3)}-${cedula.slice(3, 10)}-${cedula.slice(10, 11)}`
-}
-
-export default formatCedula
+// Needed to type tests' functions properly without importing them explicitly
+// By default, it thinks the functions are Jest's or Mocha's (e.g. describe, it, etc.)
+/// <reference types="bun-types/test-globals" />

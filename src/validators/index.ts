@@ -1,6 +1,6 @@
 /*
 dr-utils: Utilities relevant to the Dominican Republic
-Copyright (C) 2021  Miguel Araujo
+Copyright (C) 2026  Miguel Araujo
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -16,7 +16,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-export * from './rnc.validator'
-export * from './ncf.validator'
 export * from './cedula.validator'
+export * from './ncf.validator'
 export * from './phone.validator'
+export * from './rnc.validator'

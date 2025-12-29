@@ -16,21 +16,21 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-/**
- * @param cedula the person's Cedula
- * @param removeOrAddDashes determines if dashes are to be removed or added
- * @returns the formatted cedula
- */
-export function formatCedula(cedula: string, removeOrAddDashes: 'remove' | 'add' = 'remove') {
-	if (removeOrAddDashes === 'remove') {
-		if (!cedula.includes('-')) throw new Error(`The Cedula ${cedula} does not contain dashes.`)
+import formatCedula from './cedula.formatter'
 
-		return cedula.replaceAll('-', '')
-	}
+describe('Cedula Formatter', () => {
+	const cedulaWithDashes = '225-0066322-8'
+	const cedulaNoDashes = '22500663228'
 
-	if (cedula.includes('-')) throw new Error(`The Cedula ${cedula} already contains dashes.`)
+	it('Cedula "225-0066322-8" should be formatted without dashes', () => {
+		const noDashesResult = formatCedula(cedulaWithDashes)
 
-	return `${cedula.slice(0, 3)}-${cedula.slice(3, 10)}-${cedula.slice(10, 11)}`
-}
+		expect(noDashesResult).toEqual(cedulaNoDashes)
+	})
 
-export default formatCedula
+	it('Cedula "22500663228" should be formatted with dashes', () => {
+		const withDashesResult = formatCedula(cedulaNoDashes, 'add')
+
+		expect(withDashesResult).toEqual(cedulaWithDashes)
+	})
+})

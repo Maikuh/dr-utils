@@ -16,21 +16,22 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-/**
- * @param cedula the person's Cedula
- * @param removeOrAddDashes determines if dashes are to be removed or added
- * @returns the formatted cedula
- */
-export function formatCedula(cedula: string, removeOrAddDashes: 'remove' | 'add' = 'remove') {
-	if (removeOrAddDashes === 'remove') {
-		if (!cedula.includes('-')) throw new Error(`The Cedula ${cedula} does not contain dashes.`)
+import formatPhoneNumber from './phone.formatter'
 
-		return cedula.replaceAll('-', '')
-	}
+describe('Phone Number Formatter', () => {
+	it('Phone Number "8092201111" should be formatted correctly (National)', () => {
+		const phoneNumber = '8092201111'
+		const expected = '(809) 220-1111'
+		const formatted = formatPhoneNumber(phoneNumber)
 
-	if (cedula.includes('-')) throw new Error(`The Cedula ${cedula} already contains dashes.`)
+		expect(formatted).toEqual(expected)
+	})
 
-	return `${cedula.slice(0, 3)}-${cedula.slice(3, 10)}-${cedula.slice(10, 11)}`
-}
+	it('Phone Number "8092201111" should be formatted correctly (International)', () => {
+		const phoneNumber = '8092201111'
+		const expected = '+1 809 220 1111'
+		const formatted = formatPhoneNumber(phoneNumber, true)
 
-export default formatCedula
+		expect(formatted).toEqual(expected)
+	})
+})

@@ -13,19 +13,23 @@ Dominican Republic Utils (hence, `dr-utils`) is a JavaScript library built with 
 ## Installation
 
 ```bash
-# Via NPM
+# Using NPM
 $ npm i dr-utils
 
-# Via Yarn
+# Using Yarn
 $ yarn add dr-utils
 
-# Via PNPM
+# Using PNPM
 $ pnpm add dr-utils
+
+# Using Bun
+$ bun add dr-utils
 ```
 
 ## Usage
 
-### `validateCedula(cedula: string)`
+### Validators
+#### `validateCedula(cedula: string)`
 ```ts
 import { validateCedula } from 'dr-utils'
 
@@ -34,7 +38,7 @@ const cedula = '40220579912'
 const isCedulaValid = validateCedula(cedula) // true
 ```
 
-### `validateRNC(rnc: string)`
+#### `validateRNC(rnc: string)`
 ```ts
 import { validateRNC } from 'dr-utils'
 
@@ -43,7 +47,7 @@ const rnc = '130500292'
 const isRNCValid = validateRNC(rnc) // true
 ```
 
-### `validateNCF(ncf: string)`
+#### `validateNCF(ncf: string)`
 ```ts
 import { validateNCF } from 'dr-utils'
 
@@ -52,7 +56,7 @@ const ncf = 'E319123402392'
 const isNCFValid = validateNCF(ncf) // true
 ```
 
-### `validatePhoneNumber(number: string)`
+#### `validatePhoneNumber(number: string)`
 ```ts
 import { validatePhoneNumber } from 'dr-utils'
 
@@ -60,7 +64,8 @@ const isPhoneNumberOneValid = validatePhoneNumber('8092201111') // true
 const isPhoneNumberTwoValid = validatePhoneNumber('+1 (781) 575 4238') // false
 ```
 
-### `formatCedula(cedula: string, removeOrAddDashes? = 'remove')`
+### Formatters
+#### `formatCedula(cedula: string, removeOrAddDashes? = 'remove')`
 ```ts
 import { formatCedula } from 'dr-utils'
 
@@ -68,7 +73,7 @@ const noDashes = formatCedula('402-2057991-2') // 40220579912
 const withDashes = formatCedula('40220579912', 'add') // 402-2057991-2
 ```
 
-### `formatRNC(cedula: string, removeOrAddDashes? = 'remove')`
+#### `formatRNC(cedula: string, removeOrAddDashes? = 'remove')`
 ```ts
 import { formatRNC } from 'dr-utils'
 
@@ -76,7 +81,7 @@ const noDashes = formatRNC('130-50029-2') // 130500292
 const withDashes = formatRNC('130500292', 'add') // 130-50029-2
 ```
 
-### `formatPhoneNumber(number: string)`
+#### `formatPhoneNumber(number: string, international = false)`
 ```ts
 import { formatPhoneNumber } from 'dr-utils'
 

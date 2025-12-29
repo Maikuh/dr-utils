@@ -125,4 +125,4 @@ To ensure consistency throughout the source code, keep these rules in mind as yo
 * All public API methods **must be documented**. (Details TBC). -->
 
 - All features or bug fixes **must be tested** by one or more suites.
-- We follow [Airbnb's JavaScript Style Guide](https://airbnb.io/javascript), using ESLint.
+- We are using [Biome](https://biomejs.dev/) for lint/format, meaning we don't exactly follow a style guide (anymore). Make sure to exec `bun run biome` to confirm everything's as expected.

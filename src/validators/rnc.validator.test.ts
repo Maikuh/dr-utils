@@ -16,21 +16,36 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-/**
- * @param cedula the person's Cedula
- * @param removeOrAddDashes determines if dashes are to be removed or added
- * @returns the formatted cedula
- */
-export function formatCedula(cedula: string, removeOrAddDashes: 'remove' | 'add' = 'remove') {
-	if (removeOrAddDashes === 'remove') {
-		if (!cedula.includes('-')) throw new Error(`The Cedula ${cedula} does not contain dashes.`)
+import validateRNC from './rnc.validator'
 
-		return cedula.replaceAll('-', '')
-	}
+describe('RNC Validator', () => {
+	let rncs: string[]
 
-	if (cedula.includes('-')) throw new Error(`The Cedula ${cedula} already contains dashes.`)
+	beforeAll(async () => {
+		rncs = await Bun.file('assets/rncs.json').json()
+	})
 
-	return `${cedula.slice(0, 3)}-${cedula.slice(3, 10)}-${cedula.slice(10, 11)}`
-}
+	it('All RNCs should be valid', () => {
+		const allValid = rncs.every((rnc) => {
+			const isValid = validateRNC(rnc)
 
-export default formatCedula
+			if (!isValid) console.log('Failed RNC:', rnc)
+
+			return isValid
+		})
+
+		expect(allValid).toBeTruthy()
+	})
+
+	it('RNC "130502395" should be invalid', () => {
+		const result = validateRNC('130502395')
+
+		expect(result).toBeFalsy()
+	})
+
+	it('Wrong length RNC "13050239" should be invalid', () => {
+		const result = validateRNC('13050239')
+
+		expect(result).toBeFalsy()
+	})
+})

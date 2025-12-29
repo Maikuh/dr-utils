@@ -1,6 +1,6 @@
 /*
 dr-utils: Utilities relevant to the Dominican Republic
-Copyright (C) 2021  Miguel Araujo
+Copyright (C) 2026  Miguel Araujo
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -22,26 +22,25 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
  * @returns {boolean} `true` if the Cedula is valid, `false` otherwise
  */
 export function validateCedula(cedula: string): boolean {
-  let total = 0
-  const cedulaNoDashes = cedula.trim().replace(/-/g, '')
-  const digits = [1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1]
+	let total = 0
+	const cedulaNoDashes = cedula.trim().replace(/-/g, '')
+	const digits = [1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1]
 
-  if (cedulaNoDashes.length !== 11) return false
+	if (cedulaNoDashes.length !== 11) return false
 
-  for (let i = 1; i <= cedulaNoDashes.length; i += 1) {
-    const calculation = Number(cedulaNoDashes.substr(i - 1, 1)) * digits[i - 1]
+	for (let i = 1; i <= cedulaNoDashes.length; i += 1) {
+		const calculation = Number(cedulaNoDashes.slice(i - 1, i)) * digits[i - 1]!
 
-    if (calculation < 10) total += calculation
-    else {
-      total
-        += Number(calculation.toString().substr(0, 1))
-        + Number(calculation.toString().substr(1, 1))
-    }
-  }
+		if (calculation < 10) total += calculation
+		else {
+			total +=
+				Number(calculation.toString().substr(0, 1)) + Number(calculation.toString().substr(1, 1))
+		}
+	}
 
-  if (total % 10 === 0) return true
+	if (total % 10 === 0) return true
 
-  return false
+	return false
 }
 
 export default validateCedula

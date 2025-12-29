@@ -1,6 +1,6 @@
 /*
 dr-utils: Utilities relevant to the Dominican Republic
-Copyright (C) 2021  Miguel Araujo
+Copyright (C) 2026  Miguel Araujo
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -22,17 +22,17 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
  * @returns {boolean} `true` if the NCF is valid, `false` otherwise
  */
 export function validateNCF(ncf: string): boolean {
-  // NCF
-  if (ncf.length === 11) {
-    return ncf.match(/^[A-Z](0[1-4]|1[1-7])\d{8}$/g) != null
-  }
+	// NCF (Physical)
+	if (ncf.length === 11) {
+		return ncf.match(/^[A-Z](0[1-4]|1[1-7])\d{8}$/g) != null
+	}
 
-  // eNCF
-  if (ncf.length === 13) {
-    return ncf.match(/^[A-Z](3[1-4]|41|4[3-5])\d{10}$/g) != null
-  }
+	// eNCF
+	if (ncf.length === 13) {
+		return ncf.match(/^[A-Z](3[1-4]|41|4[3-5])\d{10}$/g) != null
+	}
 
-  return false
+	return false
 }
 
 export default validateNCF

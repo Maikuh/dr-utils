@@ -1,6 +1,6 @@
 /*
 dr-utils: Utilities relevant to the Dominican Republic
-Copyright (C) 2021  Miguel Araujo
+Copyright (C) 2026  Miguel Araujo
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -23,23 +23,20 @@ import { formatCedula } from './cedula.formatter'
  * @param removeOrAddDashes determines if dashes are to be removed or added
  * @returns {('add'|'remove')} the formatted RNC/Cedula
  */
-export function formatRNC(
-  rnc: string,
-  removeOrAddDashes: 'remove' | 'add' = 'remove',
-) {
-  if (rnc.length === 13) return formatCedula(rnc)
+export function formatRNC(rnc: string, removeOrAddDashes: 'remove' | 'add' = 'remove') {
+	if (rnc.length === 13) return formatCedula(rnc)
 
-  if (removeOrAddDashes === 'remove') {
-    if (!rnc.includes('-')) throw new Error(`The RNC ${rnc} does not contain dashes.`)
+	if (removeOrAddDashes === 'remove') {
+		if (!rnc.includes('-')) throw new Error(`The RNC ${rnc} does not contain dashes.`)
 
-    return rnc.replaceAll('-', '')
-  }
+		return rnc.replaceAll('-', '')
+	}
 
-  if (rnc.length === 11) return formatCedula(rnc, 'add')
+	if (rnc.length === 11) return formatCedula(rnc, 'add')
 
-  if (rnc.includes('-')) throw new Error(`The RNC ${rnc} already contains dashes.`)
+	if (rnc.includes('-')) throw new Error(`The RNC ${rnc} already contains dashes.`)
 
-  return `${rnc.slice(0, 3)}-${rnc.slice(3, 8)}-${rnc.slice(8, 9)}`
+	return `${rnc.slice(0, 3)}-${rnc.slice(3, 8)}-${rnc.slice(8, 9)}`
 }
 
 export default formatRNC
