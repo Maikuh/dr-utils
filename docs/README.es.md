@@ -8,24 +8,28 @@
 
 Idioma: [English](../README.md) / **Español**
 
-Dominican Republic Utils (por eso, `dr-utils`) es una libreria de JavaScript hecha con Typescript con utilidades relevantes para la República Dominicana, tales como validación y formato de Cedula, RNC y NCF.
+Dominican Republic Utils (por eso, `dr-utils`) es una libreria de JavaScript hecha con Typescript con utilidades relevantes para la República Dominicana, tales como validación y formateo de Cedula, RNC, NCF y números telefónicos.
 
 ## Instalación
 
 ```bash
-# Via NPM
+# Con NPM
 $ npm i dr-utils
 
-# Via Yarn
+# Con Yarn
 $ yarn add dr-utils
 
-# Via PNPM
+# Con PNPM
 $ pnpm add dr-utils
+
+# Con Bun
+$ bun add dr-utils
 ```
 
 ## Uso
 
-### `validateCedula(cedula: string)`
+### Validadores
+#### `validateCedula(cedula: string)`
 ```ts
 import { validateCedula } from 'dr-utils'
 
@@ -34,7 +38,7 @@ const cedula = '40220579912'
 const isCedulaValid = validateCedula(cedula) // true
 ```
 
-### `validateRNC(rnc: string)`
+#### `validateRNC(rnc: string)`
 ```ts
 import { validateRNC } from 'dr-utils'
 
@@ -43,7 +47,7 @@ const rnc = '130500292'
 const isRNCValid = validateRNC(rnc) // true
 ```
 
-### `validateNCF(ncf: string)`
+#### `validateNCF(ncf: string)`
 ```ts
 import { validateNCF } from 'dr-utils'
 
@@ -52,7 +56,7 @@ const ncf = 'E319123402392'
 const isNCFValid = validateNCF(ncf) // true
 ```
 
-### `validatePhoneNumber(number: string)`
+#### `validatePhoneNumber(number: string)`
 ```ts
 import { validatePhoneNumber } from 'dr-utils'
 
@@ -60,30 +64,31 @@ const isPhoneNumberOneValid = validatePhoneNumber('8092201111') // true
 const isPhoneNumberTwoValid = validatePhoneNumber('+1 (781) 575 4238') // false
 ```
 
-### `formatCedula(cedula: string, removeOrAddDashes? = 'remove')`
+### Formateadores
+#### `formatCedula(cedula: string, style? = 'with-dashes')`
 ```ts
 import { formatCedula } from 'dr-utils'
 
-const noDashes = formatCedula('402-2057991-2') // 40220579912
-const withDashes = formatCedula('40220579912', 'add') // 402-2057991-2
+const withDashes = formatCedula('40220579912') // 402-2057991-2
+const withoutDashes = formatCedula('402-2057991-2', 'without-dashes') // 40220579912
 ```
 
-### `formatRNC(cedula: string, removeOrAddDashes? = 'remove')`
+#### `formatRNC(cedula: string, style? = 'with-dashes')`
 ```ts
 import { formatRNC } from 'dr-utils'
 
-const noDashes = formatRNC('130-50029-2') // 130500292
-const withDashes = formatRNC('130500292', 'add') // 130-50029-2
+const withDashes = formatRNC('130500292') // 130-50029-2
+const withoutDashes = formatRNC('130-50029-2', 'without-dashes') // 130500292
 ```
 
-### `formatPhoneNumber(number: string)`
+#### `formatPhoneNumber(number: string, international? = false)`
 ```ts
 import { formatPhoneNumber } from 'dr-utils'
 
 const phoneNumber = '8092201111'
 
 const formatted = formatPhoneNumber(phoneNumber) // (809) 220-1111
-const formattedInternational = formatPhoneNumber(phoneNumber, true) // +1 809 220 1111
+const formattedInternational = formatPhoneNumber(phoneNumber, true) // +18092201111
 ```
 
 ## Contribuciones
