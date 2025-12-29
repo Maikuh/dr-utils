@@ -29,7 +29,7 @@ describe('Phone Number Formatter', () => {
 
 	it('Phone Number "8092201111" should be formatted correctly (International)', () => {
 		const phoneNumber = '8092201111'
-		const expected = '+1 809 220 1111'
+		const expected = '+18092201111'
 		const formatted = formatPhoneNumber(phoneNumber, true)
 
 		expect(formatted).toEqual(expected)

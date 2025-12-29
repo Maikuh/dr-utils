@@ -22,9 +22,9 @@ import {
 } from '../constants/phone-number.regex'
 
 /**
- * @param phoneNumber the phone number
- * @param international if the output should be the international format (E.164) or not (domestic)
- * @returns the formatted phone number
+ * @param phoneNumber {string} the phone number
+ * @param international {boolean} if the output should be the international format (E.164) or not (domestic)
+ * @returns {string} the formatted phone number
  */
 export function formatPhoneNumber(phoneNumber: string, international: boolean = false): string {
 	const digitsOnly = phoneNumber.replace(PHONE_NUMBER_EXTRACT_REGEX, '')

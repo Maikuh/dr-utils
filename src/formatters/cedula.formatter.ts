@@ -16,21 +16,31 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import { FormatStyle } from '../types'
+
 /**
- * @param cedula the person's Cedula
- * @param removeOrAddDashes determines if dashes are to be removed or added
- * @returns the formatted cedula
+ * @param cedula {string} the person's Cedula
+ * @param style {FormatStyle} determines if dashes are to be removed or added. Defaults to 'with-dashes'.
+ * @returns {string} the formatted cedula
  */
-export function formatCedula(cedula: string, removeOrAddDashes: 'remove' | 'add' = 'remove') {
-	if (removeOrAddDashes === 'remove') {
-		if (!cedula.includes('-')) throw new Error(`The Cedula ${cedula} does not contain dashes.`)
+export function formatCedula(cedula: string, style: FormatStyle = 'with-dashes'): string {
+	const isCedulaWithDashes = cedula.length === 13 && cedula[3] === '-' && cedula[11] === '-'
+
+	if (style === 'with-dashes') {
+		if (isCedulaWithDashes) return cedula
+
+		return `${cedula.slice(0, 3)}-${cedula.slice(3, 10)}-${cedula.slice(10, 11)}`
+	}
+
+	const isCedulaWithoutDashes = cedula.length === 11 && !cedula.includes('-')
+
+	if (style === 'without-dashes') {
+		if (isCedulaWithoutDashes) return cedula
 
 		return cedula.replaceAll('-', '')
 	}
 
-	if (cedula.includes('-')) throw new Error(`The Cedula ${cedula} already contains dashes.`)
-
-	return `${cedula.slice(0, 3)}-${cedula.slice(3, 10)}-${cedula.slice(10, 11)}`
+	throw new Error(`Cannot format cedula "${cedula}".`)
 }
 
 export default formatCedula
