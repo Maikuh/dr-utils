@@ -51,6 +51,10 @@
     "helpers"
   ],
   "author": "Miguel Araujo",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Maikuh/dr-utils"
+  },
   "license": "MIT",
   "devDependencies": {
     "@biomejs/biome": "2.3.10",
