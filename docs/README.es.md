@@ -5,6 +5,7 @@
 <a href="https://www.npmjs.com/package/dr-utils" target="_blank"><img src="https://badgen.net/npm/types/dr-utils"></a>
 <a href="https://bundlephobia.com/package/dr-utils" target="_blank"><img src="https://badgen.net/bundlephobia/minzip/dr-utils"></a>
 ![Release and NPM Publish Action](https://github.com/Maikuh/dr-utils/actions/workflows/release-and-publish.yaml/badge.svg)
+<a href="LICENSE" target="_blank"><img src="https://badgen.net/static/license/MIT/green"></a>
 
 Idioma: [English](../README.md) / **Español**
 

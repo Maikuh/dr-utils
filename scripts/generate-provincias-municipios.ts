@@ -143,7 +143,8 @@ const provinciasConst = `${generatedHeader}
 
 export const Provincias = {
 ${provinciaEnum}
-} as const\n`
+} as const
+`
 
 const municipiosPorProvinciaOutput = `${generatedHeader}
 
@@ -151,7 +152,8 @@ import { Provincias } from './provincias.constant'
 
 export const MunicipiosPorProvincia = {
 ${municipiosPorProvincia}
-} as const\n`
+} as const
+`
 
 const provinciaPorMunicipioOutput = `${generatedHeader}
 
@@ -160,7 +162,8 @@ import { Provincias } from './provincias.constant'
 
 export const ProvinciaPorMunicipio: Record<Municipio, Provincia> = {
 ${provinciaPorMunicipio}
-}\n`
+}
+`
 
 const typesOutput = `${generatedHeader}
 
@@ -169,7 +172,8 @@ import { Provincias } from '@/constants/provincias.constant'
 
 export type Provincia = (typeof Provincias)[keyof typeof Provincias]
 
-export type Municipio = (typeof MunicipiosPorProvincia)[keyof typeof MunicipiosPorProvincia][number]\n`
+export type Municipio = (typeof MunicipiosPorProvincia)[keyof typeof MunicipiosPorProvincia][number]
+`
 
 const utilsOutput = `${generatedHeader}
 
@@ -187,7 +191,7 @@ export function getMunicipiosProvincia(
   municipio: Municipio
 ): Provincia {
   return ProvinciaPorMunicipio[municipio]
-}\n
+}
 `
 
 await Promise.all([

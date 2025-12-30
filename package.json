@@ -18,8 +18,8 @@
     "preversion": "bun run lint",
     "prepublishOnly": "bun run lint && bun run build",
     "postversion": "git push --follow-tags",
-    "prebuild": "rimraf lib",
-    "build": "tsc -p tsconfig.build.json",
+    "prebuild": "rimraf lib && tsc --noEmit -p tsconfig.build.json",
+    "build": "tsdown",
     "format": "biome format --write",
     "lint": "biome lint --write",
     "biome": "biome check --write",
@@ -31,6 +31,7 @@
     "@types/bun": "^1.3.5",
     "extract-zip": "^2.0.1",
     "rimraf": "^6.1.2",
+    "tsdown": "^0.18.4",
     "typescript": "^5.9.3"
   },
   "keywords": [
