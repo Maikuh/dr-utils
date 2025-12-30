@@ -1,7 +1,7 @@
 
 import extractZip from 'extract-zip'
 import path from 'path'
-import { formatCedula, formatRNC, validateCedula } from '../src'
+import { formatCedula, formatRNC, validateRNC } from '../src'
 
 // Download link is having issues at the time, but this script doesn't need to be run frequently anyway
 const url = 'https://dgii.gov.do/app/WebApps/Consultas/RNC/DGII_RNC.zip'
@@ -35,14 +35,14 @@ const cedulas: string[] = []
 for (const id of split) {
 	if (cedulas.length >= 1000 && rncs.length >= 500) break
 
-	const isCedula = validateCedula(id)
+	if (!validateRNC(id)) continue
 	
-	if (isCedula && cedulas.length < 1000) {
+	if (id.length === 11 && cedulas.length < 1000) {
 		if (cedulas.length < 500)
 			cedulas.push(id)
 		else
 			cedulas.push(formatCedula(id))
-	} else if (!isCedula && rncs.length < 500) {
+	} else if (id.length === 9 && rncs.length < 500) {
 		if (rncs.length < 250)
 			rncs.push(id)
 		else

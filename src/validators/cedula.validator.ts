@@ -1,7 +1,7 @@
 /**
- *
- * @param rnc {string} the person's Cedula
- * @returns {boolean} `true` if the Cedula is valid, `false` otherwise
+ * Validates a Dominican Republic National ID (Cedula).
+ * @param cedula {string} the person's Cedula
+ * @returns {boolean} `true` if `cedula` is valid, `false` otherwise
  */
 export function validateCedula(cedula: string): boolean {
 	let total = 0
@@ -16,7 +16,7 @@ export function validateCedula(cedula: string): boolean {
 		if (calculation < 10) total += calculation
 		else {
 			total +=
-				Number(calculation.toString().substr(0, 1)) + Number(calculation.toString().substr(1, 1))
+				Number(calculation.toString().slice(0, 1)) + Number(calculation.toString().slice(1, 2))
 		}
 	}
 
