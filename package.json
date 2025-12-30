@@ -39,11 +39,26 @@
       "import": "./lib/index.js",
       "types": "./lib/index.d.ts"
     },
-    "./types/*": "./lib/types/*",
-    "./utils/*": "./lib/utils/*",
-    "./constants/*": "./lib/constants/*",
-    "./formatters/*": "./lib/formatters/*",
-    "./validators/*": "./lib/validators/*",
+    "./types": {
+      "import": "./lib/types/index.js",
+      "types": "./lib/types/index.d.ts"
+    },
+    "./utils": {
+      "import": "./lib/utils/index.js",
+      "types": "./lib/utils/index.d.ts"
+    },
+    "./constants": {
+      "import": "./lib/constants/index.js",
+      "types": "./lib/constants/index.d.ts"
+    },
+    "./formatters": {
+      "import": "./lib/formatters/index.js",
+      "types": "./lib/formatters/index.d.ts"
+    },
+    "./validators": {
+      "import": "./lib/validators/index.js",
+      "types": "./lib/validators/index.d.ts"
+    },
     "./package.json": "./package.json"
   },
   "keywords": [
