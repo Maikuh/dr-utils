@@ -95,6 +95,29 @@ const formatted = formatPhoneNumber(phoneNumber) // (809) 220-1111
 const formattedInternational = formatPhoneNumber(phoneNumber, true) // +18092201111
 ```
 
+### Helpers
+Puedes obtener los municipios de una provincia especificada de la siguiente manera:
+```ts
+import { getMunicipiosByProvincia, Provincias } from 'dr-utils'
+
+const municipios = getMunicipiosByProvincia(Provincias.LA_ALTAGRACIA)
+
+console.log(municipios)
+// [
+//     'Higüey',
+//     'San Rafael del Yuma',
+// ]
+```
+
+Por otro lado, si ya tienes un municipio y quieres saber la provincia en la que se encuentra, puedes hacer:
+```ts
+import { getProvinciaByMunicipio } from 'dr-utils'
+
+const provincia = getProvinciaByMunicipio('Sabana Grande de Boyá')
+
+console.log(provincia) // "Monte Plata"
+```
+
 ## Contribuciones
 Ver [CONTRIBUTING](../CONTRIBUTING.md)
 
