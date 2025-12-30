@@ -1,4 +1,4 @@
-import { FormatStyle } from '../types'
+import { FormatStyle } from '@/types/format-style.type'
 
 /**
  * @param cedula {string} the person's Cedula

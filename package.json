@@ -14,6 +14,7 @@
   "type": "module",
   "scripts": {
     "generate-rnc-cedulas": "bun run ./scripts/generate-rnc-cedulas.ts",
+    "generate-provincias-municipios": "bun run ./scripts/generate-provincias-municipios.ts",
     "preversion": "bun run lint",
     "prepublishOnly": "bun run lint && bun run build",
     "postversion": "git push --follow-tags",

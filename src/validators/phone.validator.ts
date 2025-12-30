@@ -1,7 +1,7 @@
 import {
 	PHONE_NUMBER_EXTRACT_REGEX,
 	PHONE_NUMBER_VALID_REGEX,
-} from '../constants/phone-number.regex'
+} from '@/constants/phone-number.regex'
 
 /**
  * @param phoneNumber {string} the phone number

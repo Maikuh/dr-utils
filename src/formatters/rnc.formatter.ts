@@ -1,5 +1,5 @@
-import { FormatStyle } from '../types'
-import { formatCedula } from './cedula.formatter'
+import { FormatStyle } from '@/types/format-style.type'
+import formatCedula from './cedula.formatter'
 
 /**
  * @param rnc {string} the entities' RNC/Cedula
