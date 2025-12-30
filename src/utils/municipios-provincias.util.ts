@@ -5,14 +5,10 @@ import { MunicipiosPorProvincia } from '@/constants/municipios-por-provincia.con
 import { ProvinciaPorMunicipio } from '@/constants/provincia-por-municipio.constant'
 import { Municipio, Provincia } from '@/types/municipio-provincia.type'
 
-export function getMunicipiosByProvincia(
-  provincia: Provincia
-): readonly Municipio[] {
-  return MunicipiosPorProvincia[provincia]
+export function getMunicipiosByProvincia(provincia: Provincia): readonly Municipio[] {
+	return MunicipiosPorProvincia[provincia]
 }
 
-export function getMunicipiosProvincia(
-  municipio: Municipio
-): Provincia {
-  return ProvinciaPorMunicipio[municipio]
+export function getProvinciaByMunicipio(municipio: Municipio): Provincia {
+	return ProvinciaPorMunicipio[municipio]
 }

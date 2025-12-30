@@ -11,6 +11,9 @@ Idioma: [English](../README.md) / **Español**
 
 Dominican Republic Utils (por eso, `dr-utils`) es una libreria de JavaScript hecha con Typescript con utilidades relevantes para la República Dominicana, tales como validación y formateo de Cedula, RNC, NCF y números telefónicos.
 
+> #### Importante
+> Hay cédulas/RNC que dan falsos negativos (es decir, una cédula válida no pasa la validación) debido a que no coinciden con el algoritmo. Es muy probable que el Gobierno dominicano o la DGII hayan comenzado a emitir nuevas cédulas con un algoritmo distinto al de Luhn (mod 10) o que tengan excepciones con una condición desconocida. El porcentaje basado en cálculos con la base de datos pública de RNCs es de aproximadamente un 0.01% de probabilidad, el cual bien bajo, pero no nulo.
+
 ## Instalación
 
 ```bash

@@ -11,6 +11,9 @@ Language: **English** / [Español](docs/README.es.md)
 
 Dominican Republic Utils (hence, `dr-utils`) is a JavaScript library built with TypeScript for utilities relevant to the Dominican Republic, such as Cedula, RNC, NCF and Phone Number validation and formatting.
 
+> #### Important
+> There are Cedulas/RNC that give false negatives (i.e. a valid cedula  fails validation) due to them not matching the algorithm. It is very likely the Dominican Government / DGII may have started issuing new cedulas with another algorithm that's not Luhn's (mod 10) or have exceptions with an unknown (not public) condition (unless it's random). The calculated rate of failure using the public RNC database is about 0.01% chance, which is very low but not zero.
+
 ## Installation
 
 ```bash
@@ -90,6 +93,28 @@ const phoneNumber = '8092201111'
 
 const formatted = formatPhoneNumber(phoneNumber) // (809) 220-1111
 const formattedInternational = formatPhoneNumber(phoneNumber, true) // +18092201111
+```
+
+### Helpers
+You can get the municipalities for a given province like this:
+```ts
+import { getMunicipiosByProvincia, Provincias } from 'dr-utils'
+
+const municipios = getMunicipiosByProvincia(Provincias.LA_ALTAGRACIA)
+
+console.log(municipios)
+// [
+//     'Higüey',
+//     'San Rafael del Yuma',
+// ]
+```
+On the other hand, if you have a municipality and would like to know what province it's in, you can do:
+```ts
+import { getProvinciaByMunicipio } from 'dr-utils'
+
+const provincia = getProvinciaByMunicipio('Sabana Grande de Boyá')
+
+console.log(provincia) // "Monte Plata"
 ```
 
 ## Contributing

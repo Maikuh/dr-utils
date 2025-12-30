@@ -6,10 +6,11 @@
     "enabled": true,
     "formatWithErrors": false,
     "indentWidth": 2,
-    "lineEnding": "lf",
+    "lineEnding": "auto",
     "lineWidth": 100,
     "attributePosition": "auto",
-    "bracketSameLine": false
+    "bracketSameLine": false,
+    "indentStyle": "tab"
   },
   "linter": { "rules": { "recommended": false } },
   "javascript": {

@@ -34,6 +34,18 @@
     "tsdown": "^0.18.4",
     "typescript": "^5.9.3"
   },
+  "exports": {
+    ".": {
+      "import": "./lib/index.js",
+      "types": "./lib/index.d.ts"
+    },
+    "./types/*": "./lib/types/*",
+    "./utils/*": "./lib/utils/*",
+    "./constants/*": "./lib/constants/*",
+    "./formatters/*": "./lib/formatters/*",
+    "./validators/*": "./lib/validators/*",
+    "./package.json": "./package.json"
+  },
   "keywords": [
     "dominican republic",
     "republica dominicana",
