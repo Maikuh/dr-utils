@@ -117,8 +117,10 @@ const provincia = getProvinciaByMunicipio('Sabana Grande de Boyá')
 console.log(provincia) // "Monte Plata"
 ```
 
+You can also check the full list of provinces and municipalities by importing the `Provincias` and `MunicipiosPorProvincia` constants.
+
 ## Contributing
 See [CONTRIBUTING](CONTRIBUTING.md)
 
 ## Copyright
-See [LICENSE](./LICENSE)
+See [LICENSE](LICENSE)

@@ -118,6 +118,8 @@ const provincia = getProvinciaByMunicipio('Sabana Grande de Boyá')
 console.log(provincia) // "Monte Plata"
 ```
 
+También puedes consultar el listado completo de provincias y municipios importando las constantes `Provincias` y `MunicipiosPorProvincia`.
+
 ## Contribuciones
 Ver [CONTRIBUTING](../CONTRIBUTING.md)
 
