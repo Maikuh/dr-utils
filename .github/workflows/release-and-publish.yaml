@@ -17,6 +17,8 @@ jobs:
         uses: actions/checkout@v6
       - name: Create Release
         uses: softprops/action-gh-release@v2
+        with:
+          prerelease: ${{ contains(github.ref_name, '-') }}
 
   publish:
     needs: release
