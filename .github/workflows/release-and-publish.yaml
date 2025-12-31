@@ -19,6 +19,7 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           prerelease: ${{ contains(github.ref_name, '-') }}
+          generate_release_notes: true
 
   publish:
     needs: release
@@ -33,7 +34,7 @@ jobs:
       - name: Run tests
         run: bun test
       - name: Publish to NPM (Pre-release)
-        run: bunx npm@latest publish --tag next # 
+        run: bunx npm@latest publish --tag next
         if: contains(github.ref_name, '-')
       - name: Publish to NPM (Stable)
         run: bunx npm@latest publish
