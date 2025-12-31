@@ -1,61 +1,38 @@
-/*
-dr-utils: Utilities relevant to the Dominican Republic
-Copyright (C) 2021  Miguel Araujo
-
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program.  If not, see <https://www.gnu.org/licenses/>.
-*/
-
 import { validateCedula } from './cedula.validator'
 
 /**
  * Validates an RNC. Since RNCs can also be a Cedula, this uses the Cedula validator
  * conditionally behind the scenes.
- * @param rnc {string} the entities' RNC/Cedula
- * @returns {boolean} `true` if the RNC/Cedula is valid, `false` otherwise
+ * @param rnc {string} the entity's RNC/Cedula
+ * @returns {boolean} `true` if the `rnc` is valid, `false` otherwise
  */
 export function validateRNC(rnc: string): boolean {
-  const rncNoDashes = rnc.trim().replace(/-/g, '')
+	const cleanRnc = rnc.replace(/\D/g, '')
 
-  if (rncNoDashes.length === 11) return validateCedula(rnc)
-  if (rncNoDashes.length !== 9) return false
+	if (cleanRnc.length === 11) return validateCedula(cleanRnc)
+	else if (cleanRnc.length !== 9) return false
 
-  const baseRnc = [7, 9, 8, 6, 5, 4, 3, 2]
-  let sum = 0
-  let checker
+	const digits = cleanRnc.split('').map(Number)
+	const checkDigit = digits[8]
 
-  const digits = rnc.split('').map(Number)
-  const checkDigit = digits[digits.length - 1]
+	const multipliers = [7, 9, 8, 6, 5, 4, 3, 2]
 
-  for (let i = baseRnc.length - 1; i >= 0; i -= 1) {
-    sum += baseRnc[i] * digits[i]
-  }
+	let sum = 0
 
-  const remainder = sum % 11
+	for (let i = 0; i < 8; i++) {
+		sum += digits[i]! * multipliers[i]!
+	}
 
-  switch (remainder) {
-    case 0:
-      checker = 2
-      break
-    case 1:
-      checker = 1
-      break
-    default:
-      checker = 11 - remainder
-      break
-  }
+	const remainder = sum % 11
+	let calculatedCheckDigit = 11 - remainder
 
-  return checker === checkDigit
+	if (calculatedCheckDigit === 10) {
+		calculatedCheckDigit = 1
+	} else if (calculatedCheckDigit === 11) {
+		calculatedCheckDigit = 2
+	}
+
+	return calculatedCheckDigit === checkDigit
 }
 
 export default validateRNC

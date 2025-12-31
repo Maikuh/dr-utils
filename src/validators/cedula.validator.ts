@@ -1,47 +1,28 @@
-/*
-dr-utils: Utilities relevant to the Dominican Republic
-Copyright (C) 2021  Miguel Araujo
-
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program.  If not, see <https://www.gnu.org/licenses/>.
-*/
-
 /**
- *
- * @param rnc {string} the person's Cedula
- * @returns {boolean} `true` if the Cedula is valid, `false` otherwise
+ * Validates a Dominican Republic National ID (Cedula).
+ * @param cedula {string} the person's Cedula
+ * @returns {boolean} `true` if `cedula` is valid, `false` otherwise
  */
 export function validateCedula(cedula: string): boolean {
-  let total = 0
-  const cedulaNoDashes = cedula.trim().replace(/-/g, '')
-  const digits = [1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1]
+	let total = 0
+	const cedulaNoDashes = cedula.trim().replace(/-/g, '')
+	const digits = [1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1]
 
-  if (cedulaNoDashes.length !== 11) return false
+	if (cedulaNoDashes.length !== 11) return false
 
-  for (let i = 1; i <= cedulaNoDashes.length; i += 1) {
-    const calculation = Number(cedulaNoDashes.substr(i - 1, 1)) * digits[i - 1]
+	for (let i = 1; i <= cedulaNoDashes.length; i += 1) {
+		const calculation = Number(cedulaNoDashes.slice(i - 1, i)) * digits[i - 1]!
 
-    if (calculation < 10) total += calculation
-    else {
-      total
-        += Number(calculation.toString().substr(0, 1))
-        + Number(calculation.toString().substr(1, 1))
-    }
-  }
+		if (calculation < 10) total += calculation
+		else {
+			total +=
+				Number(calculation.toString().slice(0, 1)) + Number(calculation.toString().slice(1, 2))
+		}
+	}
 
-  if (total % 10 === 0) return true
+	if (total % 10 === 0) return true
 
-  return false
+	return false
 }
 
 export default validateCedula
