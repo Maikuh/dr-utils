@@ -93,5 +93,6 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Maikuh/dr-utils.git"
-  }
+  },
+  "sideEffects": false
 }
