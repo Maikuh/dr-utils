@@ -19,15 +19,20 @@ describe('Cedula Validator', () => {
 		expect(allValid).toBeTruthy()
 	})
 
-	it('Cedula "40213094215" should be invalid', () => {
-		const result = validateCedula('40213094215')
-
-		expect(result).toBeFalsy()
+	it.each(['40220579912', '22500663228'])('Known valid cedula "%s" should pass', (cedula) => {
+		expect(validateCedula(cedula)).toBe(true)
 	})
 
-	it('Wrong length Cedula "4021309421" should be invalid', () => {
-		const result = validateCedula('4021309421')
+	it.each([
+		['40213094215', 'bad check digit'],
+		['4021309421', 'too short'],
+		['402135792110', 'too long'],
+		['0000000000A', 'non-numeric'],
+	])('Known invalid cedula "%s" (%s) should fail', (cedula) => {
+		expect(validateCedula(cedula)).toBe(false)
+	})
 
-		expect(result).toBeFalsy()
+	it('accepts dashes and strips them before validating', () => {
+		expect(validateCedula('402-2057991-2')).toBe(true)
 	})
 })

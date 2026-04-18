@@ -2,26 +2,25 @@ import { FormatStyle } from '@/types/format-style.type'
 import formatCedula from './cedula.formatter'
 
 /**
- * @param rnc {string} the entities' RNC/Cedula
+ * @param rnc {string} the entity's RNC (9 digits) or Cedula (11 digits), dashes optional
  * @param style {FormatStyle} determines if dashes are to be removed or added
- * @returns {string} the formatted RNC/Cedula
+ * @returns {string} the formatted RNC or Cedula
+ * @throws if `rnc` is not 9 or 11 digits after stripping dashes
  */
 export function formatRNC(rnc: string, style: FormatStyle = 'with-dashes'): string {
-	if (rnc.length === 9 && style === 'with-dashes') {
-		return `${rnc.slice(0, 3)}-${rnc.slice(3, 8)}-${rnc.slice(8, 9)}`
+	const digits = rnc.replace(/-/g, '')
+
+	if (digits.length === 11) return formatCedula(digits, style)
+
+	if (digits.length !== 9 || !/^\d{9}$/.test(digits)) {
+		throw new Error(`Cannot format RNC "${rnc}": must be 9 or 11 digits.`)
 	}
 
-	const rncIsRNCWithDashes = rnc.length === 11 && rnc[3] === '-' && rnc[9] === '-'
-
-	if (rncIsRNCWithDashes && style === 'without-dashes') {
-		return rnc.replaceAll('-', '')
+	if (style === 'with-dashes') {
+		return `${digits.slice(0, 3)}-${digits.slice(3, 8)}-${digits.slice(8)}`
 	}
 
-	const rncIsCedula = rnc.length === 13 || rnc.length === 11
-
-	if (rncIsCedula) return formatCedula(rnc, style)
-
-	throw new Error(`Cannot format RNC "${rnc}".`)
+	return digits
 }
 
 export default formatRNC

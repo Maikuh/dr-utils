@@ -1,9 +1,9 @@
 import { validateCedula } from './cedula.validator'
 
 /**
- * Validates an RNC. Since RNCs can also be a Cedula, this uses the Cedula validator
- * conditionally behind the scenes.
- * @param rnc {string} the entity's RNC/Cedula
+ * Validates an RNC (9 digits, mod-11 check) or Cedula (11 digits, Luhn check).
+ * Per DGII rules, an 11-digit input is treated as a Cedula.
+ * @param rnc {string} the entity's RNC (9 digits) or Cedula (11 digits), dashes optional
  * @returns {boolean} `true` if the `rnc` is valid, `false` otherwise
  */
 export function validateRNC(rnc: string): boolean {
