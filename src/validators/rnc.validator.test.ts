@@ -1,4 +1,4 @@
-import validateRNC from './rnc.validator'
+import { validateRNC } from './rnc.validator'
 
 describe('RNC Validator', () => {
 	let rncs: string[]

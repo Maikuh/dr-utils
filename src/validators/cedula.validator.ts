@@ -24,5 +24,3 @@ export function validateCedula(cedula: string): boolean {
 
 	return false
 }
-
-export default validateCedula

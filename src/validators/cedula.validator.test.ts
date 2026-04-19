@@ -1,4 +1,4 @@
-import validateCedula from './cedula.validator'
+import { validateCedula } from './cedula.validator'
 
 describe('Cedula Validator', () => {
 	let cedulas: string[]

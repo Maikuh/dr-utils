@@ -1,4 +1,4 @@
-import formatRNC from './rnc.formatter'
+import { formatRNC } from './rnc.formatter'
 
 describe('RNC Formatter', () => {
 	const rncNoDashes = '130720754'
@@ -13,7 +13,7 @@ describe('RNC Formatter', () => {
 	})
 
 	it('RNC "130-72075-4" should be formatted without dashes', () => {
-		const noDashesResult = formatRNC(rncWithDashes, 'without-dashes')
+		const noDashesResult = formatRNC(rncWithDashes, { dashes: false })
 
 		expect(noDashesResult).toEqual(rncNoDashes)
 	})
@@ -25,8 +25,12 @@ describe('RNC Formatter', () => {
 	})
 
 	it('RNC formatter accepts cedula "225-0066322-8" and should format it without dashes', () => {
-		const noDashesResult = formatRNC(cedulaWithDashes, 'without-dashes')
+		const noDashesResult = formatRNC(cedulaWithDashes, { dashes: false })
 
 		expect(noDashesResult).toEqual(cedulaNoDashes)
+	})
+
+	it('throws on invalid input', () => {
+		expect(() => formatRNC('12345')).toThrow()
 	})
 })

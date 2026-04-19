@@ -1,4 +1,4 @@
-import formatNCF from './ncf.formatter'
+import { formatNCF } from './ncf.formatter'
 
 describe('NCF Formatter', () => {
 	it('formats physical NCF "B0183920391" as "B01-83920391"', () => {

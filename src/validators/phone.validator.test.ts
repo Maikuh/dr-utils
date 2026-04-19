@@ -1,4 +1,4 @@
-import validatePhoneNumber from './phone.validator'
+import { validatePhoneNumber } from './phone.validator'
 
 describe('Phone Number Validator', () => {
 	let phoneNumbers: string[]
@@ -21,15 +21,8 @@ describe('Phone Number Validator', () => {
 		expect(allValid).toBeTruthy()
 	})
 
-	it('All phone numbers should be invalid', () => {
-		const allValid = invalidPhoneNumbers.every((invalidPhoneNumber) => {
-			const isValid = validatePhoneNumber(invalidPhoneNumber)
-
-			if (isValid) console.log('Failed Phone Number:', invalidPhoneNumber)
-
-			return isValid
-		})
-
-		expect(allValid).toBeFalsy()
+	it('All invalid phone numbers should fail validation', () => {
+		const noneValid = invalidPhoneNumbers.every((n) => !validatePhoneNumber(n))
+		expect(noneValid).toBe(true)
 	})
 })

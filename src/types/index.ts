@@ -1,3 +1,7 @@
 export * from './format-style.type'
 export * from './municipio-provincia.type'
+export * from './parsed-cedula.type'
+export * from './parsed-ncf.type'
 export * from './parsed-phone-number.type'
+export * from './parsed-rnc.type'
+export * from './result.type'

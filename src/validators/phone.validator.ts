@@ -12,5 +12,3 @@ export function validatePhoneNumber(phoneNumber: string): boolean {
 
 	return stripped.match(PHONE_NUMBER_VALID_REGEX) !== null
 }
-
-export default validatePhoneNumber

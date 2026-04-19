@@ -10,5 +10,3 @@ export function formatNCF(ncf: string): string {
 	if (!validateNCF(ncf)) throw new Error(`Cannot format NCF "${ncf}": invalid NCF.`)
 	return `${ncf.slice(0, 3)}-${ncf.slice(3)}`
 }
-
-export default formatNCF

@@ -1,4 +1,4 @@
-import formatPhoneNumber from './phone.formatter'
+import { formatPhoneNumber } from './phone.formatter'
 
 describe('Phone Number Formatter', () => {
 	it('Phone Number "8092201111" should be formatted correctly (National)', () => {
@@ -15,5 +15,9 @@ describe('Phone Number Formatter', () => {
 		const formatted = formatPhoneNumber(phoneNumber, true)
 
 		expect(formatted).toEqual(expected)
+	})
+
+	it('throws on non-DR phone number', () => {
+		expect(() => formatPhoneNumber('7815754238')).toThrow()
 	})
 })

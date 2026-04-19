@@ -34,5 +34,3 @@ export function validateRNC(rnc: string): boolean {
 
 	return calculatedCheckDigit === checkDigit
 }
-
-export default validateRNC

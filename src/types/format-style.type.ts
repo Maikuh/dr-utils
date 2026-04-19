@@ -1,1 +1,3 @@
-export type FormatStyle = 'with-dashes' | 'without-dashes'
+export interface FormatOptions {
+	dashes?: boolean
+}

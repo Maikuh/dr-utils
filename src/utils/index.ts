@@ -1,2 +1,7 @@
+export * from './cedula.util'
+export * from './mask.util'
 export * from './municipios-provincias.util'
+export * from './ncf.util'
 export * from './phone.util'
+export * from './rnc.util'
+export * from './safe-parse.util'

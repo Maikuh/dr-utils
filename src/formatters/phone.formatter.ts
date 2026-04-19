@@ -24,5 +24,3 @@ export function formatPhoneNumber(phoneNumber: string, international: boolean = 
 
 	return `+1${areaCode}${prefix}${line}`
 }
-
-export default formatPhoneNumber

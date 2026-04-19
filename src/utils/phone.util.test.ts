@@ -1,4 +1,4 @@
-import { parsePhoneNumber } from './phone.util'
+import { normalizePhoneNumber, parsePhoneNumber } from './phone.util'
 
 describe('parsePhoneNumber', () => {
 	it('parses a bare 10-digit number into components', () => {
@@ -28,5 +28,23 @@ describe('parsePhoneNumber', () => {
 
 	it('throws on an empty string', () => {
 		expect(() => parsePhoneNumber('')).toThrow()
+	})
+})
+
+describe('normalizePhoneNumber', () => {
+	it('strips formatting and returns 10-digit string', () => {
+		expect(normalizePhoneNumber('(809) 220-1111')).toBe('8092201111')
+	})
+
+	it('handles country code prefix', () => {
+		expect(normalizePhoneNumber('18092201111')).toBe('8092201111')
+	})
+
+	it('returns a bare 10-digit number unchanged', () => {
+		expect(normalizePhoneNumber('8492001234')).toBe('8492001234')
+	})
+
+	it('throws on a non-DR number', () => {
+		expect(() => normalizePhoneNumber('7815754238')).toThrow()
 	})
 })

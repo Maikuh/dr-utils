@@ -1,4 +1,4 @@
-import validateNCF from './ncf.validator'
+import { validateNCF } from './ncf.validator'
 
 describe('NCF Validator', () => {
 	it('Physical NCF "B0183920391" should be valid', () => {

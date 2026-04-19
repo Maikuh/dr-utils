@@ -16,5 +16,3 @@ export function validateNCF(ncf: string): boolean {
 
 	return false
 }
-
-export default validateNCF
