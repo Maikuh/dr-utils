@@ -1,5 +1,5 @@
 import { DrUtilsError } from '@/errors/dr-utils-error'
-import { parsePlate } from './plate.util'
+import { parsePlate } from './plate.parser'
 
 describe('parsePlate', () => {
 	it('parses a single-letter category plate', () => {

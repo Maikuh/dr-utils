@@ -2,7 +2,7 @@ import { DrUtilsError } from '@/errors/dr-utils-error'
 import { formatRNC } from '@/formatters/rnc.formatter'
 import { ParsedRNC } from '@/types/parsed-rnc.type'
 import { validateRNC } from '@/validators/rnc.validator'
-import { parseCedula } from './cedula.util'
+import { parseCedula } from './cedula.parser'
 
 /**
  * Parses a Dominican Republic RNC (tax ID) or Cedula into its components.

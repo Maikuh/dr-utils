@@ -4,7 +4,7 @@ import {
 	safeParsePhoneNumber,
 	safeParsePlate,
 	safeParseRNC,
-} from './safe-parse.util'
+} from './safe-parse'
 
 describe('safeParseCedula', () => {
 	it('returns ok:true for a valid cedula', () => {

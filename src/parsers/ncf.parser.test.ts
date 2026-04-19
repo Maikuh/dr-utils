@@ -1,5 +1,5 @@
 import { DrUtilsError } from '@/errors/dr-utils-error'
-import { parseNCF } from './ncf.util'
+import { parseNCF } from './ncf.parser'
 
 describe('parseNCF', () => {
 	it('parses a physical NCF', () => {

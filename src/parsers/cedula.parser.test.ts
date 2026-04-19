@@ -1,5 +1,5 @@
 import { DrUtilsError } from '@/errors/dr-utils-error'
-import { parseCedula } from './cedula.util'
+import { parseCedula } from './cedula.parser'
 
 describe('parseCedula', () => {
 	it('parses a bare 11-digit cedula into components', () => {

@@ -1,0 +1,6 @@
+export * from './cedula.parser'
+export * from './ncf.parser'
+export * from './phone.parser'
+export * from './plate.parser'
+export * from './rnc.parser'
+export * from './safe-parse'

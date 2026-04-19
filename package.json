@@ -66,14 +66,34 @@
         "default": "./lib/types/index.js"
       }
     },
-    "./utils": {
+    "./parsers": {
       "import": {
-        "types": "./lib/utils/index.d.mts",
-        "default": "./lib/utils/index.mjs"
+        "types": "./lib/parsers/index.d.mts",
+        "default": "./lib/parsers/index.mjs"
       },
       "require": {
-        "types": "./lib/utils/index.d.ts",
-        "default": "./lib/utils/index.js"
+        "types": "./lib/parsers/index.d.ts",
+        "default": "./lib/parsers/index.js"
+      }
+    },
+    "./masks": {
+      "import": {
+        "types": "./lib/masks/index.d.mts",
+        "default": "./lib/masks/index.mjs"
+      },
+      "require": {
+        "types": "./lib/masks/index.d.ts",
+        "default": "./lib/masks/index.js"
+      }
+    },
+    "./helpers": {
+      "import": {
+        "types": "./lib/helpers/index.d.mts",
+        "default": "./lib/helpers/index.mjs"
+      },
+      "require": {
+        "types": "./lib/helpers/index.d.ts",
+        "default": "./lib/helpers/index.js"
       }
     },
     "./constants": {

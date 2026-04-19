@@ -5,11 +5,11 @@ import { ParsedPhoneNumber } from '@/types/parsed-phone-number.type'
 import { ParsedPlate } from '@/types/parsed-plate.type'
 import { ParsedRNC } from '@/types/parsed-rnc.type'
 import { Result } from '@/types/result.type'
-import { parseCedula } from './cedula.util'
-import { parseNCF } from './ncf.util'
-import { parsePhoneNumber } from './phone.util'
-import { parsePlate } from './plate.util'
-import { parseRNC } from './rnc.util'
+import { parseCedula } from './cedula.parser'
+import { parseNCF } from './ncf.parser'
+import { parsePhoneNumber } from './phone.parser'
+import { parsePlate } from './plate.parser'
+import { parseRNC } from './rnc.parser'
 
 /**
  * Parses a Cedula without throwing — returns a `Result` instead.

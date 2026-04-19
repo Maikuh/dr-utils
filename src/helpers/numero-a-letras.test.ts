@@ -1,5 +1,5 @@
 import { DrUtilsError } from '@/errors/dr-utils-error'
-import { numeroALetras } from './numero-a-letras.util'
+import { numeroALetras } from './numero-a-letras'
 
 describe('numeroALetras', () => {
 	it.each([

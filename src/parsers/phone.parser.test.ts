@@ -1,5 +1,5 @@
 import { DrUtilsError } from '@/errors/dr-utils-error'
-import { normalizePhoneNumber, parsePhoneNumber } from './phone.util'
+import { normalizePhoneNumber, parsePhoneNumber } from './phone.parser'
 
 describe('parsePhoneNumber', () => {
 	it('parses a bare 10-digit number into components', () => {

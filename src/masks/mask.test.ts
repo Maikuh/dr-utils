@@ -1,4 +1,4 @@
-import { maskCedula, maskPhoneNumber, maskRNC } from './mask.util'
+import { maskCedula, maskPhoneNumber, maskRNC } from './mask'
 
 describe('maskCedula', () => {
 	it('masks the middle 7 digits', () => {

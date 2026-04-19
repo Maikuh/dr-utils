@@ -1,6 +1,6 @@
 import { ITBIS_RATE } from '@/constants/itbis.constant'
 import { DrUtilsError } from '@/errors/dr-utils-error'
-import { applyItbis, removeItbis, splitItbis } from './itbis.util'
+import { applyItbis, removeItbis, splitItbis } from './itbis'
 
 describe('ITBIS_RATE', () => {
 	it('is 0.18', () => {

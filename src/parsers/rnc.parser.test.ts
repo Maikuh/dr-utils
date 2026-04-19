@@ -1,5 +1,5 @@
 import { DrUtilsError } from '@/errors/dr-utils-error'
-import { parseRNC } from './rnc.util'
+import { parseRNC } from './rnc.parser'
 
 describe('parseRNC', () => {
 	it('parses a 9-digit RNC', () => {

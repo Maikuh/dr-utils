@@ -19,8 +19,7 @@ export function applyItbis(subtotal: number, rate: number = ITBIS_RATE): number 
 
 /**
  * Removes ITBIS from a gross (ITBIS-inclusive) total and returns the net amount.
- * @param total {number} the ITBIS-inclusive amount
- * @param rate {number} the ITBIS rate to remove. Defaults to `ITBIS_RATE` (0.18).
+ * @param total {number} the ITBIS rate to remove. Defaults to `ITBIS_RATE` (0.18).
  * @returns {number} net amount rounded to 2 decimal places
  * @throws {DrUtilsError} if `total` is negative
  */
