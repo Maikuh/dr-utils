@@ -1,17 +1,21 @@
+import { DrUtilsError } from '@/errors/dr-utils-error'
 import { FormatOptions } from '@/types/format-style.type'
 
 /**
  * @param cedula {string} the person's Cedula (11 digits, dashes optional)
  * @param options {FormatOptions} controls dash insertion. Defaults to `{ dashes: true }`.
  * @returns {string} the formatted cedula
- * @throws if `cedula` is not exactly 11 digits after stripping dashes
+ * @throws {DrUtilsError} if `cedula` is not exactly 11 digits after stripping dashes
  */
 export function formatCedula(cedula: string, options: FormatOptions = {}): string {
 	const { dashes = true } = options
 	const digits = cedula.replace(/-/g, '')
 
 	if (digits.length !== 11 || !/^\d{11}$/.test(digits)) {
-		throw new Error(`Cannot format cedula "${cedula}": must be 11 digits.`)
+		throw new DrUtilsError(
+			'FORMAT_CEDULA_FAILED',
+			`Cannot format cedula "${cedula}": must be 11 digits.`,
+		)
 	}
 
 	if (dashes) {

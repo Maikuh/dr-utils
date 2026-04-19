@@ -1,3 +1,4 @@
+import { DrUtilsError } from '@/errors/dr-utils-error'
 import { parseRNC } from './rnc.util'
 
 describe('parseRNC', () => {
@@ -34,5 +35,14 @@ describe('parseRNC', () => {
 
 	it('throws on wrong-length input', () => {
 		expect(() => parseRNC('12345')).toThrow()
+	})
+
+	it('throws DrUtilsError with INVALID_RNC code', () => {
+		try {
+			parseRNC('12345')
+		} catch (e) {
+			expect(e).toBeInstanceOf(DrUtilsError)
+			expect((e as DrUtilsError).code).toBe('INVALID_RNC')
+		}
 	})
 })

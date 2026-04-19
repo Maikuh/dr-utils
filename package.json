@@ -5,13 +5,13 @@
   "author": "Miguel Araujo",
   "license": "MIT",
   "main": "lib/index.js",
+  "module": "lib/index.mjs",
   "types": "lib/index.d.ts",
   "files": [
     "lib/**/*",
     "LICENSE",
     "README.md"
   ],
-  "type": "module",
   "scripts": {
     "generate-rnc-cedulas": "bun run ./scripts/generate-rnc-cedulas.ts",
     "generate-provincias-municipios": "bun run ./scripts/generate-provincias-municipios.ts",
@@ -24,7 +24,8 @@
     "lint": "biome lint --write",
     "biome": "biome check --write",
     "biome:ci": "biome ci",
-    "test:coverage": "bun test --coverage"
+    "test:coverage": "bun test --coverage",
+    "bench": "bun run bench/validators.bench.ts"
   },
   "devDependencies": {
     "@biomejs/biome": "2.3.10",
@@ -36,28 +37,74 @@
   },
   "exports": {
     ".": {
-      "default": "./lib/index.js",
-      "types": "./lib/index.d.ts"
+      "import": {
+        "types": "./lib/index.d.mts",
+        "default": "./lib/index.mjs"
+      },
+      "require": {
+        "types": "./lib/index.d.ts",
+        "default": "./lib/index.js"
+      }
+    },
+    "./errors": {
+      "import": {
+        "types": "./lib/errors/index.d.mts",
+        "default": "./lib/errors/index.mjs"
+      },
+      "require": {
+        "types": "./lib/errors/index.d.ts",
+        "default": "./lib/errors/index.js"
+      }
     },
     "./types": {
-      "default": "./lib/types/index.js",
-      "types": "./lib/types/index.d.ts"
+      "import": {
+        "types": "./lib/types/index.d.mts",
+        "default": "./lib/types/index.mjs"
+      },
+      "require": {
+        "types": "./lib/types/index.d.ts",
+        "default": "./lib/types/index.js"
+      }
     },
     "./utils": {
-      "default": "./lib/utils/index.js",
-      "types": "./lib/utils/index.d.ts"
+      "import": {
+        "types": "./lib/utils/index.d.mts",
+        "default": "./lib/utils/index.mjs"
+      },
+      "require": {
+        "types": "./lib/utils/index.d.ts",
+        "default": "./lib/utils/index.js"
+      }
     },
     "./constants": {
-      "default": "./lib/constants/index.js",
-      "types": "./lib/constants/index.d.ts"
+      "import": {
+        "types": "./lib/constants/index.d.mts",
+        "default": "./lib/constants/index.mjs"
+      },
+      "require": {
+        "types": "./lib/constants/index.d.ts",
+        "default": "./lib/constants/index.js"
+      }
     },
     "./formatters": {
-      "default": "./lib/formatters/index.js",
-      "types": "./lib/formatters/index.d.ts"
+      "import": {
+        "types": "./lib/formatters/index.d.mts",
+        "default": "./lib/formatters/index.mjs"
+      },
+      "require": {
+        "types": "./lib/formatters/index.d.ts",
+        "default": "./lib/formatters/index.js"
+      }
     },
     "./validators": {
-      "default": "./lib/validators/index.js",
-      "types": "./lib/validators/index.d.ts"
+      "import": {
+        "types": "./lib/validators/index.d.mts",
+        "default": "./lib/validators/index.mjs"
+      },
+      "require": {
+        "types": "./lib/validators/index.d.ts",
+        "default": "./lib/validators/index.js"
+      }
     },
     "./package.json": "./package.json"
   },
@@ -78,6 +125,13 @@
     "phone number",
     "telefono",
     "numero telefonico",
+    "itbis",
+    "tax",
+    "impuesto",
+    "currency",
+    "moneda",
+    "plate",
+    "placa",
     "validation",
     "validacion",
     "validator",

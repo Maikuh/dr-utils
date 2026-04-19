@@ -1,3 +1,4 @@
+import { DrUtilsError } from '@/errors/dr-utils-error'
 import { normalizePhoneNumber, parsePhoneNumber } from './phone.util'
 
 describe('parsePhoneNumber', () => {
@@ -28,6 +29,15 @@ describe('parsePhoneNumber', () => {
 
 	it('throws on an empty string', () => {
 		expect(() => parsePhoneNumber('')).toThrow()
+	})
+
+	it('throws DrUtilsError with INVALID_PHONE code', () => {
+		try {
+			parsePhoneNumber('7815754238')
+		} catch (e) {
+			expect(e).toBeInstanceOf(DrUtilsError)
+			expect((e as DrUtilsError).code).toBe('INVALID_PHONE')
+		}
 	})
 })
 

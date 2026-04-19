@@ -1,3 +1,4 @@
+import { DrUtilsError } from '@/errors/dr-utils-error'
 import { formatCedula } from './cedula.formatter'
 
 describe('Cedula Formatter', () => {
@@ -22,5 +23,14 @@ describe('Cedula Formatter', () => {
 
 	it('throws on non-numeric input', () => {
 		expect(() => formatCedula('abcdefghijk')).toThrow()
+	})
+
+	it('throws DrUtilsError with FORMAT_CEDULA_FAILED code', () => {
+		try {
+			formatCedula('123')
+		} catch (e) {
+			expect(e).toBeInstanceOf(DrUtilsError)
+			expect((e as DrUtilsError).code).toBe('FORMAT_CEDULA_FAILED')
+		}
 	})
 })

@@ -1,3 +1,4 @@
+import { DrUtilsError } from '@/errors/dr-utils-error'
 import { formatRNC } from './rnc.formatter'
 
 describe('RNC Formatter', () => {
@@ -32,5 +33,14 @@ describe('RNC Formatter', () => {
 
 	it('throws on invalid input', () => {
 		expect(() => formatRNC('12345')).toThrow()
+	})
+
+	it('throws DrUtilsError with FORMAT_RNC_FAILED code', () => {
+		try {
+			formatRNC('12345')
+		} catch (e) {
+			expect(e).toBeInstanceOf(DrUtilsError)
+			expect((e as DrUtilsError).code).toBe('FORMAT_RNC_FAILED')
+		}
 	})
 })

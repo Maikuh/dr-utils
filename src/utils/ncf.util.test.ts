@@ -1,3 +1,4 @@
+import { DrUtilsError } from '@/errors/dr-utils-error'
 import { parseNCF } from './ncf.util'
 
 describe('parseNCF', () => {
@@ -40,5 +41,14 @@ describe('parseNCF', () => {
 
 	it('throws on wrong length', () => {
 		expect(() => parseNCF('B01839203')).toThrow()
+	})
+
+	it('throws DrUtilsError with INVALID_NCF code', () => {
+		try {
+			parseNCF('B0883920391')
+		} catch (e) {
+			expect(e).toBeInstanceOf(DrUtilsError)
+			expect((e as DrUtilsError).code).toBe('INVALID_NCF')
+		}
 	})
 })

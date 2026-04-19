@@ -1,3 +1,4 @@
+import { DrUtilsError } from '@/errors/dr-utils-error'
 import { parseCedula } from './cedula.util'
 
 describe('parseCedula', () => {
@@ -21,5 +22,14 @@ describe('parseCedula', () => {
 
 	it('throws on wrong-length input', () => {
 		expect(() => parseCedula('1234567890')).toThrow()
+	})
+
+	it('throws DrUtilsError with INVALID_CEDULA code', () => {
+		try {
+			parseCedula('40213094215')
+		} catch (e) {
+			expect(e).toBeInstanceOf(DrUtilsError)
+			expect((e as DrUtilsError).code).toBe('INVALID_CEDULA')
+		}
 	})
 })

@@ -4,6 +4,7 @@ export default defineConfig({
     entry: ['src/**/*.ts', '!src/**/*.test.ts', '!src/global.d.ts'],
     target: 'es2020',
     outDir: 'lib',
+    format: ['esm', 'cjs'],
     platform: 'neutral',
     dts: true,
     minify: true,

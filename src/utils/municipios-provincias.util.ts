@@ -5,10 +5,20 @@ import { MunicipiosPorProvincia } from '@/constants/municipios-por-provincia.con
 import { ProvinciaPorMunicipio } from '@/constants/provincia-por-municipio.constant'
 import { Municipio, Provincia } from '@/types/municipio-provincia.type'
 
+/**
+ * Returns all municipalities belonging to a given Dominican province.
+ * @param provincia {Provincia} the province name
+ * @returns {readonly Municipio[]} list of municipalities in that province
+ */
 export function getMunicipiosByProvincia(provincia: Provincia): readonly Municipio[] {
 	return MunicipiosPorProvincia[provincia]
 }
 
+/**
+ * Returns the province a given Dominican municipality belongs to.
+ * @param municipio {Municipio} the municipality name
+ * @returns {Provincia} the province that contains the municipality
+ */
 export function getProvinciaByMunicipio(municipio: Municipio): Provincia {
 	return ProvinciaPorMunicipio[municipio]
 }

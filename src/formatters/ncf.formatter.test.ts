@@ -1,3 +1,4 @@
+import { DrUtilsError } from '@/errors/dr-utils-error'
 import { formatNCF } from './ncf.formatter'
 
 describe('NCF Formatter', () => {
@@ -15,5 +16,14 @@ describe('NCF Formatter', () => {
 
 	it('throws on invalid NCF (wrong length)', () => {
 		expect(() => formatNCF('B0183920391234')).toThrow()
+	})
+
+	it('throws DrUtilsError with FORMAT_NCF_FAILED code', () => {
+		try {
+			formatNCF('INVALID')
+		} catch (e) {
+			expect(e).toBeInstanceOf(DrUtilsError)
+			expect((e as DrUtilsError).code).toBe('FORMAT_NCF_FAILED')
+		}
 	})
 })
