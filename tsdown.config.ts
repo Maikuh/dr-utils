@@ -2,7 +2,7 @@ import { defineConfig } from 'tsdown'
 
 export default defineConfig({
     entry: ['src/**/*.ts', '!src/**/*.test.ts', '!src/global.d.ts'],
-    target: 'es2020',
+    target: 'es2022',
     outDir: 'lib',
     format: ['esm', 'cjs'],
     platform: 'neutral',
