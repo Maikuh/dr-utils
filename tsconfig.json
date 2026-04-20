@@ -19,7 +19,8 @@
     "preserveSymlinks": true,
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+    "types": ["bun"]
   },
   "exclude": ["node_modules", "lib", "scripts"]
 }
