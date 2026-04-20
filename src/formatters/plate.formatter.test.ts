@@ -14,7 +14,7 @@ describe('formatPlate', () => {
 	it.each([
 		['A123456', 'A123456'],
 		['G12345', 'G12345'],
-		['RE123456', 'RE123456'],
+		['F123456', 'F123456'],
 	])('formatPlate("%s") → "%s"', (input, expected) => {
 		expect(formatPlate(input)).toBe(expected)
 	})

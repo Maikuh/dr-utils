@@ -88,7 +88,7 @@ describe('safeParsePlate', () => {
 		expect(result.ok).toBe(true)
 		if (result.ok) {
 			expect(result.value.category).toBe('A')
-			expect(result.value.categoryName).toBe('Privado')
+			expect(result.value.categoryName).toBe('Automóvil')
 		}
 	})
 
