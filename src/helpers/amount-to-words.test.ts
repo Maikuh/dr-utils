@@ -1,7 +1,7 @@
 import { DrUtilsError } from '@/errors/dr-utils-error'
-import { numeroALetras } from './numero-a-letras'
+import { amountToWords } from './amount-to-words'
 
-describe('numeroALetras', () => {
+describe('amountToWords', () => {
 	it.each([
 		[0, {}, 'cero pesos'],
 		[1, {}, 'un peso'],
@@ -29,38 +29,38 @@ describe('numeroALetras', () => {
 		[100000, {}, 'cien mil pesos'],
 		[1000000, {}, 'un millón pesos'],
 		[2000000, {}, 'dos millones pesos'],
-		[1234.56, {}, 'mil doscientos treinta y cuatro pesos con 56/100'],
-		[0.5, {}, 'cero pesos con 50/100'],
-		[1.01, {}, 'un peso con 01/100'],
-	] as const)('numeroALetras(%s, %o) → "%s"', (value, options, expected) => {
-		expect(numeroALetras(value, options)).toBe(expected)
+		[1234.56, {}, 'mil doscientos treinta y cuatro pesos con 56 centavos'],
+		[0.5, {}, 'cero pesos con 50 centavos'],
+		[1.01, {}, 'un peso con 01 centavo'],
+	] as const)('amountToWords(%s, %o) → "%s"', (value, options, expected) => {
+		expect(amountToWords(value, options)).toBe(expected)
 	})
 
-	it('supports moneda: dolares', () => {
-		expect(numeroALetras(1, { moneda: 'dolares' })).toBe('un dólar')
-		expect(numeroALetras(2, { moneda: 'dolares' })).toBe('dos dólares')
+	it('supports currency: dolares', () => {
+		expect(amountToWords(1, { currency: 'dolares' })).toBe('un dólar')
+		expect(amountToWords(2, { currency: 'dolares' })).toBe('dos dólares')
 	})
 
-	it('supports moneda: none', () => {
-		expect(numeroALetras(1, { moneda: 'none' })).toBe('un')
-		expect(numeroALetras(1234.56, { moneda: 'none' })).toBe(
-			'mil doscientos treinta y cuatro con 56/100',
+	it('supports currency: none', () => {
+		expect(amountToWords(1, { currency: 'none' })).toBe('un')
+		expect(amountToWords(1234.56, { currency: 'none' })).toBe(
+			'mil doscientos treinta y cuatro con 56 centavos',
 		)
 	})
 
 	it('throws DrUtilsError for negative values', () => {
-		expect(() => numeroALetras(-1)).toThrow(DrUtilsError)
+		expect(() => amountToWords(-1)).toThrow(DrUtilsError)
 		const err = (() => {
 			try {
-				numeroALetras(-1)
+				amountToWords(-1)
 			} catch (e) {
 				return e
 			}
 		})()
-		expect((err as DrUtilsError).code).toBe('NUMERO_A_LETRAS_OUT_OF_RANGE')
+		expect((err as DrUtilsError).code).toBe('AMOUNT_TO_WORDS_OUT_OF_RANGE')
 	})
 
 	it('throws DrUtilsError for values over 999,999,999.99', () => {
-		expect(() => numeroALetras(1_000_000_000)).toThrow(DrUtilsError)
+		expect(() => amountToWords(1_000_000_000)).toThrow(DrUtilsError)
 	})
 })

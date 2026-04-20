@@ -29,7 +29,7 @@ There is no separate `dev` or `watch` mode — run tests directly with `bun test
 | `src/formatters/` | `dr-utils/formatters` | Cedula/RNC dash formatting, phone number formatting |
 | `src/parsers/` | `dr-utils/parsers` | `parseCedula`, `parseRNC`, `parseNCF`, `parsePhoneNumber`, `parsePlate`, `safeParse*` |
 | `src/masks/` | `dr-utils/masks` | `maskCedula`, `maskRNC`, `maskPhoneNumber` |
-| `src/helpers/` | `dr-utils/helpers` | `getMunicipiosByProvincia`, `getProvinciaByMunicipio`, `numeroALetras`, ITBIS calculations |
+| `src/helpers/` | `dr-utils/helpers` | `getMunicipiosByProvincia`, `getProvinciaByMunicipio`, `amountToWords`, ITBIS calculations |
 | `src/constants/` | `dr-utils/constants` | Province list, municipalities-by-province map, phone regex |
 | `src/types/` | `dr-utils/types` | `FormatStyle`, `MunicipioByProvincia` types |
 | `src/index.ts` | `dr-utils` (root) | Re-exports everything above |

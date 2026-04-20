@@ -266,16 +266,16 @@ getProvinciaByMunicipio('Sabana Grande de Boyá') // 'Monte Plata'
 
 You can also import the `Provincias` constant for the full province list, and `MunicipiosPorProvincia` for the full municipalities map.
 
-#### `numeroALetras(value: number, options?: NumeroALetrasOptions): string`
+#### `amountToWords(value: number, options?: AmountToWordsOptions): string`
 
 Converts a number (0–999,999,999.99) to its Spanish word representation, suitable for checks and invoices.
 
 ```ts
-import { numeroALetras } from 'dr-utils'
+import { amountToWords } from 'dr-utils'
 
-numeroALetras(1234.56)                    // 'mil doscientos treinta y cuatro pesos con 56/100'
-numeroALetras(1, { moneda: 'dolares' })   // 'un dólar'
-numeroALetras(1234, { moneda: 'none' })   // 'mil doscientos treinta y cuatro'
+amountToWords(1234.56)                      // 'mil doscientos treinta y cuatro pesos con 56 centavos'
+amountToWords(1, { currency: 'dolares' })   // 'un dólar'
+amountToWords(1234, { currency: 'none' })   // 'mil doscientos treinta y cuatro'
 ```
 
 #### `applyItbis(subtotal: number, rate?: number): number`
@@ -313,7 +313,7 @@ try {
 }
 ```
 
-**Available error codes:** `INVALID_CEDULA`, `INVALID_RNC`, `INVALID_NCF`, `INVALID_PHONE`, `INVALID_PLATE`, `FORMAT_CEDULA_FAILED`, `FORMAT_RNC_FAILED`, `FORMAT_NCF_FAILED`, `FORMAT_PHONE_FAILED`, `FORMAT_PLATE_FAILED`, `ITBIS_NEGATIVE`, `NUMERO_A_LETRAS_OUT_OF_RANGE`.
+**Available error codes:** `INVALID_CEDULA`, `INVALID_RNC`, `INVALID_NCF`, `INVALID_PHONE`, `INVALID_PLATE`, `FORMAT_CEDULA_FAILED`, `FORMAT_RNC_FAILED`, `FORMAT_NCF_FAILED`, `FORMAT_PHONE_FAILED`, `FORMAT_PLATE_FAILED`, `ITBIS_NEGATIVE`, `AMOUNT_TO_WORDS_OUT_OF_RANGE`.
 
 ---
 
@@ -328,7 +328,7 @@ Every module is tree-shakeable and available as a named sub-path:
 | `dr-utils/formatters` | `formatCedula`, `formatRNC`, `formatNCF`, `formatPhoneNumber`, `formatPlate`, `formatDOP` |
 | `dr-utils/parsers` | `parseCedula`, `parseRNC`, `parseNCF`, `parsePhoneNumber`, `normalizePhoneNumber`, `parsePlate`, `safeParse*` |
 | `dr-utils/masks` | `maskCedula`, `maskRNC`, `maskPhoneNumber` |
-| `dr-utils/helpers` | `getMunicipiosByProvincia`, `getProvinciaByMunicipio`, `numeroALetras`, `applyItbis`, `removeItbis`, `splitItbis` |
+| `dr-utils/helpers` | `getMunicipiosByProvincia`, `getProvinciaByMunicipio`, `amountToWords`, `applyItbis`, `removeItbis`, `splitItbis` |
 | `dr-utils/constants` | `Provincias`, `MunicipiosPorProvincia`, `ITBIS_RATE`, `PLATE_CATEGORIES`, … |
 | `dr-utils/types` | `ParsedCedula`, `ParsedRNC`, `ParsedNCF`, `ParsedPhoneNumber`, `ParsedPlate`, `Result`, … |
 | `dr-utils/errors` | `DrUtilsError`, `DrUtilsErrorCode` |

@@ -74,7 +74,7 @@ The following were added in v3 and have no v2 equivalent.
 - `maskCedula`, `maskRNC`, `maskPhoneNumber` — redact sensitive digits
 
 ### New helpers
-- `numeroALetras(value, options?)` — number to Spanish words (`'mil doscientos treinta y cuatro pesos con 56/100'`)
+- `amountToWords(value, options?)` — number to Spanish words (`'mil doscientos treinta y cuatro pesos con 56 centavos'`)
 - `applyItbis(subtotal, rate?)` — adds ITBIS to a net amount
 - `removeItbis(total, rate?)` — extracts net from a gross total
 - `splitItbis(total, rate?)` — splits a gross total into `{ net, tax, total }`

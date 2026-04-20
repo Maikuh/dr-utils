@@ -118,23 +118,23 @@ function convertInteger(n: number): string {
 	return parts.join(' ')
 }
 
-export interface NumeroALetrasOptions {
-	moneda?: 'pesos' | 'dolares' | 'none'
+export interface AmountToWordsOptions {
+	currency?: 'pesos' | 'dolares' | 'none'
 }
 
 /**
  * Converts a number to its Spanish word representation, suitable for checks and invoices.
  * @param value {number} the amount to convert (0–999,999,999.99)
- * @param options {NumeroALetrasOptions} controls currency suffix. Defaults to `{ moneda: 'pesos' }`.
- * @returns {string} e.g. `"mil doscientos treinta y cuatro pesos con 56/100"`
+ * @param options {AmountToWordsOptions} controls currency suffix. Defaults to `{ currency: 'pesos' }`.
+ * @returns {string} e.g. `"mil doscientos treinta y cuatro pesos con 56 centavos"`
  * @throws {DrUtilsError} if `value` is negative or exceeds 999,999,999.99
  */
-export function numeroALetras(value: number, options: NumeroALetrasOptions = {}): string {
-	const { moneda = 'pesos' } = options
+export function amountToWords(value: number, options: AmountToWordsOptions = {}): string {
+	const { currency = 'pesos' } = options
 
 	if (value < 0 || value > 999_999_999.99) {
 		throw new DrUtilsError(
-			'NUMERO_A_LETRAS_OUT_OF_RANGE',
+			'AMOUNT_TO_WORDS_OUT_OF_RANGE',
 			`Value ${value} is out of range (0–999,999,999.99).`,
 		)
 	}
@@ -144,9 +144,9 @@ export function numeroALetras(value: number, options: NumeroALetrasOptions = {})
 
 	let result = convertInteger(intPart)
 
-	if (moneda !== 'none') {
+	if (currency !== 'none') {
 		const isPlural = intPart !== 1
-		if (moneda === 'pesos') {
+		if (currency === 'pesos') {
 			result += isPlural ? ' pesos' : ' peso'
 		} else {
 			result += isPlural ? ' dólares' : ' dólar'
@@ -154,7 +154,8 @@ export function numeroALetras(value: number, options: NumeroALetrasOptions = {})
 	}
 
 	if (centsPart > 0) {
-		result += ` con ${String(centsPart).padStart(2, '0')}/100`
+		const centsWord = centsPart > 1 ? 'centavos' : 'centavo'
+		result += ` con ${String(centsPart).padStart(2, '0')} ${centsWord}`
 	}
 
 	return result

@@ -10,7 +10,7 @@ export type DrUtilsErrorCode =
 	| 'FORMAT_PHONE_FAILED'
 	| 'FORMAT_PLATE_FAILED'
 	| 'ITBIS_NEGATIVE'
-	| 'NUMERO_A_LETRAS_OUT_OF_RANGE'
+	| 'AMOUNT_TO_WORDS_OUT_OF_RANGE'
 
 export class DrUtilsError extends Error {
 	readonly code: DrUtilsErrorCode
