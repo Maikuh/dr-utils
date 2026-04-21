@@ -3,3 +3,4 @@ lib/
 tmp/
 coverage/
 .DS_Store
+.fallow

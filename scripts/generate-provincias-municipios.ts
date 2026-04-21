@@ -43,11 +43,14 @@ function stripInvisible(value: string): string {
 function parseCSV(csv: string): Row[] {
   const lines = stripInvisible(csv).trim().split(/\r?\n/)
 
-  if (lines.length < 2) {
+  const headerRow = lines[0]
+
+  if (!headerRow || lines.length < 2) {
     fatal('CSV must contain a header and at least one data row')
   }
 
-  const header = lines[0].split(',').map(h => h.trim())
+  const header = headerRow.split(',').map(h => h.trim())
+  
   if (header[0] !== 'Municipio' || header[1] !== 'Provincia') {
     fatal(`Invalid CSV header. Expected: Municipio,Provincia`)
   }

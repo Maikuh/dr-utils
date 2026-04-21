@@ -1,6 +1,6 @@
 
 import extractZip from 'extract-zip'
-import path from 'path'
+import path from 'node:path'
 import { formatCedula, formatRNC, validateRNC } from '../src'
 
 // Download link is having issues at the time, but this script doesn't need to be run frequently anyway
@@ -35,7 +35,7 @@ const cedulas: string[] = []
 for (const id of split) {
 	if (cedulas.length >= 1000 && rncs.length >= 500) break
 
-	if (!validateRNC(id)) continue
+	if (!id || !validateRNC(id)) continue
 	
 	if (id.length === 11 && cedulas.length < 1000) {
 		if (cedulas.length < 500)

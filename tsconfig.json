@@ -20,7 +20,7 @@
     "paths": {
       "@/*": ["./src/*"]
     },
-    "types": ["bun"]
+    "types": ["bun", "node"]
   },
-  "exclude": ["node_modules", "lib", "scripts"]
+  "exclude": ["node_modules", "lib"]
 }

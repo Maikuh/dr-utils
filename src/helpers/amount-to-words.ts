@@ -62,36 +62,21 @@ const CENTENAS = [
 	'novecientos',
 ]
 
-function convertGroup(n: number): string {
+function convertUpTo99(n: number): string {
 	if (n === 0) return ''
 	if (n < 20) return UNIDADES[n]!
 	if (n === 20) return 'veinte'
 	if (n < 30) return VEINTITANTOS[n - 20]!
+	const tens = Math.floor(n / 10)
+	const ones = n % 10
+	return ones > 0 ? `${DECENAS[tens]!} y ${UNIDADES[ones]!}` : DECENAS[tens]!
+}
 
+function convertGroup(n: number): string {
 	const hundreds = Math.floor(n / 100)
 	const remainder = n % 100
-
-	let centuryPart = ''
-	if (hundreds > 0) {
-		centuryPart = hundreds === 1 && remainder > 0 ? 'ciento' : CENTENAS[hundreds]!
-	}
-
-	let remPart = ''
-	if (remainder > 0) {
-		if (remainder < 20) {
-			remPart = UNIDADES[remainder]!
-		} else if (remainder === 20) {
-			remPart = 'veinte'
-		} else if (remainder < 30) {
-			remPart = VEINTITANTOS[remainder - 20]!
-		} else {
-			const tens = Math.floor(remainder / 10)
-			const ones = remainder % 10
-			remPart = ones > 0 ? `${DECENAS[tens]!} y ${UNIDADES[ones]!}` : DECENAS[tens]!
-		}
-	}
-
-	return [centuryPart, remPart].filter(Boolean).join(' ')
+	const centuryPart = hundreds === 0 ? '' : hundreds === 1 && remainder > 0 ? 'ciento' : CENTENAS[hundreds]!
+	return [centuryPart, convertUpTo99(remainder)].filter(Boolean).join(' ')
 }
 
 function convertInteger(n: number): string {
