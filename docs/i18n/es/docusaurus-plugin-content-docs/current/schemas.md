@@ -11,7 +11,7 @@ Usa los schemas cuando una librería te pida "un schema". En los demás casos us
 | Schema                        | Acepta                                   | Salida (si es válido)        |
 | ----------------------------- | ---------------------------------------- | ---------------------------- |
 | `cedulaSchema(options?)`      | cédula, con guiones y espacios           | `Cedula` — 11 dígitos        |
-| `rncSchema(options?)`         | RNC o cédula, con guiones                | `RNC` — 9 u 11 dígitos       |
+| `rncSchema(options?)`         | RNC o cédula, con guiones y espacios     | `RNC` — 9 u 11 dígitos       |
 | `ncfSchema(options?)`         | NCF / e-CF, con espacios alrededor       | `NCF`                        |
 | `phoneNumberSchema(options?)` | cualquier formato común, `+1` opcional   | `PhoneNumber` — 10 dígitos   |
 | `plateSchema(options?)`       | placa, mayúsculas o minúsculas           | `Plate` — en mayúsculas      |

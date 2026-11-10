@@ -1,4 +1,4 @@
-import { stripDashes } from '@/internal/normalize'
+import { stripSeparators } from '@/internal/normalize'
 import { Cedula, NCF, PhoneNumber, Plate, RNC } from '@/types/branded.type'
 import { ParsedCedula } from '@/types/parsed-cedula.type'
 import { ParsedNCF } from '@/types/parsed-ncf.type'
@@ -19,13 +19,13 @@ function toErrorMessage(e: unknown): string {
 /**
  * Parses a Cedula without throwing — returns a `Result` instead.
  * On success, the value includes a `raw` field of branded type `Cedula` (digits-only, normalized).
- * @param input {string} the person's Cedula (11 digits, dashes optional)
+ * @param input {string} the person's Cedula (11 digits, dashes and spaces optional)
  * @returns {Result<ParsedCedula & { raw: Cedula }>}
  */
 export function safeParseCedula(input: string): Result<ParsedCedula & { raw: Cedula }> {
 	try {
 		const value = parseCedula(input)
-		const raw = stripDashes(input) as Cedula
+		const raw = stripSeparators(input) as Cedula
 		return { ok: true, value: { ...value, raw } }
 	} catch (e) {
 		return { ok: false, error: toErrorMessage(e) }
@@ -35,13 +35,13 @@ export function safeParseCedula(input: string): Result<ParsedCedula & { raw: Ced
 /**
  * Parses an RNC or Cedula without throwing — returns a `Result` instead.
  * On success, the value includes a `raw` field of branded type `RNC` (digits-only, normalized).
- * @param input {string} the entity's RNC (9 digits) or Cedula (11 digits), dashes optional
+ * @param input {string} the entity's RNC (9 digits) or Cedula (11 digits), dashes and spaces optional
  * @returns {Result<ParsedRNC & { raw: RNC }>}
  */
 export function safeParseRNC(input: string): Result<ParsedRNC & { raw: RNC }> {
 	try {
 		const value = parseRNC(input)
-		const raw = stripDashes(input) as RNC
+		const raw = stripSeparators(input) as RNC
 		return { ok: true, value: { ...value, raw } }
 	} catch (e) {
 		return { ok: false, error: toErrorMessage(e) }

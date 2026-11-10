@@ -57,15 +57,18 @@ describe('RNC Validator', () => {
 		expect(result).toBeFalsy()
 	})
 
-	it('accepts dashes and surrounding whitespace', () => {
+	it('accepts dashes and whitespace as separators', () => {
 		expect(validateRNC('130-72075-4')).toBe(true)
 		expect(validateRNC('  130720754 ')).toBe(true)
+		expect(validateRNC('130 720 754')).toBe(true)
+		expect(validateRNC('130 - 72075 - 4')).toBe(true)
+		expect(validateRNC('130\t72075\n4')).toBe(true)
 	})
 
 	it('rejects non-digit characters instead of silently stripping them', () => {
 		expect(validateRNC('130720754abc')).toBe(false)
 		expect(validateRNC('x130720754!')).toBe(false)
-		expect(validateRNC('130 720 754')).toBe(false)
+		expect(validateRNC('130.720.754')).toBe(false)
 		expect(validateRNC('13072075a')).toBe(false)
 	})
 })

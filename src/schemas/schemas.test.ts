@@ -57,6 +57,7 @@ describe('schema outputs are normalized', () => {
 	it.each([
 		[cedulaSchema(), ' 402-2057991-2 ', '40220579912'],
 		[rncSchema(), '130-72075-4', '130720754'],
+		[rncSchema(), '130 72075 4', '130720754'],
 		[ncfSchema(), ' E310000000001 ', 'E310000000001'],
 		[phoneNumberSchema(), '1-809-555-1234', '8095551234'],
 		[plateSchema(), 'oe12345', 'OE12345'],

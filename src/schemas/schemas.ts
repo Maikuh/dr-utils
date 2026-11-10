@@ -1,5 +1,5 @@
 import { findMunicipio, findProvincia } from '@/helpers/provincia-lookup'
-import { stripDashes } from '@/internal/normalize'
+import { stripSeparators } from '@/internal/normalize'
 import { normalizePhoneNumber } from '@/parsers/phone.parser'
 import { Cedula, NCF, PhoneNumber, Plate, RNC } from '@/types/branded.type'
 import { Municipio, Provincia } from '@/types/municipio-provincia.type'
@@ -36,27 +36,27 @@ function createSchema<Output>(
 }
 
 /**
- * Standard Schema for a Cedula. Accepts dashes and surrounding whitespace.
+ * Standard Schema for a Cedula. Accepts dashes and spaces.
  * Outputs the 11-digit normalized `Cedula`.
  * @param options {SchemaOptions} optional custom error message
  * @returns {DrUtilsSchema<Cedula>}
  */
 export function cedulaSchema(options: SchemaOptions = {}): DrUtilsSchema<Cedula> {
 	return createSchema(
-		(input) => (validateCedula(input) ? (stripDashes(input) as Cedula) : undefined),
+		(input) => (validateCedula(input) ? (stripSeparators(input) as Cedula) : undefined),
 		options.message ?? 'Invalid cedula',
 	)
 }
 
 /**
- * Standard Schema for an RNC (9 digits) or Cedula (11 digits). Accepts dashes and surrounding whitespace.
+ * Standard Schema for an RNC (9 digits) or Cedula (11 digits). Accepts dashes and spaces.
  * Outputs the digits-only `RNC`.
  * @param options {SchemaOptions} optional custom error message
  * @returns {DrUtilsSchema<RNC>}
  */
 export function rncSchema(options: SchemaOptions = {}): DrUtilsSchema<RNC> {
 	return createSchema(
-		(input) => (validateRNC(input) ? (stripDashes(input) as RNC) : undefined),
+		(input) => (validateRNC(input) ? (stripSeparators(input) as RNC) : undefined),
 		options.message ?? 'Invalid RNC',
 	)
 }

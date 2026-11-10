@@ -8,15 +8,15 @@ Every identifier has a ready-made [Standard Schema](https://standardschema.dev).
 
 Use schemas when a library asks you for "a schema". Use the plain [validators](./validators.md) everywhere else: they are unchanged and still the simplest option.
 
-| Schema                        | Accepts                                | Output (on success)         |
-| ----------------------------- | -------------------------------------- | --------------------------- |
-| `cedulaSchema(options?)`      | cédula, dashes and whitespace allowed  | `Cedula` — 11 digits        |
-| `rncSchema(options?)`         | RNC or cédula, dashes allowed          | `RNC` — 9 or 11 digits      |
-| `ncfSchema(options?)`         | NCF / e-CF, surrounding whitespace ok  | `NCF`                       |
-| `phoneNumberSchema(options?)` | any common phone format, `+1` optional | `PhoneNumber` — 10 digits   |
-| `plateSchema(options?)`       | license plate, any case                | `Plate` — uppercase         |
-| `provinciaSchema(options?)`   | province name, any case or accents     | `Provincia` — official name |
-| `municipioSchema(options?)`   | municipality name, any case or accents | `Municipio` — official name |
+| Schema                        | Accepts                                  | Output (on success)         |
+| ----------------------------- | ---------------------------------------- | --------------------------- |
+| `cedulaSchema(options?)`      | cédula, dashes and spaces allowed        | `Cedula` — 11 digits        |
+| `rncSchema(options?)`         | RNC or cédula, dashes and spaces allowed | `RNC` — 9 or 11 digits      |
+| `ncfSchema(options?)`         | NCF / e-CF, surrounding whitespace ok    | `NCF`                       |
+| `phoneNumberSchema(options?)` | any common phone format, `+1` optional   | `PhoneNumber` — 10 digits   |
+| `plateSchema(options?)`       | license plate, any case                  | `Plate` — uppercase         |
+| `provinciaSchema(options?)`   | province name, any case or accents       | `Provincia` — official name |
+| `municipioSchema(options?)`   | municipality name, any case or accents   | `Municipio` — official name |
 
 **Options**
 
