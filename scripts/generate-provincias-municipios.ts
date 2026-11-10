@@ -124,10 +124,10 @@ const provinciaEnum = sortedProvincias.map((p) => `  ${normalizeKey(p)}: '${p}',
 
 const municipiosPorProvincia = sortedProvincias
 	.map((p) => {
-		const key = normalizeKey(p)
 		const municipios = [...provinciasMap.get(p)!].map((m) => `    '${m}',`).join('\n')
 
-		return `  [Provincias.${key}]: [\n${municipios}\n  ],`
+		// String-literal keys (not `[Provincias.X]`) so declarations can be emitted with isolatedDeclarations
+		return `  '${p}': [\n${municipios}\n  ],`
 	})
 	.join('\n')
 
@@ -147,8 +147,6 @@ ${provinciaEnum}
 `
 
 const municipiosPorProvinciaOutput = `${generatedHeader}
-
-import { Provincias } from './provincias.constant'
 
 export const MunicipiosPorProvincia = {
 ${municipiosPorProvincia}
@@ -181,10 +179,20 @@ import { MunicipiosPorProvincia } from '@/constants/municipios-por-provincia.con
 import { ProvinciaPorMunicipio } from '@/constants/provincia-por-municipio.constant'
 import { Municipio, Provincia } from '@/types/municipio-provincia.type'
 
+/**
+ * Returns all municipalities belonging to a given Dominican province.
+ * @param provincia {Provincia} the province name
+ * @returns {readonly Municipio[]} list of municipalities in that province
+ */
 export function getMunicipiosByProvincia(provincia: Provincia): readonly Municipio[] {
 	return MunicipiosPorProvincia[provincia]
 }
 
+/**
+ * Returns the province a given Dominican municipality belongs to.
+ * @param municipio {Municipio} the municipality name
+ * @returns {Provincia} the province that contains the municipality
+ */
 export function getProvinciaByMunicipio(municipio: Municipio): Provincia {
 	return ProvinciaPorMunicipio[municipio]
 }
@@ -201,7 +209,7 @@ await Promise.all([
 		provinciaPorMunicipioOutput,
 	),
 	Bun.write(path.resolve('src/types/municipio-provincia.type.ts'), typesOutput),
-	Bun.write(path.resolve('src/utils/municipios-provincias.util.ts'), utilsOutput),
+	Bun.write(path.resolve('src/helpers/municipios-provincias.ts'), utilsOutput),
 ])
 
 console.log('✅ generated files successfully')
