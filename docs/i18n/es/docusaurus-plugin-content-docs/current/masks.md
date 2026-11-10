@@ -12,9 +12,9 @@ Reemplaza la secuencia central de una cédula con asteriscos.
 
 **Argumentos**
 
-| Parámetro | Tipo | Descripción |
-|-----------|------|-------------|
-| `cedula` | `string` | Cédula sin formato o con guiones |
+| Parámetro | Tipo     | Descripción                      |
+| --------- | -------- | -------------------------------- |
+| `cedula`  | `string` | Cédula sin formato o con guiones |
 
 **Retorna** `string` — cédula enmascarada (ej. `'402-*******-2'`).
 
@@ -32,9 +32,9 @@ Enmascara un RNC o cédula usada como RNC. Para cédulas de 11 dígitos, delega 
 
 **Argumentos**
 
-| Parámetro | Tipo | Descripción |
-|-----------|------|-------------|
-| `rnc` | `string` | RNC o cédula sin formato o con guiones |
+| Parámetro | Tipo     | Descripción                            |
+| --------- | -------- | -------------------------------------- |
+| `rnc`     | `string` | RNC o cédula sin formato o con guiones |
 
 **Retorna** `string` — identificador enmascarado.
 
@@ -53,8 +53,8 @@ Reemplaza los dígitos centrales de un número de teléfono con asteriscos.
 
 **Argumentos**
 
-| Parámetro | Tipo | Descripción |
-|-----------|------|-------------|
+| Parámetro     | Tipo     | Descripción                                                 |
+| ------------- | -------- | ----------------------------------------------------------- |
 | `phoneNumber` | `string` | Número de teléfono en cualquier formato dominicano aceptado |
 
 **Retorna** `string` — número de teléfono enmascarado.

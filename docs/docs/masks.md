@@ -12,9 +12,9 @@ Replaces the middle sequence of a cédula with asterisks.
 
 **Arguments**
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `cedula` | `string` | Raw or dash-formatted cédula |
+| Parameter | Type     | Description                  |
+| --------- | -------- | ---------------------------- |
+| `cedula`  | `string` | Raw or dash-formatted cédula |
 
 **Returns** `string` — masked cédula (e.g. `'402-*******-2'`).
 
@@ -32,9 +32,9 @@ Masks an RNC or cédula-as-RNC. For 11-digit cédulas, delegates to `maskCedula`
 
 **Arguments**
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `rnc` | `string` | Raw or dash-formatted RNC or cédula |
+| Parameter | Type     | Description                         |
+| --------- | -------- | ----------------------------------- |
+| `rnc`     | `string` | Raw or dash-formatted RNC or cédula |
 
 **Returns** `string` — masked identifier.
 
@@ -53,8 +53,8 @@ Replaces the middle digits of a phone number with asterisks.
 
 **Arguments**
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
+| Parameter     | Type     | Description                                   |
+| ------------- | -------- | --------------------------------------------- |
 | `phoneNumber` | `string` | Phone number in any accepted Dominican format |
 
 **Returns** `string` — masked phone number.

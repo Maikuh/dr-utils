@@ -12,9 +12,9 @@ Descompone una cédula en sus partes constituyentes.
 
 **Argumentos**
 
-| Parámetro | Tipo | Descripción |
-|-----------|------|-------------|
-| `cedula` | `string` | Cédula sin formato o con guiones |
+| Parámetro | Tipo     | Descripción                      |
+| --------- | -------- | -------------------------------- |
+| `cedula`  | `string` | Cédula sin formato o con guiones |
 
 **Retorna** `ParsedCedula` — `{ municipioCode, sequence, checkDigit, formatted }`.
 
@@ -38,9 +38,9 @@ Descompone un RNC (o cédula usada como RNC) en sus partes. El campo `kind` indi
 
 **Argumentos**
 
-| Parámetro | Tipo | Descripción |
-|-----------|------|-------------|
-| `rnc` | `string` | RNC o cédula sin formato o con guiones |
+| Parámetro | Tipo     | Descripción                            |
+| --------- | -------- | -------------------------------------- |
+| `rnc`     | `string` | RNC o cédula sin formato o con guiones |
 
 **Retorna** `ParsedRNC` — incluye `kind: 'rnc' | 'cedula'` más campos específicos del tipo.
 
@@ -62,9 +62,9 @@ Descompone un NCF en sus partes, incluyendo el nombre del tipo de documento fisc
 
 **Argumentos**
 
-| Parámetro | Tipo | Descripción |
-|-----------|------|-------------|
-| `ncf` | `string` | Cadena NCF sin formato (físico 11 caracteres o electrónico 13 caracteres) |
+| Parámetro | Tipo     | Descripción                                                               |
+| --------- | -------- | ------------------------------------------------------------------------- |
+| `ncf`     | `string` | Cadena NCF sin formato (físico 11 caracteres o electrónico 13 caracteres) |
 
 **Retorna** `ParsedNCF` — `{ kind, series, typeCode, typeName, sequence, formatted }`.
 
@@ -90,9 +90,9 @@ Descompone un número de teléfono dominicano en sus partes constituyentes.
 
 **Argumentos**
 
-| Parámetro | Tipo | Descripción |
-|-----------|------|-------------|
-| `number` | `string` | Número de teléfono en cualquier formato dominicano aceptado |
+| Parámetro | Tipo     | Descripción                                                 |
+| --------- | -------- | ----------------------------------------------------------- |
+| `number`  | `string` | Número de teléfono en cualquier formato dominicano aceptado |
 
 **Retorna** `ParsedPhoneNumber` — `{ areaCode, prefix, line, national, international }`.
 
@@ -111,9 +111,9 @@ Elimina todo el formato de un número de teléfono dominicano, retornando solo l
 
 **Argumentos**
 
-| Parámetro | Tipo | Descripción |
-|-----------|------|-------------|
-| `number` | `string` | Número de teléfono en cualquier formato dominicano aceptado |
+| Parámetro | Tipo     | Descripción                                                 |
+| --------- | -------- | ----------------------------------------------------------- |
+| `number`  | `string` | Número de teléfono en cualquier formato dominicano aceptado |
 
 **Retorna** `string` — número de teléfono normalizado de 10 dígitos.
 
@@ -131,9 +131,9 @@ Descompone una placa de vehículo dominicana en su categoría y secuencia.
 
 **Argumentos**
 
-| Parámetro | Tipo | Descripción |
-|-----------|------|-------------|
-| `plate` | `string` | Cadena de placa (sin distinción entre mayúsculas y minúsculas) |
+| Parámetro | Tipo     | Descripción                                                    |
+| --------- | -------- | -------------------------------------------------------------- |
+| `plate`   | `string` | Cadena de placa (sin distinción entre mayúsculas y minúsculas) |
 
 **Retorna** `ParsedPlate` — `{ category, categoryName, sequence, formatted }`.
 

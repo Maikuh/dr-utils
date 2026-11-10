@@ -12,9 +12,9 @@ Valida una cédula dominicana usando el algoritmo de Luhn (mod-10).
 
 **Argumentos**
 
-| Parámetro | Tipo | Descripción |
-|-----------|------|-------------|
-| `cedula` | `string` | Cédula sin formato o con guiones (ej. `'40220579912'` o `'402-2057991-2'`) |
+| Parámetro | Tipo     | Descripción                                                                |
+| --------- | -------- | -------------------------------------------------------------------------- |
+| `cedula`  | `string` | Cédula sin formato o con guiones (ej. `'40220579912'` o `'402-2057991-2'`) |
 
 **Retorna** `boolean` — `true` si es válida, `false` en caso contrario.
 
@@ -34,9 +34,9 @@ Valida un RNC (Registro Nacional del Contribuyente) dominicano usando el algorit
 
 **Argumentos**
 
-| Parámetro | Tipo | Descripción |
-|-----------|------|-------------|
-| `rnc` | `string` | RNC sin formato o con guiones (ej. `'130500292'` o `'130-50029-2'`) |
+| Parámetro | Tipo     | Descripción                                                         |
+| --------- | -------- | ------------------------------------------------------------------- |
+| `rnc`     | `string` | RNC sin formato o con guiones (ej. `'130500292'` o `'130-50029-2'`) |
 
 **Retorna** `boolean` — `true` si es válido, `false` en caso contrario.
 
@@ -55,9 +55,9 @@ Valida un NCF (Número de Comprobante Fiscal) dominicano. Soporta tanto el forma
 
 **Argumentos**
 
-| Parámetro | Tipo | Descripción |
-|-----------|------|-------------|
-| `ncf` | `string` | Cadena NCF a validar |
+| Parámetro | Tipo     | Descripción          |
+| --------- | -------- | -------------------- |
+| `ncf`     | `string` | Cadena NCF a validar |
 
 **Retorna** `boolean` — `true` si es válido, `false` en caso contrario.
 
@@ -76,9 +76,9 @@ Valida un número de teléfono dominicano. Acepta varios formatos incluyendo loc
 
 **Argumentos**
 
-| Parámetro | Tipo | Descripción |
-|-----------|------|-------------|
-| `number` | `string` | Número de teléfono en cualquier formato dominicano común |
+| Parámetro | Tipo     | Descripción                                              |
+| --------- | -------- | -------------------------------------------------------- |
+| `number`  | `string` | Número de teléfono en cualquier formato dominicano común |
 
 **Retorna** `boolean` — `true` si es válido, `false` en caso contrario.
 
@@ -99,9 +99,9 @@ Valida una placa de vehículo dominicana contra la lista oficial de categorías 
 
 **Argumentos**
 
-| Parámetro | Tipo | Descripción |
-|-----------|------|-------------|
-| `plate` | `string` | Cadena de placa (sin distinción entre mayúsculas y minúsculas) |
+| Parámetro | Tipo     | Descripción                                                    |
+| --------- | -------- | -------------------------------------------------------------- |
+| `plate`   | `string` | Cadena de placa (sin distinción entre mayúsculas y minúsculas) |
 
 **Retorna** `boolean` — `true` si es válida, `false` en caso contrario.
 

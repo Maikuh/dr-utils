@@ -12,9 +12,9 @@ Validates a Dominican cédula number using the Luhn (mod-10) algorithm.
 
 **Arguments**
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `cedula` | `string` | Raw or dash-formatted cédula (e.g. `'40220579912'` or `'402-2057991-2'`) |
+| Parameter | Type     | Description                                                              |
+| --------- | -------- | ------------------------------------------------------------------------ |
+| `cedula`  | `string` | Raw or dash-formatted cédula (e.g. `'40220579912'` or `'402-2057991-2'`) |
 
 **Returns** `boolean` — `true` if valid, `false` otherwise.
 
@@ -34,9 +34,9 @@ Validates a Dominican RNC (Registro Nacional del Contribuyente) using the Luhn a
 
 **Arguments**
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `rnc` | `string` | Raw or dash-formatted RNC (e.g. `'130500292'` or `'130-50029-2'`) |
+| Parameter | Type     | Description                                                       |
+| --------- | -------- | ----------------------------------------------------------------- |
+| `rnc`     | `string` | Raw or dash-formatted RNC (e.g. `'130500292'` or `'130-50029-2'`) |
 
 **Returns** `boolean` — `true` if valid, `false` otherwise.
 
@@ -55,9 +55,9 @@ Validates a Dominican NCF (Número de Comprobante Fiscal). Supports both physica
 
 **Arguments**
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `ncf` | `string` | NCF string to validate |
+| Parameter | Type     | Description            |
+| --------- | -------- | ---------------------- |
+| `ncf`     | `string` | NCF string to validate |
 
 **Returns** `boolean` — `true` if valid, `false` otherwise.
 
@@ -76,9 +76,9 @@ Validates a Dominican phone number. Accepts various formats including local, for
 
 **Arguments**
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `number` | `string` | Phone number string in any common Dominican format |
+| Parameter | Type     | Description                                        |
+| --------- | -------- | -------------------------------------------------- |
+| `number`  | `string` | Phone number string in any common Dominican format |
 
 **Returns** `boolean` — `true` if valid, `false` otherwise.
 
@@ -99,9 +99,9 @@ Validates a Dominican vehicle license plate against the official DGII category l
 
 **Arguments**
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `plate` | `string` | Plate string (case-insensitive) |
+| Parameter | Type     | Description                     |
+| --------- | -------- | ------------------------------- |
+| `plate`   | `string` | Plate string (case-insensitive) |
 
 **Returns** `boolean` — `true` if valid, `false` otherwise.
 

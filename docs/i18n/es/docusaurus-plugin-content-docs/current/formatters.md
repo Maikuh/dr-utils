@@ -12,10 +12,10 @@ Formatea una cédula con o sin guiones.
 
 **Argumentos**
 
-| Parámetro | Tipo | Por defecto | Descripción |
-|-----------|------|-------------|-------------|
-| `cedula` | `string` | — | Cédula sin formato o con guiones |
-| `options.dashes` | `boolean` | `true` | Si se incluyen guiones en la salida |
+| Parámetro        | Tipo      | Por defecto | Descripción                         |
+| ---------------- | --------- | ----------- | ----------------------------------- |
+| `cedula`         | `string`  | —           | Cédula sin formato o con guiones    |
+| `options.dashes` | `boolean` | `true`      | Si se incluyen guiones en la salida |
 
 **Retorna** `string` — cédula formateada.
 
@@ -34,10 +34,10 @@ Formatea un RNC con o sin guiones. También acepta cédulas de 11 dígitos.
 
 **Argumentos**
 
-| Parámetro | Tipo | Por defecto | Descripción |
-|-----------|------|-------------|-------------|
-| `rnc` | `string` | — | RNC o cédula sin formato o con guiones |
-| `options.dashes` | `boolean` | `true` | Si se incluyen guiones en la salida |
+| Parámetro        | Tipo      | Por defecto | Descripción                            |
+| ---------------- | --------- | ----------- | -------------------------------------- |
+| `rnc`            | `string`  | —           | RNC o cédula sin formato o con guiones |
+| `options.dashes` | `boolean` | `true`      | Si se incluyen guiones en la salida    |
 
 **Retorna** `string` — RNC formateado.
 
@@ -56,9 +56,9 @@ Formatea un NCF con un separador de guión entre el código de serie/tipo y la s
 
 **Argumentos**
 
-| Parámetro | Tipo | Descripción |
-|-----------|------|-------------|
-| `ncf` | `string` | Cadena NCF sin formato |
+| Parámetro | Tipo     | Descripción            |
+| --------- | -------- | ---------------------- |
+| `ncf`     | `string` | Cadena NCF sin formato |
 
 **Retorna** `string` — NCF formateado con guión.
 
@@ -77,10 +77,10 @@ Formatea un número de teléfono dominicano en formato nacional o internacional.
 
 **Argumentos**
 
-| Parámetro | Tipo | Por defecto | Descripción |
-|-----------|------|-------------|-------------|
-| `number` | `string` | — | Número de teléfono en cualquier formato dominicano aceptado |
-| `international` | `boolean` | `false` | Si es `true`, retorna formato E.164 (`+1XXXXXXXXXX`) |
+| Parámetro       | Tipo      | Por defecto | Descripción                                                 |
+| --------------- | --------- | ----------- | ----------------------------------------------------------- |
+| `number`        | `string`  | —           | Número de teléfono en cualquier formato dominicano aceptado |
+| `international` | `boolean` | `false`     | Si es `true`, retorna formato E.164 (`+1XXXXXXXXXX`)        |
 
 **Retorna** `string` — número de teléfono formateado.
 
@@ -99,9 +99,9 @@ Convierte a mayúsculas y normaliza una placa de vehículo dominicana.
 
 **Argumentos**
 
-| Parámetro | Tipo | Descripción |
-|-----------|------|-------------|
-| `plate` | `string` | Cadena de placa (sin distinción entre mayúsculas y minúsculas) |
+| Parámetro | Tipo     | Descripción                                                    |
+| --------- | -------- | -------------------------------------------------------------- |
+| `plate`   | `string` | Cadena de placa (sin distinción entre mayúsculas y minúsculas) |
 
 **Retorna** `string` — placa en mayúsculas.
 
@@ -120,11 +120,11 @@ Formatea un número como cadena de moneda en Pesos Dominicanos (DOP).
 
 **Argumentos**
 
-| Parámetro | Tipo | Por defecto | Descripción |
-|-----------|------|-------------|-------------|
-| `value` | `number` | — | Monto a formatear |
-| `options.symbol` | `'RD$' \| '$' \| 'none'` | `'RD$'` | Prefijo del símbolo de moneda |
-| `options.decimals` | `number` | `2` | Número de decimales |
+| Parámetro          | Tipo                     | Por defecto | Descripción                   |
+| ------------------ | ------------------------ | ----------- | ----------------------------- |
+| `value`            | `number`                 | —           | Monto a formatear             |
+| `options.symbol`   | `'RD$' \| '$' \| 'none'` | `'RD$'`     | Prefijo del símbolo de moneda |
+| `options.decimals` | `number`                 | `2`         | Número de decimales           |
 
 **Retorna** `string` — cadena de moneda formateada. Los montos negativos llevan el signo antes del símbolo (`'-RD$1,234.50'`).
 

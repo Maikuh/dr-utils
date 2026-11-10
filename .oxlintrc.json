@@ -1,23 +1,23 @@
 {
-	"$schema": "./node_modules/oxlint/configuration_schema.json",
-	"categories": {
-		"correctness": "error",
-		"suspicious": "warn"
-	},
-	"options": {
-		"typeAware": true,
-		"typeCheck": true
-	},
-	"rules": {
-		"typescript/no-unsafe-type-assertion": "off"
-	},
-	"ignorePatterns": ["lib", "assets", "docs"],
-	"overrides": [
-		{
-			"files": ["**/*.test.ts"],
-			"rules": {
-				"typescript/consistent-return": "off"
-			}
-		}
-	]
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "categories": {
+    "correctness": "error",
+    "suspicious": "warn"
+  },
+  "options": {
+    "typeAware": true,
+    "typeCheck": true
+  },
+  "rules": {
+    "typescript/no-unsafe-type-assertion": "off"
+  },
+  "ignorePatterns": ["lib", "assets", "docs"],
+  "overrides": [
+    {
+      "files": ["**/*.test.ts"],
+      "rules": {
+        "typescript/consistent-return": "off"
+      }
+    }
+  ]
 }

@@ -9,6 +9,7 @@ sidebar_position: 8
 ### 1. `dr-utils/utils` ha sido eliminado
 
 El sub-path `dr-utils/utils` ya no existe. Su contenido está dividido entre nuevos sub-paths:
+
 - `dr-utils/parsers`
 - `dr-utils/helpers` (nuevo)
 
@@ -74,28 +75,34 @@ try {
 Lo siguiente fue agregado en v3 y no tiene equivalente en v2.
 
 ### Nuevos validadores
+
 - `validatePlate(plate)` — validación de placas dominicanas
 
 ### Nuevos formateadores
+
 - `formatNCF(ncf)` — formatea un NCF físico o electrónico como `B01-83920391`
 - `formatPlate(plate)` — normaliza una placa a mayúsculas
 - `formatDOP(value, options?)` — formatea un número como Pesos Dominicanos (`RD$1,234.50`)
 
 ### Nuevos parsers
+
 - `parseCedula`, `parseRNC`, `parseNCF`, `parsePhoneNumber`, `parsePlate` — estaban en `dr-utils/utils` en v2, ahora en `dr-utils/parsers`
 - `normalizePhoneNumber` — elimina el formato y devuelve una cadena de 10 dígitos
 - `safeParseCedula`, `safeParseRNC`, `safeParseNCF`, `safeParsePhoneNumber`, `safeParsePlate` — variantes que no lanzan excepciones, retornan `Result<T>`
 
 ### Nuevas máscaras
+
 - `maskCedula`, `maskRNC`, `maskPhoneNumber` — ocultan dígitos sensibles
 
 ### Nuevos helpers
+
 - `amountToWords(value, options?)` — número a palabras en español (`'mil doscientos treinta y cuatro pesos con 56 centavos'`)
 - `applyItbis(subtotal, rate?)` — agrega ITBIS a un monto neto
 - `removeItbis(total, rate?)` — extrae el neto de un total bruto
 - `splitItbis(total, rate?)` — divide un total bruto en `{ net, tax, total }`
 
 ### Nuevo tipo de error
+
 - `DrUtilsError` (desde `dr-utils/errors`) — error tipado con `.code: DrUtilsErrorCode`
 
 ### Salida de build dual CJS/ESM

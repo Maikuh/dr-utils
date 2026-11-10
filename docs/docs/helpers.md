@@ -10,8 +10,8 @@ Returns all municipalities belonging to a given Dominican province.
 
 **Arguments**
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
+| Parameter   | Type        | Description                          |
+| ----------- | ----------- | ------------------------------------ |
 | `provincia` | `Provincia` | Province name (typed string literal) |
 
 **Returns** `readonly Municipio[]` — list of municipalities in that province.
@@ -31,8 +31,8 @@ Returns the province a given Dominican municipality belongs to.
 
 **Arguments**
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
+| Parameter   | Type        | Description                              |
+| ----------- | ----------- | ---------------------------------------- |
 | `municipio` | `Municipio` | Municipality name (typed string literal) |
 
 **Returns** `Provincia` — the province that contains the municipality.
@@ -55,9 +55,9 @@ Converts a number to its Spanish word representation, suitable for checks and in
 
 **Arguments**
 
-| Parameter | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `value` | `number` | — | Amount to convert (0–999,999,999.99) |
+| Parameter          | Type                             | Default   | Description                           |
+| ------------------ | -------------------------------- | --------- | ------------------------------------- |
+| `value`            | `number`                         | —         | Amount to convert (0–999,999,999.99)  |
 | `options.currency` | `'pesos' \| 'dolares' \| 'none'` | `'pesos'` | Currency suffix appended to the words |
 
 **Returns** `string` — Spanish word representation of the amount.
@@ -85,10 +85,10 @@ Adds ITBIS to a net subtotal and returns the gross (ITBIS-inclusive) amount.
 
 **Arguments**
 
-| Parameter | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `subtotal` | `number` | — | Net amount before ITBIS |
-| `rate` | `number` | `ITBIS_RATE` (0.18) | ITBIS rate to apply |
+| Parameter  | Type     | Default             | Description             |
+| ---------- | -------- | ------------------- | ----------------------- |
+| `subtotal` | `number` | —                   | Net amount before ITBIS |
+| `rate`     | `number` | `ITBIS_RATE` (0.18) | ITBIS rate to apply     |
 
 **Returns** `number` — gross amount rounded to 2 decimal places.
 
@@ -98,10 +98,10 @@ Removes ITBIS from a gross total and returns the net amount.
 
 **Arguments**
 
-| Parameter | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `total` | `number` | — | ITBIS-inclusive gross amount |
-| `rate` | `number` | `ITBIS_RATE` (0.18) | ITBIS rate to remove |
+| Parameter | Type     | Default             | Description                  |
+| --------- | -------- | ------------------- | ---------------------------- |
+| `total`   | `number` | —                   | ITBIS-inclusive gross amount |
+| `rate`    | `number` | `ITBIS_RATE` (0.18) | ITBIS rate to remove         |
 
 **Returns** `number` — net amount rounded to 2 decimal places.
 
@@ -111,10 +111,10 @@ Splits a gross total into net, tax, and total components.
 
 **Arguments**
 
-| Parameter | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `total` | `number` | — | ITBIS-inclusive gross amount |
-| `rate` | `number` | `ITBIS_RATE` (0.18) | ITBIS rate to split by |
+| Parameter | Type     | Default             | Description                  |
+| --------- | -------- | ------------------- | ---------------------------- |
+| `total`   | `number` | —                   | ITBIS-inclusive gross amount |
+| `rate`    | `number` | `ITBIS_RATE` (0.18) | ITBIS rate to split by       |
 
 **Returns** `{ net: number; tax: number; total: number }` — all three components rounded to 2 decimal places.
 

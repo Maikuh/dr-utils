@@ -10,8 +10,8 @@ Retorna todos los municipios pertenecientes a una provincia dominicana.
 
 **Argumentos**
 
-| Parámetro | Tipo | Descripción |
-|-----------|------|-------------|
+| Parámetro   | Tipo        | Descripción                                       |
+| ----------- | ----------- | ------------------------------------------------- |
 | `provincia` | `Provincia` | Nombre de la provincia (literal de cadena tipada) |
 
 **Retorna** `readonly Municipio[]` — lista de municipios en esa provincia.
@@ -31,8 +31,8 @@ Retorna la provincia a la que pertenece un municipio dominicano.
 
 **Argumentos**
 
-| Parámetro | Tipo | Descripción |
-|-----------|------|-------------|
+| Parámetro   | Tipo        | Descripción                                     |
+| ----------- | ----------- | ----------------------------------------------- |
 | `municipio` | `Municipio` | Nombre del municipio (literal de cadena tipada) |
 
 **Retorna** `Provincia` — la provincia que contiene el municipio.
@@ -55,10 +55,10 @@ Convierte un número a su representación en palabras en español, ideal para ch
 
 **Argumentos**
 
-| Parámetro | Tipo | Por defecto | Descripción |
-|-----------|------|-------------|-------------|
-| `value` | `number` | — | Monto a convertir (0–999,999,999.99) |
-| `options.currency` | `'pesos' \| 'dolares' \| 'none'` | `'pesos'` | Sufijo de moneda añadido a las palabras |
+| Parámetro          | Tipo                             | Por defecto | Descripción                             |
+| ------------------ | -------------------------------- | ----------- | --------------------------------------- |
+| `value`            | `number`                         | —           | Monto a convertir (0–999,999,999.99)    |
+| `options.currency` | `'pesos' \| 'dolares' \| 'none'` | `'pesos'`   | Sufijo de moneda añadido a las palabras |
 
 **Retorna** `string` — representación en palabras en español del monto.
 
@@ -85,10 +85,10 @@ Agrega ITBIS a un subtotal neto y retorna el monto bruto (con ITBIS incluido).
 
 **Argumentos**
 
-| Parámetro | Tipo | Por defecto | Descripción |
-|-----------|------|-------------|-------------|
-| `subtotal` | `number` | — | Monto neto antes del ITBIS |
-| `rate` | `number` | `ITBIS_RATE` (0.18) | Tasa de ITBIS a aplicar |
+| Parámetro  | Tipo     | Por defecto         | Descripción                |
+| ---------- | -------- | ------------------- | -------------------------- |
+| `subtotal` | `number` | —                   | Monto neto antes del ITBIS |
+| `rate`     | `number` | `ITBIS_RATE` (0.18) | Tasa de ITBIS a aplicar    |
 
 **Retorna** `number` — monto bruto redondeado a 2 decimales.
 
@@ -98,10 +98,10 @@ Extrae el ITBIS de un total bruto y retorna el monto neto.
 
 **Argumentos**
 
-| Parámetro | Tipo | Por defecto | Descripción |
-|-----------|------|-------------|-------------|
-| `total` | `number` | — | Monto bruto con ITBIS incluido |
-| `rate` | `number` | `ITBIS_RATE` (0.18) | Tasa de ITBIS a extraer |
+| Parámetro | Tipo     | Por defecto         | Descripción                    |
+| --------- | -------- | ------------------- | ------------------------------ |
+| `total`   | `number` | —                   | Monto bruto con ITBIS incluido |
+| `rate`    | `number` | `ITBIS_RATE` (0.18) | Tasa de ITBIS a extraer        |
 
 **Retorna** `number` — monto neto redondeado a 2 decimales.
 
@@ -111,10 +111,10 @@ Descompone un total bruto en sus componentes neto, impuesto y total.
 
 **Argumentos**
 
-| Parámetro | Tipo | Por defecto | Descripción |
-|-----------|------|-------------|-------------|
-| `total` | `number` | — | Monto bruto con ITBIS incluido |
-| `rate` | `number` | `ITBIS_RATE` (0.18) | Tasa de ITBIS a descomponer |
+| Parámetro | Tipo     | Por defecto         | Descripción                    |
+| --------- | -------- | ------------------- | ------------------------------ |
+| `total`   | `number` | —                   | Monto bruto con ITBIS incluido |
+| `rate`    | `number` | `ITBIS_RATE` (0.18) | Tasa de ITBIS a descomponer    |
 
 **Retorna** `{ net: number; tax: number; total: number }` — los tres componentes redondeados a 2 decimales.
 

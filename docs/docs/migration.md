@@ -9,6 +9,7 @@ sidebar_position: 8
 ### 1. `dr-utils/utils` is removed
 
 The `dr-utils/utils` sub-path no longer exists. Its contents are split across new sub-paths:
+
 - `dr-utils/parsers`
 - `dr-utils/helpers` (new)
 
@@ -74,28 +75,34 @@ try {
 The following were added in v3 and have no v2 equivalent.
 
 ### New validators
+
 - `validatePlate(plate)` — Dominican license plate validation
 
 ### New formatters
+
 - `formatNCF(ncf)` — formats a physical or electronic NCF as `B01-83920391`
 - `formatPlate(plate)` — normalizes a plate to uppercase
 - `formatDOP(value, options?)` — formats a number as Dominican Pesos (`RD$1,234.50`)
 
 ### New parsers
+
 - `parseCedula`, `parseRNC`, `parseNCF`, `parsePhoneNumber`, `parsePlate` — were in `dr-utils/utils` in v2, now in `dr-utils/parsers`
 - `normalizePhoneNumber` — strips formatting and returns a 10-digit string
 - `safeParseCedula`, `safeParseRNC`, `safeParseNCF`, `safeParsePhoneNumber`, `safeParsePlate` — non-throwing variants returning `Result<T>`
 
 ### New masks
+
 - `maskCedula`, `maskRNC`, `maskPhoneNumber` — redact sensitive digits
 
 ### New helpers
+
 - `amountToWords(value, options?)` — number to Spanish words (`'mil doscientos treinta y cuatro pesos con 56 centavos'`)
 - `applyItbis(subtotal, rate?)` — adds ITBIS to a net amount
 - `removeItbis(total, rate?)` — extracts net from a gross total
 - `splitItbis(total, rate?)` — splits a gross total into `{ net, tax, total }`
 
 ### New error type
+
 - `DrUtilsError` (from `dr-utils/errors`) — typed error with `.code: DrUtilsErrorCode`
 
 ### Dual CJS/ESM build output

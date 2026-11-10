@@ -12,10 +12,10 @@ Formats a cédula with or without dashes.
 
 **Arguments**
 
-| Parameter | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `cedula` | `string` | — | Raw or dash-formatted cédula |
-| `options.dashes` | `boolean` | `true` | Whether to include dashes in the output |
+| Parameter        | Type      | Default | Description                             |
+| ---------------- | --------- | ------- | --------------------------------------- |
+| `cedula`         | `string`  | —       | Raw or dash-formatted cédula            |
+| `options.dashes` | `boolean` | `true`  | Whether to include dashes in the output |
 
 **Returns** `string` — formatted cédula.
 
@@ -34,10 +34,10 @@ Formats an RNC with or without dashes. Also accepts 11-digit cédulas.
 
 **Arguments**
 
-| Parameter | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `rnc` | `string` | — | Raw or dash-formatted RNC or cédula |
-| `options.dashes` | `boolean` | `true` | Whether to include dashes in the output |
+| Parameter        | Type      | Default | Description                             |
+| ---------------- | --------- | ------- | --------------------------------------- |
+| `rnc`            | `string`  | —       | Raw or dash-formatted RNC or cédula     |
+| `options.dashes` | `boolean` | `true`  | Whether to include dashes in the output |
 
 **Returns** `string` — formatted RNC.
 
@@ -56,9 +56,9 @@ Formats an NCF with a dash separator between the series/type code and sequence.
 
 **Arguments**
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `ncf` | `string` | Raw NCF string |
+| Parameter | Type     | Description    |
+| --------- | -------- | -------------- |
+| `ncf`     | `string` | Raw NCF string |
 
 **Returns** `string` — formatted NCF with dash.
 
@@ -77,9 +77,9 @@ Formats a Dominican phone number in national or international format.
 
 **Arguments**
 
-| Parameter | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `number` | `string` | — | Phone number in any accepted Dominican format |
+| Parameter       | Type      | Default | Description                                      |
+| --------------- | --------- | ------- | ------------------------------------------------ |
+| `number`        | `string`  | —       | Phone number in any accepted Dominican format    |
 | `international` | `boolean` | `false` | If `true`, returns E.164 format (`+1XXXXXXXXXX`) |
 
 **Returns** `string` — formatted phone number.
@@ -99,9 +99,9 @@ Uppercases and normalizes a Dominican license plate string.
 
 **Arguments**
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `plate` | `string` | Plate string (case-insensitive) |
+| Parameter | Type     | Description                     |
+| --------- | -------- | ------------------------------- |
+| `plate`   | `string` | Plate string (case-insensitive) |
 
 **Returns** `string` — uppercased plate.
 
@@ -120,11 +120,11 @@ Formats a number as a Dominican Peso (DOP) currency string.
 
 **Arguments**
 
-| Parameter | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `value` | `number` | — | Monetary amount to format |
-| `options.symbol` | `'RD$' \| '$' \| 'none'` | `'RD$'` | Currency symbol prefix |
-| `options.decimals` | `number` | `2` | Number of decimal places |
+| Parameter          | Type                     | Default | Description               |
+| ------------------ | ------------------------ | ------- | ------------------------- |
+| `value`            | `number`                 | —       | Monetary amount to format |
+| `options.symbol`   | `'RD$' \| '$' \| 'none'` | `'RD$'` | Currency symbol prefix    |
+| `options.decimals` | `number`                 | `2`     | Number of decimal places  |
 
 **Returns** `string` — formatted currency string. Negative amounts put the sign before the symbol (`'-RD$1,234.50'`).
 
