@@ -51,4 +51,11 @@ describe('parseNCF', () => {
 			expect((e as DrUtilsError).code).toBe('INVALID_NCF')
 		}
 	})
+
+	it.each([
+		['E460000000001', 'Comprobante Electrónico para Exportaciones'],
+		['E470000000001', 'Comprobante Electrónico para Pagos al Exterior'],
+	])('parses %s type name', (ncf, typeName) => {
+		expect(parseNCF(ncf).typeName).toBe(typeName)
+	})
 })

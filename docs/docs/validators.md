@@ -51,7 +51,7 @@ validateRNC('130-50029-2') // true (dashes accepted)
 
 ## `validateNCF`
 
-Validates a Dominican NCF (Número de Comprobante Fiscal). Supports both physical (11-char) and electronic e-CF (13-char) formats.
+Validates a Dominican NCF (Número de Comprobante Fiscal). Supports both physical (11-char, types 01–04 and 11–17) and electronic e-CF (13-char, types 31–34, 41 and 43–47) formats.
 
 **Arguments**
 

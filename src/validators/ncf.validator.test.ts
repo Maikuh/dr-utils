@@ -42,4 +42,15 @@ describe('NCF Validator', () => {
 
 		expect(isNCFValid).toBeFalsy()
 	})
+
+	it.each(['E31', 'E32', 'E33', 'E34', 'E41', 'E43', 'E44', 'E45', 'E46', 'E47'])(
+		'e-CF type %s should be valid',
+		(prefix) => {
+			expect(validateNCF(`${prefix}0000000001`)).toBe(true)
+		},
+	)
+
+	it.each(['E35', 'E40', 'E42', 'E48'])('e-CF type %s should be invalid', (prefix) => {
+		expect(validateNCF(`${prefix}0000000001`)).toBe(false)
+	})
 })
