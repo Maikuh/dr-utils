@@ -43,4 +43,9 @@ describe('RNC Formatter', () => {
 			expect((e as DrUtilsError).code).toBe('FORMAT_RNC_FAILED')
 		}
 	})
+
+	it('accepts spaces as separators', () => {
+		expect(formatRNC('130 720 754')).toBe('130-72075-4')
+		expect(formatRNC('225 0066322 8', { dashes: false })).toBe('22500663228')
+	})
 })

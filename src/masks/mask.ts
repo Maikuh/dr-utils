@@ -3,18 +3,18 @@ import {
 	PHONE_NUMBER_VALID_REGEX,
 } from '@/constants/phone-number.regex'
 import { DrUtilsError } from '@/errors/dr-utils-error'
-import { stripDashes } from '@/internal/normalize'
+import { stripSeparators } from '@/internal/normalize'
 import { validateCedula } from '@/validators/cedula.validator'
 import { validateRNC } from '@/validators/rnc.validator'
 
 /**
  * Returns a masked version of a Cedula showing only the first 3 and last digit.
- * @param cedula {string} the person's Cedula (11 digits, dashes optional)
+ * @param cedula {string} the person's Cedula (11 digits, dashes and spaces optional)
  * @returns {string} e.g. `"402-*******-2"`
  * @throws {DrUtilsError} if `cedula` is not a valid cedula
  */
 export function maskCedula(cedula: string): string {
-	const digits = stripDashes(cedula)
+	const digits = stripSeparators(cedula)
 	if (!validateCedula(digits))
 		throw new DrUtilsError('INVALID_CEDULA', `"${cedula}" is not a valid cedula.`)
 	return `${digits.slice(0, 3)}-${'*'.repeat(7)}-${digits.slice(10)}`
@@ -22,12 +22,12 @@ export function maskCedula(cedula: string): string {
 
 /**
  * Returns a masked version of an RNC or Cedula showing only the first 3 and last digit.
- * @param rnc {string} the entity's RNC (9 digits) or Cedula (11 digits), dashes optional
+ * @param rnc {string} the entity's RNC (9 digits) or Cedula (11 digits), dashes and spaces optional
  * @returns {string} e.g. `"130-*****-4"` or the masked Cedula form
  * @throws {DrUtilsError} if `rnc` is not a valid RNC or Cedula
  */
 export function maskRNC(rnc: string): string {
-	const digits = stripDashes(rnc)
+	const digits = stripSeparators(rnc)
 	if (!validateRNC(digits))
 		throw new DrUtilsError('INVALID_RNC', `"${rnc}" is not a valid RNC or cedula.`)
 	if (digits.length === 11) return maskCedula(digits)

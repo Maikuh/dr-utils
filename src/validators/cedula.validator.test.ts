@@ -30,7 +30,6 @@ describe('Cedula Validator', () => {
 		['0000000000A', 'non-numeric'],
 		['00000000000', 'all zeros'],
 		['000-0000000-0', 'all zeros with dashes'],
-		['402 2057991 2', 'inner spaces'],
 		['402.2057991.2', 'dots'],
 	])('Known invalid cedula "%s" (%s) should fail', (cedula) => {
 		expect(validateCedula(cedula)).toBe(false)
@@ -42,5 +41,13 @@ describe('Cedula Validator', () => {
 
 	it('trims surrounding whitespace', () => {
 		expect(validateCedula('  402-2057991-2\n')).toBe(true)
+	})
+
+	it('accepts spaces as separators', () => {
+		expect(validateCedula('402 2057991 2')).toBe(true)
+	})
+
+	it('rejects other non-digit characters', () => {
+		expect(validateCedula('40220579912a')).toBe(false)
 	})
 })

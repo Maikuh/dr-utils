@@ -25,12 +25,13 @@ import { validateCedula } from 'dr-utils'
 
 validateCedula('40220579912')    // true
 validateCedula('402-2057991-2') // true (acepta guiones)
+validateCedula('402 2057991 2') // true (acepta espacios)
 validateCedula('12345678901')   // false
 ```
 
 ## `validateRNC`
 
-Valida un RNC (Registro Nacional del Contribuyente) dominicano con el dígito verificador módulo 11 de la DGII. Las entradas de 11 dígitos se validan como cédulas (Luhn). Se aceptan guiones y espacios alrededor; cualquier otro carácter que no sea dígito hace que el RNC sea inválido.
+Valida un RNC (Registro Nacional del Contribuyente) dominicano con el dígito verificador módulo 11 de la DGII. Las entradas de 11 dígitos se validan como cédulas (Luhn). Se aceptan guiones y espacios como separadores; cualquier otro carácter que no sea dígito hace que el RNC sea inválido.
 
 **Argumentos**
 
@@ -47,6 +48,7 @@ import { validateRNC } from 'dr-utils'
 
 validateRNC('130500292')    // true
 validateRNC('130-50029-2') // true (acepta guiones)
+validateRNC('130 50029 2') // true (acepta espacios)
 validateRNC('130500292x')  // false (rechaza otros caracteres)
 ```
 

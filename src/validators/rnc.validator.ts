@@ -1,4 +1,4 @@
-import { stripDashes } from '@/internal/normalize'
+import { stripSeparators } from '@/internal/normalize'
 import { validateCedula } from './cedula.validator'
 
 const RNC_WEIGHTS = [7, 9, 8, 6, 5, 4, 3, 2]
@@ -6,11 +6,11 @@ const RNC_WEIGHTS = [7, 9, 8, 6, 5, 4, 3, 2]
 /**
  * Validates an RNC (9 digits, mod-11 check) or Cedula (11 digits, Luhn check).
  * Per DGII rules, an 11-digit input is treated as a Cedula.
- * @param rnc {string} the entity's RNC (9 digits) or Cedula (11 digits), dashes optional
+ * @param rnc {string} the entity's RNC (9 digits) or Cedula (11 digits), dashes and spaces optional
  * @returns {boolean} `true` if the `rnc` is valid, `false` otherwise
  */
 export function validateRNC(rnc: string): boolean {
-	const digits = stripDashes(rnc)
+	const digits = stripSeparators(rnc)
 
 	if (digits.length === 11) return validateCedula(digits)
 	if (digits.length !== 9) return false

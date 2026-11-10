@@ -25,12 +25,13 @@ import { validateCedula } from 'dr-utils'
 
 validateCedula('40220579912')    // true
 validateCedula('402-2057991-2') // true (dashes accepted)
+validateCedula('402 2057991 2') // true (spaces accepted)
 validateCedula('12345678901')   // false
 ```
 
 ## `validateRNC`
 
-Validates a Dominican RNC (Registro Nacional del Contribuyente) with DGII's mod-11 check digit. 11-digit inputs are validated as cédulas (Luhn). Dashes and surrounding whitespace are allowed; any other non-digit character makes the RNC invalid.
+Validates a Dominican RNC (Registro Nacional del Contribuyente) with DGII's mod-11 check digit. 11-digit inputs are validated as cédulas (Luhn). Dashes and spaces are allowed as separators; any other non-digit character makes the RNC invalid.
 
 **Arguments**
 
@@ -47,6 +48,7 @@ import { validateRNC } from 'dr-utils'
 
 validateRNC('130500292')    // true
 validateRNC('130-50029-2') // true (dashes accepted)
+validateRNC('130 50029 2') // true (spaces accepted)
 validateRNC('130500292x')  // false (other characters are rejected)
 ```
 
