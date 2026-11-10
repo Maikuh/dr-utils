@@ -5,9 +5,6 @@
     "resolveJsonModule": true,
     "module": "preserve",
     "moduleDetection": "force",
-    "rootDir": "./src",
-    "outDir": "./lib",
-    "declaration": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
@@ -22,5 +19,6 @@
     },
     "types": ["bun", "node"]
   },
-  "exclude": ["node_modules", "lib"]
+  "include": ["src", "scripts", "bench", "tsdown.config.mts"],
+  "exclude": ["node_modules", "lib", "docs"]
 }
