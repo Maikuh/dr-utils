@@ -4,10 +4,41 @@
   "description": "Set of utilities relevant to the Dominican Republic",
   "author": "Miguel Araujo",
   "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
   "type": "commonjs",
   "main": "lib/index.js",
   "module": "lib/index.mjs",
   "types": "lib/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "errors": [
+        "lib/errors/index.d.ts"
+      ],
+      "types": [
+        "lib/types/index.d.ts"
+      ],
+      "parsers": [
+        "lib/parsers/index.d.ts"
+      ],
+      "masks": [
+        "lib/masks/index.d.ts"
+      ],
+      "helpers": [
+        "lib/helpers/index.d.ts"
+      ],
+      "constants": [
+        "lib/constants/index.d.ts"
+      ],
+      "formatters": [
+        "lib/formatters/index.d.ts"
+      ],
+      "validators": [
+        "lib/validators/index.d.ts"
+      ]
+    }
+  },
   "files": [
     "lib/**/*",
     "LICENSE",
