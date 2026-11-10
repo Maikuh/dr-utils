@@ -1,6 +1,6 @@
 {
   "name": "dr-utils",
-  "version": "3.3.0",
+  "version": "3.3.1",
   "description": "Zero-dependency TypeScript utilities for the Dominican Republic: cédula, RNC, NCF and phone validation and formatting, Standard Schemas, ITBIS, TSS/ISR payroll, provinces and more.",
   "author": "Miguel Araujo",
   "license": "MIT",
