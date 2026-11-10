@@ -51,7 +51,7 @@ validateRNC('130-50029-2') // true (acepta guiones)
 
 ## `validateNCF`
 
-Valida un NCF (Número de Comprobante Fiscal) dominicano. Soporta tanto el formato físico (11 caracteres) como el electrónico e-CF (13 caracteres).
+Valida un NCF (Número de Comprobante Fiscal) dominicano. Soporta tanto el formato físico (11 caracteres, tipos 01–04 y 11–17) como el electrónico e-CF (13 caracteres, tipos 31–34, 41 y 43–47).
 
 **Argumentos**
 

@@ -18,6 +18,8 @@ export const NCFTypes = {
 	'43': 'Comprobante Electrónico para Gastos Menores',
 	'44': 'Comprobante Electrónico para Regímenes Especiales',
 	'45': 'Comprobante Electrónico Gubernamental',
+	'46': 'Comprobante Electrónico para Exportaciones',
+	'47': 'Comprobante Electrónico para Pagos al Exterior',
 } as const
 
 export type NCFTypeCode = keyof typeof NCFTypes
