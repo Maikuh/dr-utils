@@ -32,6 +32,7 @@ function stripInvisible(value: string): string {
     // Non-breaking space → normal space
     .replace(/\u00A0/g, ' ')
     // Other control chars except \n \r \t
+    // oxlint-disable-next-line no-control-regex -- stripping control chars is the point
     .replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g, '')
     .trim();
 }
@@ -105,12 +106,12 @@ for (const { Municipio, Provincia } of rows) {
 /* Sort                               */
 /* ---------------------------------- */
 
-const sortedProvincias = [...provinciasMap.keys()].sort((a, b) =>
+const sortedProvincias = [...provinciasMap.keys()].toSorted((a, b) =>
   a.localeCompare(b, 'es')
 )
 
 for (const set of provinciasMap.values()) {
-  const sorted = [...set].sort((a, b) => a.localeCompare(b, 'es'))
+  const sorted = [...set].toSorted((a, b) => a.localeCompare(b, 'es'))
   set.clear()
   sorted.forEach(v => set.add(v))
 }
@@ -135,7 +136,7 @@ const municipiosPorProvincia = sortedProvincias
   .join('\n')
 
 const provinciaPorMunicipio = [...municipioToProvincia.entries()]
-  .sort((a, b) => a[0].localeCompare(b[0], 'es'))
+  .toSorted((a, b) => a[0].localeCompare(b[0], 'es'))
   .map(([m, p]) => `  ${m.includes(' ') ? `'${m}'` : m}: Provincias.${normalizeKey(p)},`)
   .join('\n')
 

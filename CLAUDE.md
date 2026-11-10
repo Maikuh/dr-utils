@@ -8,9 +8,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 bun test                        # run all tests
 bun test src/validators/cedula.validator.test.ts  # run a single test file
 bun run build                   # type-check (excluding tests) + bundle with tsdown → lib/
-bun run lint                    # biome lint --write
-bun run biome                   # biome check --write (lint + format together)
-bun run biome:ci                # biome ci (no auto-fix, used in CI)
+bun run typecheck               # tsc --noEmit over src, tests, scripts, bench
+bun run format                  # oxfmt (format everything)
+bun run lint                    # oxlint --deny-warnings (type-aware + type-check via tsgolint)
+bun run check                   # oxfmt --check && oxlint (what CI runs, no auto-fix)
 bun run generate-rnc-cedulas    # regenerate RNC/cedula data (downloads from DGII)
 bun run generate-provincias-municipios  # regenerate provinces/municipalities data
 ```
@@ -40,4 +41,4 @@ There is no separate `dev` or `watch` mode — run tests directly with `bun test
 
 **Build**: `tsdown` bundles the library. `tsconfig.build.json` extends `tsconfig.json` but excludes test files so they don't end up in the published package.
 
-**Linting/formatting**: Biome handles both. Config is in `biome.json`. The `preversion` and `prepublishOnly` hooks enforce lint before version bumps or publishing.
+**Linting/formatting**: Oxlint (config `.oxlintrc.json`, type-aware rules and type-check enabled; needs `oxlint-tsgolint`) and Oxfmt (config `.oxfmtrc.json`, also formats Markdown/YAML/JSON). The `preversion` and `prepublishOnly` hooks enforce lint before version bumps or publishing. CI (`.github/workflows/ci.yaml`) runs format check, lint, typecheck, tests and build on every push/PR.

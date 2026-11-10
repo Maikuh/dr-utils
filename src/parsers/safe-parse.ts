@@ -12,6 +12,10 @@ import { parsePhoneNumber } from './phone.parser'
 import { parsePlate } from './plate.parser'
 import { parseRNC } from './rnc.parser'
 
+function toErrorMessage(e: unknown): string {
+	return e instanceof Error ? e.message : String(e)
+}
+
 /**
  * Parses a Cedula without throwing — returns a `Result` instead.
  * On success, the value includes a `raw` field of branded type `Cedula` (digits-only, normalized).
@@ -24,7 +28,7 @@ export function safeParseCedula(input: string): Result<ParsedCedula & { raw: Ced
 		const raw = stripDashes(input) as Cedula
 		return { ok: true, value: { ...value, raw } }
 	} catch (e) {
-		return { ok: false, error: (e as Error).message }
+		return { ok: false, error: toErrorMessage(e) }
 	}
 }
 
@@ -38,9 +42,9 @@ export function safeParseRNC(input: string): Result<ParsedRNC & { raw: RNC }> {
 	try {
 		const value = parseRNC(input)
 		const raw = input.replace(/\D/g, '') as RNC
-		return { ok: true, value: { ...value, raw } as ParsedRNC & { raw: RNC } }
+		return { ok: true, value: { ...value, raw } }
 	} catch (e) {
-		return { ok: false, error: (e as Error).message }
+		return { ok: false, error: toErrorMessage(e) }
 	}
 }
 
@@ -55,7 +59,7 @@ export function safeParseNCF(input: string): Result<ParsedNCF & { raw: NCF }> {
 		const value = parseNCF(input)
 		return { ok: true, value: { ...value, raw: input as NCF } }
 	} catch (e) {
-		return { ok: false, error: (e as Error).message }
+		return { ok: false, error: toErrorMessage(e) }
 	}
 }
 
@@ -73,7 +77,7 @@ export function safeParsePhoneNumber(
 		const raw = `${value.areaCode}${value.prefix}${value.line}` as PhoneNumber
 		return { ok: true, value: { ...value, raw } }
 	} catch (e) {
-		return { ok: false, error: (e as Error).message }
+		return { ok: false, error: toErrorMessage(e) }
 	}
 }
 
@@ -88,6 +92,6 @@ export function safeParsePlate(input: string): Result<ParsedPlate & { raw: Plate
 		const value = parsePlate(input)
 		return { ok: true, value: { ...value, raw: value.formatted as Plate } }
 	} catch (e) {
-		return { ok: false, error: (e as Error).message }
+		return { ok: false, error: toErrorMessage(e) }
 	}
 }
