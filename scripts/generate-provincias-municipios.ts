@@ -1,8 +1,8 @@
-import path from "node:path"
+import path from 'node:path'
 
 type Row = {
-  Municipio: string
-  Provincia: string
+	Municipio: string
+	Provincia: string
 }
 
 /* ---------------------------------- */
@@ -10,31 +10,33 @@ type Row = {
 /* ---------------------------------- */
 
 function normalizeKey(value: string): string {
-  return value
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .replace(/[^A-Za-z0-9]+/g, '_')
-    .replace(/^_|_$/g, '')
-    .toUpperCase()
+	return value
+		.normalize('NFD')
+		.replace(/[\u0300-\u036f]/g, '')
+		.replace(/[^A-Za-z0-9]+/g, '_')
+		.replace(/^_|_$/g, '')
+		.toUpperCase()
 }
 
 function fatal(message: string): never {
-  console.error(`❌ ${message}`)
-  process.exit(1)
+	console.error(`❌ ${message}`)
+	process.exit(1)
 }
 
 function stripInvisible(value: string): string {
-  return value
-    // BOM
-    .replace(/\uFEFF/g, '')
-    // Zero-width & directional marks
-    .replace(/[\u200B-\u200F\u202A-\u202E]/g, '')
-    // Non-breaking space → normal space
-    .replace(/\u00A0/g, ' ')
-    // Other control chars except \n \r \t
-    // oxlint-disable-next-line no-control-regex -- stripping control chars is the point
-    .replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g, '')
-    .trim();
+	return (
+		value
+			// BOM
+			.replace(/\uFEFF/g, '')
+			// Zero-width & directional marks
+			.replace(/[\u200B-\u200F\u202A-\u202E]/g, '')
+			// Non-breaking space → normal space
+			.replace(/\u00A0/g, ' ')
+			// Other control chars except \n \r \t
+			// oxlint-disable-next-line no-control-regex -- stripping control chars is the point
+			.replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g, '')
+			.trim()
+	)
 }
 
 /* ---------------------------------- */
@@ -42,35 +44,35 @@ function stripInvisible(value: string): string {
 /* ---------------------------------- */
 
 function parseCSV(csv: string): Row[] {
-  const lines = stripInvisible(csv).trim().split(/\r?\n/)
+	const lines = stripInvisible(csv).trim().split(/\r?\n/)
 
-  const headerRow = lines[0]
+	const headerRow = lines[0]
 
-  if (!headerRow || lines.length < 2) {
-    fatal('CSV must contain a header and at least one data row')
-  }
+	if (!headerRow || lines.length < 2) {
+		fatal('CSV must contain a header and at least one data row')
+	}
 
-  const header = headerRow.split(',').map(h => h.trim())
-  
-  if (header[0] !== 'Municipio' || header[1] !== 'Provincia') {
-    fatal(`Invalid CSV header. Expected: Municipio,Provincia`)
-  }
+	const header = headerRow.split(',').map((h) => h.trim())
 
-  return lines.slice(1).map((line, index) => {
-    const parts = line.split(',').map(v => v.trim())
+	if (header[0] !== 'Municipio' || header[1] !== 'Provincia') {
+		fatal(`Invalid CSV header. Expected: Municipio,Provincia`)
+	}
 
-    if (parts.length !== 2) {
-      fatal(`Invalid column count on line ${index + 2}`)
-    }
+	return lines.slice(1).map((line, index) => {
+		const parts = line.split(',').map((v) => v.trim())
 
-    const [Municipio, Provincia] = parts
+		if (parts.length !== 2) {
+			fatal(`Invalid column count on line ${index + 2}`)
+		}
 
-    if (!Municipio || !Provincia) {
-      fatal(`Empty value on line ${index + 2}`)
-    }
+		const [Municipio, Provincia] = parts
 
-    return { Municipio, Provincia }
-  })
+		if (!Municipio || !Provincia) {
+			fatal(`Empty value on line ${index + 2}`)
+		}
+
+		return { Municipio, Provincia }
+	})
 }
 
 /* ---------------------------------- */
@@ -84,61 +86,55 @@ const provinciasMap = new Map<string, Set<string>>()
 const municipioToProvincia = new Map<string, string>()
 
 for (const { Municipio, Provincia } of rows) {
-  // Deduplicate & validate conflicting mappings
-  const existingProvincia = municipioToProvincia.get(Municipio)
-  if (existingProvincia && existingProvincia !== Provincia) {
-    fatal(
-      `Municipio "${Municipio}" appears under multiple provincias: ` +
-      `"${existingProvincia}" and "${Provincia}"`
-    )
-  }
+	// Deduplicate & validate conflicting mappings
+	const existingProvincia = municipioToProvincia.get(Municipio)
+	if (existingProvincia && existingProvincia !== Provincia) {
+		fatal(
+			`Municipio "${Municipio}" appears under multiple provincias: ` +
+				`"${existingProvincia}" and "${Provincia}"`,
+		)
+	}
 
-  municipioToProvincia.set(Municipio, Provincia)
+	municipioToProvincia.set(Municipio, Provincia)
 
-  if (!provinciasMap.has(Provincia)) {
-    provinciasMap.set(Provincia, new Set())
-  }
+	if (!provinciasMap.has(Provincia)) {
+		provinciasMap.set(Provincia, new Set())
+	}
 
-  provinciasMap.get(Provincia)!.add(Municipio)
+	provinciasMap.get(Provincia)!.add(Municipio)
 }
 
 /* ---------------------------------- */
 /* Sort                               */
 /* ---------------------------------- */
 
-const sortedProvincias = [...provinciasMap.keys()].toSorted((a, b) =>
-  a.localeCompare(b, 'es')
-)
+const sortedProvincias = [...provinciasMap.keys()].toSorted((a, b) => a.localeCompare(b, 'es'))
 
 for (const set of provinciasMap.values()) {
-  const sorted = [...set].toSorted((a, b) => a.localeCompare(b, 'es'))
-  set.clear()
-  sorted.forEach(v => set.add(v))
+	const sorted = [...set].toSorted((a, b) => a.localeCompare(b, 'es'))
+	set.clear()
+	sorted.forEach((v) => set.add(v))
 }
 
 /* ---------------------------------- */
 /* Code Generation                    */
 /* ---------------------------------- */
 
-const provinciaEnum = sortedProvincias
-  .map(p => `  ${normalizeKey(p)}: '${p}',`)
-  .join('\n')
+const provinciaEnum = sortedProvincias.map((p) => `  ${normalizeKey(p)}: '${p}',`).join('\n')
 
 const municipiosPorProvincia = sortedProvincias
-  .map(p => {
-    const key = normalizeKey(p)
-    const municipios = [...provinciasMap.get(p)!]
-      .map(m => `    '${m}',`)
-      .join('\n')
+	.map((p) => {
+		const key = normalizeKey(p)
+		const municipios = [...provinciasMap.get(p)!].map((m) => `    '${m}',`).join('\n')
 
-    return `  [Provincias.${key}]: [\n${municipios}\n  ],`
-  })
-  .join('\n')
+		return `  [Provincias.${key}]: [\n${municipios}\n  ],`
+	})
+	.join('\n')
 
 const provinciaPorMunicipio = [...municipioToProvincia.entries()]
-  .toSorted((a, b) => a[0].localeCompare(b[0], 'es'))
-  .map(([m, p]) => `  ${m.includes(' ') ? `'${m}'` : m}: Provincias.${normalizeKey(p)},`)
-  .join('\n')
+	.toSorted((a, b) => a[0].localeCompare(b[0], 'es'))
+	.map(([m, p]) => `  ${m.includes(' ') ? `'${m}'` : m}: Provincias.${normalizeKey(p)},`)
+	.join('\n')
 
 const generatedHeader = `/* AUTO-GENERATED FILE — DO NOT EDIT*/
 /* Generated by scripts/generate-provincias-municipios.ts*/`
@@ -195,11 +191,17 @@ export function getProvinciaByMunicipio(municipio: Municipio): Provincia {
 `
 
 await Promise.all([
-    Bun.write(path.resolve('src/constants/provincias.constant.ts'), provinciasConst),
-    Bun.write(path.resolve('src/constants/municipios-por-provincia.constant.ts'), municipiosPorProvinciaOutput),
-    Bun.write(path.resolve('src/constants/provincia-por-municipio.constant.ts'), provinciaPorMunicipioOutput),
-    Bun.write(path.resolve('src/types/municipio-provincia.type.ts'), typesOutput),
-    Bun.write(path.resolve('src/utils/municipios-provincias.util.ts'), utilsOutput)
+	Bun.write(path.resolve('src/constants/provincias.constant.ts'), provinciasConst),
+	Bun.write(
+		path.resolve('src/constants/municipios-por-provincia.constant.ts'),
+		municipiosPorProvinciaOutput,
+	),
+	Bun.write(
+		path.resolve('src/constants/provincia-por-municipio.constant.ts'),
+		provinciaPorMunicipioOutput,
+	),
+	Bun.write(path.resolve('src/types/municipio-provincia.type.ts'), typesOutput),
+	Bun.write(path.resolve('src/utils/municipios-provincias.util.ts'), utilsOutput),
 ])
 
-console.log("✅ generated files successfully")
+console.log('✅ generated files successfully')

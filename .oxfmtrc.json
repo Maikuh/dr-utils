@@ -1,19 +1,51 @@
 {
-	"$schema": "./node_modules/oxfmt/configuration_schema.json",
-	"useTabs": true,
-	"tabWidth": 2,
-	"printWidth": 100,
-	"singleQuote": true,
-	"jsxSingleQuote": false,
-	"quoteProps": "as-needed",
-	"trailingComma": "all",
-	"semi": false,
-	"arrowParens": "always",
-	"bracketSameLine": false,
-	"bracketSpacing": true,
-	"sortPackageJson": false,
-	"sortImports": {
-		"newlinesBetween": false
-	},
-	"ignorePatterns": ["lib", "assets", "docs/build", "docs/.docusaurus", "bun.lock", "docs/bun.lock"]
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  "useTabs": true,
+  "tabWidth": 2,
+  "printWidth": 100,
+  "singleQuote": true,
+  "jsxSingleQuote": false,
+  "quoteProps": "as-needed",
+  "trailingComma": "all",
+  "semi": false,
+  "arrowParens": "always",
+  "bracketSameLine": false,
+  "bracketSpacing": true,
+  "sortPackageJson": false,
+  "sortImports": {
+    "newlinesBetween": false
+  },
+  "ignorePatterns": [
+    "lib",
+    "assets",
+    "docs/build",
+    "docs/.docusaurus",
+    "bun.lock",
+    "docs/bun.lock"
+  ],
+  "overrides": [
+    {
+      "files": [
+        "*.json",
+        "**/*.json",
+        "*.jsonc",
+        "**/*.jsonc",
+        "*.yaml",
+        "**/*.yaml",
+        "*.yml",
+        "**/*.yml",
+        "*.md",
+        "**/*.md"
+      ],
+      "options": {
+        "useTabs": false
+      }
+    },
+    {
+      "files": ["*.md", "**/*.md"],
+      "options": {
+        "embeddedLanguageFormatting": "off"
+      }
+    }
+  ]
 }

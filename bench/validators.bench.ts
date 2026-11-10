@@ -13,13 +13,9 @@ const SAMPLE_CEDULAS = cedulas.slice(0, 1000)
 const SAMPLE_RNCS = rncs.slice(0, 1000)
 const SAMPLE_PHONES = phones.slice(0, 1000)
 
-const SAMPLE_NCFS = Array.from({ length: 1000 }, (_, i) =>
-	`B01${String(i + 1).padStart(8, '0')}`,
-)
+const SAMPLE_NCFS = Array.from({ length: 1000 }, (_, i) => `B01${String(i + 1).padStart(8, '0')}`)
 
-const SAMPLE_PLATES = Array.from({ length: 1000 }, (_, i) =>
-	`A${String(i + 1).padStart(6, '0')}`,
-)
+const SAMPLE_PLATES = Array.from({ length: 1000 }, (_, i) => `A${String(i + 1).padStart(6, '0')}`)
 
 function bench(name: string, fn: () => void, iterations = 5): void {
 	// warm-up

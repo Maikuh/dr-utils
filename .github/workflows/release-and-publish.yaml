@@ -3,10 +3,10 @@ name: Release
 on:
   push:
     tags:
-      - "v*"
+      - 'v*'
 
 permissions:
-  id-token: write  # Required for OIDC (NPM)
+  id-token: write # Required for OIDC (NPM)
   contents: write
 
 jobs:
@@ -50,4 +50,3 @@ jobs:
       - name: Publish to NPM (Stable)
         run: bunx npm@latest publish
         if: "!contains(github.ref_name, '-')"
-        

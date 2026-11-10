@@ -12,9 +12,9 @@ Parses a cédula into its component parts.
 
 **Arguments**
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `cedula` | `string` | Raw or dash-formatted cédula |
+| Parameter | Type     | Description                  |
+| --------- | -------- | ---------------------------- |
+| `cedula`  | `string` | Raw or dash-formatted cédula |
 
 **Returns** `ParsedCedula` — `{ municipioCode, sequence, checkDigit, formatted }`.
 
@@ -38,9 +38,9 @@ Parses an RNC (or cédula used as RNC) into its component parts. The `kind` fiel
 
 **Arguments**
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `rnc` | `string` | Raw or dash-formatted RNC or cédula |
+| Parameter | Type     | Description                         |
+| --------- | -------- | ----------------------------------- |
+| `rnc`     | `string` | Raw or dash-formatted RNC or cédula |
 
 **Returns** `ParsedRNC` — includes `kind: 'rnc' | 'cedula'` plus type-specific fields.
 
@@ -62,9 +62,9 @@ Parses an NCF into its component parts, including the fiscal document type name.
 
 **Arguments**
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `ncf` | `string` | Raw NCF string (physical 11-char or electronic 13-char) |
+| Parameter | Type     | Description                                             |
+| --------- | -------- | ------------------------------------------------------- |
+| `ncf`     | `string` | Raw NCF string (physical 11-char or electronic 13-char) |
 
 **Returns** `ParsedNCF` — `{ kind, series, typeCode, typeName, sequence, formatted }`.
 
@@ -90,9 +90,9 @@ Parses a Dominican phone number into its component parts.
 
 **Arguments**
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `number` | `string` | Phone number in any accepted Dominican format |
+| Parameter | Type     | Description                                   |
+| --------- | -------- | --------------------------------------------- |
+| `number`  | `string` | Phone number in any accepted Dominican format |
 
 **Returns** `ParsedPhoneNumber` — `{ areaCode, prefix, line, national, international }`.
 
@@ -111,9 +111,9 @@ Strips all formatting from a Dominican phone number, returning only the 10 digit
 
 **Arguments**
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `number` | `string` | Phone number in any accepted Dominican format |
+| Parameter | Type     | Description                                   |
+| --------- | -------- | --------------------------------------------- |
+| `number`  | `string` | Phone number in any accepted Dominican format |
 
 **Returns** `string` — 10-digit normalized phone number.
 
@@ -131,9 +131,9 @@ Parses a Dominican license plate into its category and sequence.
 
 **Arguments**
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `plate` | `string` | Plate string (case-insensitive) |
+| Parameter | Type     | Description                     |
+| --------- | -------- | ------------------------------- |
+| `plate`   | `string` | Plate string (case-insensitive) |
 
 **Returns** `ParsedPlate` — `{ category, categoryName, sequence, formatted }`.
 

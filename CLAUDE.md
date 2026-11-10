@@ -24,16 +24,16 @@ There is no separate `dev` or `watch` mode — run tests directly with `bun test
 
 **Module layout** — each subdirectory maps to a named package export:
 
-| Source dir | Export path | Contents |
-|---|---|---|
-| `src/validators/` | `dr-utils/validators` | Luhn-based cedula, RNC, NCF regex, phone regex validators |
-| `src/formatters/` | `dr-utils/formatters` | Cedula/RNC dash formatting, phone number formatting |
-| `src/parsers/` | `dr-utils/parsers` | `parseCedula`, `parseRNC`, `parseNCF`, `parsePhoneNumber`, `parsePlate`, `safeParse*` |
-| `src/masks/` | `dr-utils/masks` | `maskCedula`, `maskRNC`, `maskPhoneNumber` |
-| `src/helpers/` | `dr-utils/helpers` | `getMunicipiosByProvincia`, `getProvinciaByMunicipio`, `amountToWords`, ITBIS calculations |
-| `src/constants/` | `dr-utils/constants` | Province list, municipalities-by-province map, phone regex |
-| `src/types/` | `dr-utils/types` | `FormatStyle`, `MunicipioByProvincia` types |
-| `src/index.ts` | `dr-utils` (root) | Re-exports everything above |
+| Source dir        | Export path           | Contents                                                                                   |
+| ----------------- | --------------------- | ------------------------------------------------------------------------------------------ |
+| `src/validators/` | `dr-utils/validators` | Luhn-based cedula, RNC, NCF regex, phone regex validators                                  |
+| `src/formatters/` | `dr-utils/formatters` | Cedula/RNC dash formatting, phone number formatting                                        |
+| `src/parsers/`    | `dr-utils/parsers`    | `parseCedula`, `parseRNC`, `parseNCF`, `parsePhoneNumber`, `parsePlate`, `safeParse*`      |
+| `src/masks/`      | `dr-utils/masks`      | `maskCedula`, `maskRNC`, `maskPhoneNumber`                                                 |
+| `src/helpers/`    | `dr-utils/helpers`    | `getMunicipiosByProvincia`, `getProvinciaByMunicipio`, `amountToWords`, ITBIS calculations |
+| `src/constants/`  | `dr-utils/constants`  | Province list, municipalities-by-province map, phone regex                                 |
+| `src/types/`      | `dr-utils/types`      | `FormatStyle`, `MunicipioByProvincia` types                                                |
+| `src/index.ts`    | `dr-utils` (root)     | Re-exports everything above                                                                |
 
 **Validation note**: Cedula and RNC validation uses the Luhn (mod 10) algorithm. Approximately 0.01% of real cedulas issued by the Dominican government fail this check due to suspected changes in issuance — this is a known, accepted limitation documented in the README.
 

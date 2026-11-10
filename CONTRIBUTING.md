@@ -61,6 +61,7 @@ Before you submit your Pull Request (PR) consider the following guidelines:
 1. Create your patch, **including appropriate test cases**.
 1. Run the full `dr-utils` test suite and ensure that all tests pass.
 1. Commit your changes using a descriptive commit message
+
    ```shell
    git commit -a
    ```
@@ -85,6 +86,7 @@ Before you submit your Pull Request (PR) consider the following guidelines:
     git rebase main -i
     git push -f
     ```
+
 That's it! Thank you for your contribution!
 
 #### After your pull request is merged

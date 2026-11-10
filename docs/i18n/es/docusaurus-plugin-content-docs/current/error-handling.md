@@ -24,23 +24,23 @@ try {
 
 ## Códigos de error
 
-| Código | Lanzado por |
-|---|---|
-| `INVALID_CEDULA` | `parseCedula`, `formatCedula`, `maskCedula` |
-| `INVALID_RNC` | `parseRNC`, `formatRNC`, `maskRNC` |
-| `INVALID_NCF` | `parseNCF`, `formatNCF` |
-| `INVALID_PHONE` | `parsePhoneNumber`, `formatPhoneNumber`, `maskPhoneNumber` |
-| `INVALID_PLATE` | `parsePlate`, `formatPlate` |
-| `FORMAT_CEDULA_FAILED` | `formatCedula` |
-| `FORMAT_RNC_FAILED` | `formatRNC` |
-| `FORMAT_NCF_FAILED` | `formatNCF` |
-| `FORMAT_PHONE_FAILED` | `formatPhoneNumber` |
-| `FORMAT_PLATE_FAILED` | `formatPlate` |
-| `FORMAT_DOP_FAILED` | `formatDOP` (valor no finito) |
-| `ITBIS_NEGATIVE` | `applyItbis`, `removeItbis`, `splitItbis` |
-| `ITBIS_INVALID_AMOUNT` | `applyItbis`, `removeItbis`, `splitItbis` (monto no finito) |
-| `ITBIS_INVALID_RATE` | `applyItbis`, `removeItbis`, `splitItbis` (tasa negativa o no finita) |
-| `AMOUNT_TO_WORDS_OUT_OF_RANGE` | `amountToWords` (negativo, no finito o mayor a 999,999,999.99) |
+| Código                         | Lanzado por                                                           |
+| ------------------------------ | --------------------------------------------------------------------- |
+| `INVALID_CEDULA`               | `parseCedula`, `formatCedula`, `maskCedula`                           |
+| `INVALID_RNC`                  | `parseRNC`, `formatRNC`, `maskRNC`                                    |
+| `INVALID_NCF`                  | `parseNCF`, `formatNCF`                                               |
+| `INVALID_PHONE`                | `parsePhoneNumber`, `formatPhoneNumber`, `maskPhoneNumber`            |
+| `INVALID_PLATE`                | `parsePlate`, `formatPlate`                                           |
+| `FORMAT_CEDULA_FAILED`         | `formatCedula`                                                        |
+| `FORMAT_RNC_FAILED`            | `formatRNC`                                                           |
+| `FORMAT_NCF_FAILED`            | `formatNCF`                                                           |
+| `FORMAT_PHONE_FAILED`          | `formatPhoneNumber`                                                   |
+| `FORMAT_PLATE_FAILED`          | `formatPlate`                                                         |
+| `FORMAT_DOP_FAILED`            | `formatDOP` (valor no finito)                                         |
+| `ITBIS_NEGATIVE`               | `applyItbis`, `removeItbis`, `splitItbis`                             |
+| `ITBIS_INVALID_AMOUNT`         | `applyItbis`, `removeItbis`, `splitItbis` (monto no finito)           |
+| `ITBIS_INVALID_RATE`           | `applyItbis`, `removeItbis`, `splitItbis` (tasa negativa o no finita) |
+| `AMOUNT_TO_WORDS_OUT_OF_RANGE` | `amountToWords` (negativo, no finito o mayor a 999,999,999.99)        |
 
 ## Usar safe parsers para evitar excepciones
 

@@ -23,14 +23,14 @@ bun add dr-utils
 
 Cada módulo es tree-shakeable y está disponible como sub-ruta nombrada:
 
-| Sub-ruta | Contenido |
-|---|---|
-| `dr-utils` | Todo (re-exporta todo lo anterior) |
-| `dr-utils/validators` | `validateCedula`, `validateRNC`, `validateNCF`, `validatePhoneNumber`, `validatePlate` |
-| `dr-utils/formatters` | `formatCedula`, `formatRNC`, `formatNCF`, `formatPhoneNumber`, `formatPlate`, `formatDOP` |
-| `dr-utils/parsers` | `parseCedula`, `parseRNC`, `parseNCF`, `parsePhoneNumber`, `normalizePhoneNumber`, `parsePlate`, `safeParse*` |
-| `dr-utils/masks` | `maskCedula`, `maskRNC`, `maskPhoneNumber` |
-| `dr-utils/helpers` | `getMunicipiosByProvincia`, `getProvinciaByMunicipio`, `amountToWords`, `applyItbis`, `removeItbis`, `splitItbis` |
-| `dr-utils/constants` | `Provincias`, `MunicipiosPorProvincia`, `ITBIS_RATE`, `PLATE_CATEGORIES`, … |
-| `dr-utils/types` | `ParsedCedula`, `ParsedRNC`, `ParsedNCF`, `ParsedPhoneNumber`, `ParsedPlate`, `Result`, … |
-| `dr-utils/errors` | `DrUtilsError`, `DrUtilsErrorCode` |
+| Sub-ruta              | Contenido                                                                                                         |
+| --------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| `dr-utils`            | Todo (re-exporta todo lo anterior)                                                                                |
+| `dr-utils/validators` | `validateCedula`, `validateRNC`, `validateNCF`, `validatePhoneNumber`, `validatePlate`                            |
+| `dr-utils/formatters` | `formatCedula`, `formatRNC`, `formatNCF`, `formatPhoneNumber`, `formatPlate`, `formatDOP`                         |
+| `dr-utils/parsers`    | `parseCedula`, `parseRNC`, `parseNCF`, `parsePhoneNumber`, `normalizePhoneNumber`, `parsePlate`, `safeParse*`     |
+| `dr-utils/masks`      | `maskCedula`, `maskRNC`, `maskPhoneNumber`                                                                        |
+| `dr-utils/helpers`    | `getMunicipiosByProvincia`, `getProvinciaByMunicipio`, `amountToWords`, `applyItbis`, `removeItbis`, `splitItbis` |
+| `dr-utils/constants`  | `Provincias`, `MunicipiosPorProvincia`, `ITBIS_RATE`, `PLATE_CATEGORIES`, …                                       |
+| `dr-utils/types`      | `ParsedCedula`, `ParsedRNC`, `ParsedNCF`, `ParsedPhoneNumber`, `ParsedPlate`, `Result`, …                         |
+| `dr-utils/errors`     | `DrUtilsError`, `DrUtilsErrorCode`                                                                                |
