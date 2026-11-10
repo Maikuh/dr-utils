@@ -141,3 +141,38 @@ formatDOP(1234.5, { symbol: 'none' })  // '1,234.50'
 formatDOP(1234.5, { decimals: 0 })     // 'RD$1,235'
 formatDOP(-1234.5)                     // '-RD$1,234.50'
 ```
+
+## Formato mientras se escribe
+
+`formatCedulaPartial`, `formatRNCPartial` y `formatPhoneNumberPartial` formatean entradas **incompletas**, para usarlas en el `onChange` de un campo de texto. Eliminan lo que no sea dígito, limitan la longitud, agregan separadores en cuanto empieza el siguiente grupo y **nunca lanzan errores ni validan**. Valida al enviar con un [validador](./validators.md) o un [schema](./schemas.md).
+
+| Función                    | Máx. dígitos | Progresión                                                 |
+| -------------------------- | ------------ | ---------------------------------------------------------- |
+| `formatCedulaPartial`      | 11           | `001` → `001-12` → `001-1234567-8`                         |
+| `formatRNCPartial`         | 11           | `130-72075-4` hasta 9 dígitos, formato de cédula con 10–11 |
+| `formatPhoneNumberPartial` | 10           | `(809` → `(809) 555` → `(809) 555-1234`; ignora `+1`       |
+
+**Ejemplo**
+
+```tsx
+import { useState } from 'react'
+import { formatCedulaPartial } from 'dr-utils/formatters'
+
+function CedulaInput() {
+	const [value, setValue] = useState('')
+	return (
+		<input
+			inputMode="numeric"
+			value={value}
+			onChange={(e) => setValue(formatCedulaPartial(e.target.value))}
+			placeholder="000-0000000-0"
+		/>
+	)
+}
+```
+
+```ts
+formatCedulaPartial('0011234')          // '001-1234'
+formatRNCPartial('130720754')           // '130-72075-4'
+formatPhoneNumberPartial('+1 809 55')   // '(809) 55'
+```

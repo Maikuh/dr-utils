@@ -30,7 +30,7 @@ validateCedula('12345678901')   // false
 
 ## `validateRNC`
 
-Validates a Dominican RNC (Registro Nacional del Contribuyente) using the Luhn algorithm. Also accepts 11-digit cédulas as valid RNCs.
+Validates a Dominican RNC (Registro Nacional del Contribuyente) with DGII's mod-11 check digit. 11-digit inputs are validated as cédulas (Luhn). Dashes and surrounding whitespace are allowed; any other non-digit character makes the RNC invalid.
 
 **Arguments**
 
@@ -47,6 +47,7 @@ import { validateRNC } from 'dr-utils'
 
 validateRNC('130500292')    // true
 validateRNC('130-50029-2') // true (dashes accepted)
+validateRNC('130500292x')  // false (other characters are rejected)
 ```
 
 ## `validateNCF`

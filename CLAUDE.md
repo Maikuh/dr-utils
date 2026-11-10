@@ -24,20 +24,21 @@ There is no separate `dev` or `watch` mode — run tests directly with `bun test
 
 **Module layout** — each subdirectory maps to a named package export:
 
-| Source dir        | Export path           | Contents                                                                                   |
-| ----------------- | --------------------- | ------------------------------------------------------------------------------------------ |
-| `src/validators/` | `dr-utils/validators` | Luhn-based cedula, RNC, NCF regex, phone regex validators                                  |
-| `src/formatters/` | `dr-utils/formatters` | Cedula/RNC dash formatting, phone number formatting                                        |
-| `src/parsers/`    | `dr-utils/parsers`    | `parseCedula`, `parseRNC`, `parseNCF`, `parsePhoneNumber`, `parsePlate`, `safeParse*`      |
-| `src/masks/`      | `dr-utils/masks`      | `maskCedula`, `maskRNC`, `maskPhoneNumber`                                                 |
-| `src/helpers/`    | `dr-utils/helpers`    | `getMunicipiosByProvincia`, `getProvinciaByMunicipio`, `amountToWords`, ITBIS calculations |
-| `src/constants/`  | `dr-utils/constants`  | Province list, municipalities-by-province map, phone regex                                 |
-| `src/types/`      | `dr-utils/types`      | `FormatStyle`, `MunicipioByProvincia` types                                                |
-| `src/index.ts`    | `dr-utils` (root)     | Re-exports everything above                                                                |
+| Source dir        | Export path           | Contents                                                                                                                 |
+| ----------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| `src/validators/` | `dr-utils/validators` | Luhn-based cedula, RNC, NCF regex, phone regex validators                                                                |
+| `src/formatters/` | `dr-utils/formatters` | Cedula/RNC/NCF/phone/plate/DOP formatting, as-you-type `format*Partial`                                                  |
+| `src/schemas/`    | `dr-utils/schemas`    | Standard Schema factories (`cedulaSchema`, …) built on the validators; spec types in `src/types/standard-schema.type.ts` |
+| `src/parsers/`    | `dr-utils/parsers`    | `parseCedula`, `parseRNC`, `parseNCF`, `parsePhoneNumber`, `parsePlate`, `safeParse*`                                    |
+| `src/masks/`      | `dr-utils/masks`      | `maskCedula`, `maskRNC`, `maskPhoneNumber`                                                                               |
+| `src/helpers/`    | `dr-utils/helpers`    | Province/municipio lookup + ISO codes, `amountToWords`, ITBIS, payroll (TSS/ISR)                                         |
+| `src/constants/`  | `dr-utils/constants`  | Provinces, municipios, ISO codes, ITBIS rate, TSS rates/minimum wage, ISR scale                                          |
+| `src/types/`      | `dr-utils/types`      | `FormatStyle`, `MunicipioByProvincia` types                                                                              |
+| `src/index.ts`    | `dr-utils` (root)     | Re-exports everything above                                                                                              |
 
 **Validation note**: Cedula and RNC validation uses the Luhn (mod 10) algorithm. Approximately 0.01% of real cedulas issued by the Dominican government fail this check due to suspected changes in issuance — this is a known, accepted limitation documented in the README.
 
-**Data generation**: `scripts/generate-rnc-cedulas.ts` and `scripts/generate-provincias-municipios.ts` download official DGII data and write it into `src/constants/`. Run these when upstream government data changes.
+**Data generation**: `scripts/generate-rnc-cedulas.ts` and `scripts/generate-provincias-municipios.ts` download official DGII data and write it into `src/constants/`. Run these when upstream government data changes. `TSS_MINIMUM_WAGE` and `ISR_SCALE_2026` in `src/constants/payroll.constant.ts` are hand-maintained and change yearly (Ley 30-26 sets a new ISR scale from 2027).
 
 **Build**: `tsdown` bundles the library. `tsconfig.build.json` extends `tsconfig.json`, excludes test files, and enables `isolatedDeclarations`, so `.d.ts` files are emitted by oxc (fast, independent of the TypeScript version). Exported values need inferable or explicit types (e.g. `: RegExp`, `as const` literals with plain keys); `bun run build` fails otherwise. TypeScript 7 (`tsc`) is only used for type-checking.
 
