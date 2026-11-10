@@ -27,7 +27,7 @@ export function maskCedula(cedula: string): string {
  * @throws {DrUtilsError} if `rnc` is not a valid RNC or Cedula
  */
 export function maskRNC(rnc: string): string {
-	const digits = rnc.replace(/\D/g, '')
+	const digits = stripDashes(rnc)
 	if (!validateRNC(digits))
 		throw new DrUtilsError('INVALID_RNC', `"${rnc}" is not a valid RNC or cedula.`)
 	if (digits.length === 11) return maskCedula(digits)
