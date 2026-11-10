@@ -24,23 +24,25 @@ try {
 
 ## Error codes
 
-| Code                           | Thrown by                                                               |
-| ------------------------------ | ----------------------------------------------------------------------- |
-| `INVALID_CEDULA`               | `parseCedula`, `formatCedula`, `maskCedula`                             |
-| `INVALID_RNC`                  | `parseRNC`, `formatRNC`, `maskRNC`                                      |
-| `INVALID_NCF`                  | `parseNCF`, `formatNCF`                                                 |
-| `INVALID_PHONE`                | `parsePhoneNumber`, `formatPhoneNumber`, `maskPhoneNumber`              |
-| `INVALID_PLATE`                | `parsePlate`, `formatPlate`                                             |
-| `FORMAT_CEDULA_FAILED`         | `formatCedula`                                                          |
-| `FORMAT_RNC_FAILED`            | `formatRNC`                                                             |
-| `FORMAT_NCF_FAILED`            | `formatNCF`                                                             |
-| `FORMAT_PHONE_FAILED`          | `formatPhoneNumber`                                                     |
-| `FORMAT_PLATE_FAILED`          | `formatPlate`                                                           |
-| `FORMAT_DOP_FAILED`            | `formatDOP` (non-finite value)                                          |
-| `ITBIS_NEGATIVE`               | `applyItbis`, `removeItbis`, `splitItbis`                               |
-| `ITBIS_INVALID_AMOUNT`         | `applyItbis`, `removeItbis`, `splitItbis` (non-finite amount)           |
-| `ITBIS_INVALID_RATE`           | `applyItbis`, `removeItbis`, `splitItbis` (negative or non-finite rate) |
-| `AMOUNT_TO_WORDS_OUT_OF_RANGE` | `amountToWords` (negative, non-finite, or over 999,999,999.99)          |
+| Code                           | Thrown by                                                                               |
+| ------------------------------ | --------------------------------------------------------------------------------------- |
+| `INVALID_CEDULA`               | `parseCedula`, `formatCedula`, `maskCedula`                                             |
+| `INVALID_RNC`                  | `parseRNC`, `formatRNC`, `maskRNC`                                                      |
+| `INVALID_NCF`                  | `parseNCF`, `formatNCF`                                                                 |
+| `INVALID_PHONE`                | `parsePhoneNumber`, `formatPhoneNumber`, `maskPhoneNumber`                              |
+| `INVALID_PLATE`                | `parsePlate`, `formatPlate`                                                             |
+| `FORMAT_CEDULA_FAILED`         | `formatCedula`                                                                          |
+| `FORMAT_RNC_FAILED`            | `formatRNC`                                                                             |
+| `FORMAT_NCF_FAILED`            | `formatNCF`                                                                             |
+| `FORMAT_PHONE_FAILED`          | `formatPhoneNumber`                                                                     |
+| `FORMAT_PLATE_FAILED`          | `formatPlate`                                                                           |
+| `FORMAT_DOP_FAILED`            | `formatDOP` (non-finite value)                                                          |
+| `ITBIS_NEGATIVE`               | `applyItbis`, `removeItbis`, `splitItbis`                                               |
+| `ITBIS_INVALID_AMOUNT`         | `applyItbis`, `removeItbis`, `splitItbis` (non-finite amount)                           |
+| `ITBIS_INVALID_RATE`           | `applyItbis`, `removeItbis`, `splitItbis` (negative or non-finite rate)                 |
+| `AMOUNT_TO_WORDS_OUT_OF_RANGE` | `amountToWords` (negative, non-finite, or over 999,999,999.99)                          |
+| `PAYROLL_INVALID_AMOUNT`       | `calculateTSS`, `calculateISR`, `calculateNetSalary` (negative or non-finite amount)    |
+| `PAYROLL_INVALID_OPTION`       | `calculateTSS`, `calculateNetSalary` (negative or non-finite `minimumWage` / `srlRate`) |
 
 ## Using safe parsers to avoid throws
 
