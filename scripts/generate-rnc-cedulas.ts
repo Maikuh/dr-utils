@@ -14,7 +14,7 @@ await Bun.write(zipPath, response)
 console.log('Extracting ZIP...')
 await extractZip(zipPath, { dir: path.resolve('.') })
 
-Bun.file(zipPath).delete()
+await Bun.file(zipPath).delete()
 
 let rawTxt = ''
 

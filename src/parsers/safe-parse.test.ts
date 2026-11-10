@@ -16,13 +16,13 @@ describe('safeParseCedula', () => {
 	it('includes branded raw field on success', () => {
 		const result = safeParseCedula('402-2057991-2')
 		expect(result.ok).toBe(true)
-		if (result.ok) expect(result.value.raw).toBe('40220579912')
+		if (result.ok) expect<string>(result.value.raw).toBe('40220579912')
 	})
 
 	it('normalizes raw when input has surrounding whitespace', () => {
 		const result = safeParseCedula(' 402-2057991-2 ')
 		expect(result.ok).toBe(true)
-		if (result.ok) expect(result.value.raw).toBe('40220579912')
+		if (result.ok) expect<string>(result.value.raw).toBe('40220579912')
 	})
 
 	it('returns ok:false for an invalid cedula (no throw)', () => {
@@ -41,7 +41,7 @@ describe('safeParseRNC', () => {
 	it('includes branded raw field on success', () => {
 		const result = safeParseRNC('130-72075-4')
 		expect(result.ok).toBe(true)
-		if (result.ok) expect(result.value.raw).toBe('130720754')
+		if (result.ok) expect<string>(result.value.raw).toBe('130720754')
 	})
 
 	it('returns ok:false for an invalid RNC (no throw)', () => {
@@ -60,7 +60,7 @@ describe('safeParseNCF', () => {
 	it('includes branded raw field on success', () => {
 		const result = safeParseNCF('B0183920391')
 		expect(result.ok).toBe(true)
-		if (result.ok) expect(result.value.raw).toBe('B0183920391')
+		if (result.ok) expect<string>(result.value.raw).toBe('B0183920391')
 	})
 
 	it('returns ok:false for an invalid NCF (no throw)', () => {
@@ -79,7 +79,7 @@ describe('safeParsePhoneNumber', () => {
 	it('includes branded raw field (10-digit normalized) on success', () => {
 		const result = safeParsePhoneNumber('(809) 220-1111')
 		expect(result.ok).toBe(true)
-		if (result.ok) expect(result.value.raw).toBe('8092201111')
+		if (result.ok) expect<string>(result.value.raw).toBe('8092201111')
 	})
 
 	it('returns ok:false for a non-DR number (no throw)', () => {
@@ -101,7 +101,7 @@ describe('safeParsePlate', () => {
 	it('includes branded raw field (uppercase normalized) on success', () => {
 		const result = safeParsePlate('a123456')
 		expect(result.ok).toBe(true)
-		if (result.ok) expect(result.value.raw).toBe('A123456')
+		if (result.ok) expect<string>(result.value.raw).toBe('A123456')
 	})
 
 	it('returns ok:false for an invalid plate (no throw)', () => {

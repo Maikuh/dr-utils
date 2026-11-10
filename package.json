@@ -21,6 +21,7 @@
     "postversion": "git push --follow-tags",
     "prebuild": "rimraf lib && tsc --noEmit -p tsconfig.build.json",
     "build": "tsdown",
+    "typecheck": "tsc --noEmit",
     "format": "biome format --write",
     "lint": "biome lint --write",
     "biome": "biome check --write",

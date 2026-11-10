@@ -37,7 +37,7 @@ describe('parsePlate', () => {
 		['NZ1234', 'NZ', 'Exonerada'],
 	])('parsePlate("%s") → category "%s" (%s)', (plate, category, categoryName) => {
 		const result = parsePlate(plate)
-		expect(result.category).toBe(category)
+		expect<string>(result.category).toBe(category)
 		expect(result.categoryName).toBe(categoryName)
 	})
 

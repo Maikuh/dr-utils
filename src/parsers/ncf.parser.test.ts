@@ -31,7 +31,7 @@ describe('parseNCF', () => {
 		const ncf =
 			code.startsWith('3') || code.startsWith('4') ? `E${code}1234567890` : `B${code}12345678`
 		const result = parseNCF(ncf)
-		expect(result.typeCode).toBe(code)
+		expect<string>(result.typeCode).toBe(code)
 		expect(result.typeName).toBe(name)
 	})
 
