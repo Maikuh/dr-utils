@@ -10,5 +10,5 @@ import {
 export function validatePhoneNumber(phoneNumber: string): boolean {
 	const stripped = phoneNumber.replace(PHONE_NUMBER_EXTRACT_REGEX, '')
 
-	return stripped.match(PHONE_NUMBER_VALID_REGEX) !== null
+	return PHONE_NUMBER_VALID_REGEX.test(stripped)
 }

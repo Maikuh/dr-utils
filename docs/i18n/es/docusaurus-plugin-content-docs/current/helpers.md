@@ -70,6 +70,7 @@ import { amountToWords } from 'dr-utils'
 amountToWords(1234.56)                      // 'mil doscientos treinta y cuatro pesos con 56 centavos'
 amountToWords(1, { currency: 'dolares' })   // 'un dólar'
 amountToWords(1234, { currency: 'none' })   // 'mil doscientos treinta y cuatro'
+amountToWords(1_000_000)                    // 'un millón de pesos'
 ```
 
 ---
@@ -127,3 +128,5 @@ removeItbis(118)      // 100   — extrae el neto de un total bruto
 splitItbis(118)       // { net: 100, tax: 18, total: 118 }
 applyItbis(100, 0.16) // 116   — tasa personalizada
 ```
+
+Las tres lanzan `DrUtilsError` si el monto es negativo (`ITBIS_NEGATIVE`), no finito (`ITBIS_INVALID_AMOUNT`), o si la tasa es negativa o no finita (`ITBIS_INVALID_RATE`).

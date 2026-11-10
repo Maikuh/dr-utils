@@ -126,7 +126,9 @@ Formats a number as a Dominican Peso (DOP) currency string.
 | `options.symbol` | `'RD$' \| '$' \| 'none'` | `'RD$'` | Currency symbol prefix |
 | `options.decimals` | `number` | `2` | Number of decimal places |
 
-**Returns** `string` — formatted currency string.
+**Returns** `string` — formatted currency string. Negative amounts put the sign before the symbol (`'-RD$1,234.50'`).
+
+**Throws** `DrUtilsError` (`FORMAT_DOP_FAILED`) if `value` is `NaN` or `Infinity`.
 
 **Example**
 
@@ -137,4 +139,5 @@ formatDOP(1234.5)                      // 'RD$1,234.50'
 formatDOP(1234.5, { symbol: '$' })     // '$1,234.50'
 formatDOP(1234.5, { symbol: 'none' })  // '1,234.50'
 formatDOP(1234.5, { decimals: 0 })     // 'RD$1,235'
+formatDOP(-1234.5)                     // '-RD$1,234.50'
 ```

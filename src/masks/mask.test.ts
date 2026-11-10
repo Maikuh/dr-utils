@@ -7,6 +7,7 @@ describe('maskCedula', () => {
 
 	it('accepts dashes in input', () => {
 		expect(maskCedula('402-2057991-2')).toBe('402-*******-2')
+		expect(maskCedula(' 402-2057991-2 ')).toBe('402-*******-2')
 	})
 
 	it('throws on invalid cedula', () => {

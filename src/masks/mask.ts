@@ -3,6 +3,7 @@ import {
 	PHONE_NUMBER_VALID_REGEX,
 } from '@/constants/phone-number.regex'
 import { DrUtilsError } from '@/errors/dr-utils-error'
+import { stripDashes } from '@/internal/normalize'
 import { validateCedula } from '@/validators/cedula.validator'
 import { validateRNC } from '@/validators/rnc.validator'
 
@@ -13,7 +14,7 @@ import { validateRNC } from '@/validators/rnc.validator'
  * @throws {DrUtilsError} if `cedula` is not a valid cedula
  */
 export function maskCedula(cedula: string): string {
-	const digits = cedula.replace(/-/g, '')
+	const digits = stripDashes(cedula)
 	if (!validateCedula(digits))
 		throw new DrUtilsError('INVALID_CEDULA', `"${cedula}" is not a valid cedula.`)
 	return `${digits.slice(0, 3)}-${'*'.repeat(7)}-${digits.slice(10)}`

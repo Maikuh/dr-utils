@@ -1,3 +1,4 @@
+import { DrUtilsError } from '@/errors/dr-utils-error'
 import { formatDOP } from './currency.formatter'
 
 describe('formatDOP', () => {
@@ -10,6 +11,10 @@ describe('formatDOP', () => {
 		[1234.5, { decimals: 0 }, 'RD$1,235'],
 		[1234.5, { decimals: 3 }, 'RD$1,234.500'],
 		[0.5, {}, 'RD$0.50'],
+		[-1234.5, {}, '-RD$1,234.50'],
+		[-1234.5, { symbol: 'none' }, '-1,234.50'],
+		[-0.001, {}, 'RD$0.00'],
+		[-0, {}, 'RD$0.00'],
 	] as const)('formatDOP(%s, %o) → "%s"', (value, options, expected) => {
 		expect(formatDOP(value, options)).toBe(expected)
 	})
@@ -20,5 +25,14 @@ describe('formatDOP', () => {
 
 	it('formats large amounts with thousands separators', () => {
 		expect(formatDOP(1234567.89)).toBe('RD$1,234,567.89')
+	})
+
+	it.each([NaN, Infinity, -Infinity])('throws FORMAT_DOP_FAILED for %p', (value) => {
+		expect(() => formatDOP(value)).toThrow(DrUtilsError)
+		try {
+			formatDOP(value)
+		} catch (e) {
+			expect((e as DrUtilsError).code).toBe('FORMAT_DOP_FAILED')
+		}
 	})
 })

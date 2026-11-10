@@ -126,7 +126,9 @@ Formatea un número como cadena de moneda en Pesos Dominicanos (DOP).
 | `options.symbol` | `'RD$' \| '$' \| 'none'` | `'RD$'` | Prefijo del símbolo de moneda |
 | `options.decimals` | `number` | `2` | Número de decimales |
 
-**Retorna** `string` — cadena de moneda formateada.
+**Retorna** `string` — cadena de moneda formateada. Los montos negativos llevan el signo antes del símbolo (`'-RD$1,234.50'`).
+
+**Lanza** `DrUtilsError` (`FORMAT_DOP_FAILED`) si `value` es `NaN` o `Infinity`.
 
 **Ejemplo**
 
@@ -137,4 +139,5 @@ formatDOP(1234.5)                      // 'RD$1,234.50'
 formatDOP(1234.5, { symbol: '$' })     // '$1,234.50'
 formatDOP(1234.5, { symbol: 'none' })  // '1,234.50'
 formatDOP(1234.5, { decimals: 0 })     // 'RD$1,235'
+formatDOP(-1234.5)                     // '-RD$1,234.50'
 ```

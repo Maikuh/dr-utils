@@ -1,5 +1,6 @@
 import { DrUtilsError } from '@/errors/dr-utils-error'
 import { formatCedula } from '@/formatters/cedula.formatter'
+import { stripDashes } from '@/internal/normalize'
 import { ParsedCedula } from '@/types/parsed-cedula.type'
 import { validateCedula } from '@/validators/cedula.validator'
 
@@ -10,7 +11,7 @@ import { validateCedula } from '@/validators/cedula.validator'
  * @throws {DrUtilsError} if `cedula` is not a valid cedula
  */
 export function parseCedula(cedula: string): ParsedCedula {
-	const digits = cedula.replace(/-/g, '')
+	const digits = stripDashes(cedula)
 	if (!validateCedula(digits))
 		throw new DrUtilsError('INVALID_CEDULA', `"${cedula}" is not a valid cedula.`)
 	return {

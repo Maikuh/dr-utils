@@ -76,3 +76,29 @@ describe('splitItbis', () => {
 		expect(() => splitItbis(-1)).toThrow(DrUtilsError)
 	})
 })
+
+describe('ITBIS input validation', () => {
+	const fns = [applyItbis, removeItbis, splitItbis] as const
+
+	it.each([NaN, Infinity])('rejects non-finite amount %p with ITBIS_INVALID_AMOUNT', (amount) => {
+		for (const fn of fns) {
+			expect(() => fn(amount)).toThrow(DrUtilsError)
+			try {
+				fn(amount)
+			} catch (e) {
+				expect((e as DrUtilsError).code).toBe('ITBIS_INVALID_AMOUNT')
+			}
+		}
+	})
+
+	it.each([-0.18, -2, NaN, Infinity])('rejects invalid rate %p with ITBIS_INVALID_RATE', (rate) => {
+		for (const fn of fns) {
+			expect(() => fn(100, rate)).toThrow(DrUtilsError)
+			try {
+				fn(100, rate)
+			} catch (e) {
+				expect((e as DrUtilsError).code).toBe('ITBIS_INVALID_RATE')
+			}
+		}
+	})
+})
