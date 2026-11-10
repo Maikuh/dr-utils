@@ -39,6 +39,6 @@ There is no separate `dev` or `watch` mode — run tests directly with `bun test
 
 **Data generation**: `scripts/generate-rnc-cedulas.ts` and `scripts/generate-provincias-municipios.ts` download official DGII data and write it into `src/constants/`. Run these when upstream government data changes.
 
-**Build**: `tsdown` bundles the library. `tsconfig.build.json` extends `tsconfig.json` but excludes test files so they don't end up in the published package.
+**Build**: `tsdown` bundles the library. `tsconfig.build.json` extends `tsconfig.json`, excludes test files, and enables `isolatedDeclarations`, so `.d.ts` files are emitted by oxc (fast, independent of the TypeScript version). Exported values need inferable or explicit types (e.g. `: RegExp`, `as const` literals with plain keys); `bun run build` fails otherwise. TypeScript 7 (`tsc`) is only used for type-checking.
 
 **Linting/formatting**: Oxlint (config `.oxlintrc.json`, type-aware rules and type-check enabled; needs `oxlint-tsgolint`) and Oxfmt (config `.oxfmtrc.json`, also formats Markdown/YAML/JSON). The `preversion` and `prepublishOnly` hooks enforce lint before version bumps or publishing. CI (`.github/workflows/ci.yaml`) runs format check, lint, typecheck, tests and build on every push/PR.
