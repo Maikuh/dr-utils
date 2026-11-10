@@ -19,6 +19,12 @@ describe('safeParseCedula', () => {
 		if (result.ok) expect(result.value.raw).toBe('40220579912')
 	})
 
+	it('normalizes raw when input has surrounding whitespace', () => {
+		const result = safeParseCedula(' 402-2057991-2 ')
+		expect(result.ok).toBe(true)
+		if (result.ok) expect(result.value.raw).toBe('40220579912')
+	})
+
 	it('returns ok:false for an invalid cedula (no throw)', () => {
 		const result = safeParseCedula('12345678901')
 		expect(result.ok).toBe(false)

@@ -33,4 +33,8 @@ describe('Cedula Formatter', () => {
 			expect((e as DrUtilsError).code).toBe('FORMAT_CEDULA_FAILED')
 		}
 	})
+
+	it('trims surrounding whitespace', () => {
+		expect(formatCedula(' 40220579912 ')).toBe('402-2057991-2')
+	})
 })

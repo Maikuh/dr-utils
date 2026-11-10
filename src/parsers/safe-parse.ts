@@ -1,3 +1,4 @@
+import { stripDashes } from '@/internal/normalize'
 import { Cedula, NCF, PhoneNumber, Plate, RNC } from '@/types/branded.type'
 import { ParsedCedula } from '@/types/parsed-cedula.type'
 import { ParsedNCF } from '@/types/parsed-ncf.type'
@@ -20,7 +21,7 @@ import { parseRNC } from './rnc.parser'
 export function safeParseCedula(input: string): Result<ParsedCedula & { raw: Cedula }> {
 	try {
 		const value = parseCedula(input)
-		const raw = input.replace(/-/g, '') as Cedula
+		const raw = stripDashes(input) as Cedula
 		return { ok: true, value: { ...value, raw } }
 	} catch (e) {
 		return { ok: false, error: (e as Error).message }

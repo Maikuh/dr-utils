@@ -1,4 +1,5 @@
 import { DrUtilsError } from '@/errors/dr-utils-error'
+import { stripDashes } from '@/internal/normalize'
 import { FormatOptions } from '@/types/format-style.type'
 
 /**
@@ -9,9 +10,9 @@ import { FormatOptions } from '@/types/format-style.type'
  */
 export function formatCedula(cedula: string, options: FormatOptions = {}): string {
 	const { dashes = true } = options
-	const digits = cedula.replace(/-/g, '')
+	const digits = stripDashes(cedula)
 
-	if (digits.length !== 11 || !/^\d{11}$/.test(digits)) {
+	if (!/^\d{11}$/.test(digits)) {
 		throw new DrUtilsError(
 			'FORMAT_CEDULA_FAILED',
 			`Cannot format cedula "${cedula}": must be 11 digits.`,

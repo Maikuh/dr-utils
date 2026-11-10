@@ -28,11 +28,19 @@ describe('Cedula Validator', () => {
 		['4021309421', 'too short'],
 		['402135792110', 'too long'],
 		['0000000000A', 'non-numeric'],
+		['00000000000', 'all zeros'],
+		['000-0000000-0', 'all zeros with dashes'],
+		['402 2057991 2', 'inner spaces'],
+		['402.2057991.2', 'dots'],
 	])('Known invalid cedula "%s" (%s) should fail', (cedula) => {
 		expect(validateCedula(cedula)).toBe(false)
 	})
 
 	it('accepts dashes and strips them before validating', () => {
 		expect(validateCedula('402-2057991-2')).toBe(true)
+	})
+
+	it('trims surrounding whitespace', () => {
+		expect(validateCedula('  402-2057991-2\n')).toBe(true)
 	})
 })

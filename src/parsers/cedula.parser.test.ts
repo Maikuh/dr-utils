@@ -32,4 +32,8 @@ describe('parseCedula', () => {
 			expect((e as DrUtilsError).code).toBe('INVALID_CEDULA')
 		}
 	})
+
+	it('accepts surrounding whitespace', () => {
+		expect(parseCedula(' 402-2057991-2 ').formatted).toBe('402-2057991-2')
+	})
 })

@@ -1,4 +1,5 @@
 import { DrUtilsError } from '@/errors/dr-utils-error'
+import { stripDashes } from '@/internal/normalize'
 import { FormatOptions } from '@/types/format-style.type'
 import { formatCedula } from './cedula.formatter'
 
@@ -9,11 +10,11 @@ import { formatCedula } from './cedula.formatter'
  * @throws {DrUtilsError} if `rnc` is not 9 or 11 digits after stripping dashes
  */
 export function formatRNC(rnc: string, options: FormatOptions = {}): string {
-	const digits = rnc.replace(/-/g, '')
+	const digits = stripDashes(rnc)
 
 	if (digits.length === 11) return formatCedula(digits, options)
 
-	if (digits.length !== 9 || !/^\d{9}$/.test(digits)) {
+	if (!/^\d{9}$/.test(digits)) {
 		throw new DrUtilsError(
 			'FORMAT_RNC_FAILED',
 			`Cannot format RNC "${rnc}": must be 9 or 11 digits.`,

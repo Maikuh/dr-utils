@@ -27,8 +27,18 @@ describe('amountToWords', () => {
 		[2000, {}, 'dos mil pesos'],
 		[10000, {}, 'diez mil pesos'],
 		[100000, {}, 'cien mil pesos'],
-		[1000000, {}, 'un millón pesos'],
-		[2000000, {}, 'dos millones pesos'],
+		[1000000, {}, 'un millón de pesos'],
+		[2000000, {}, 'dos millones de pesos'],
+		[1000001, {}, 'un millón un pesos'],
+		[1500000, {}, 'un millón quinientos mil pesos'],
+		[2.999, {}, 'tres pesos'],
+		[0.996, {}, 'un peso'],
+		[0.994, {}, 'cero pesos con 99 centavos'],
+		[
+			999_999_999.99,
+			{},
+			'novecientos noventa y nueve millones novecientos noventa y nueve mil novecientos noventa y nueve pesos con 99 centavos',
+		],
 		[1234.56, {}, 'mil doscientos treinta y cuatro pesos con 56 centavos'],
 		[0.5, {}, 'cero pesos con 50 centavos'],
 		[1.01, {}, 'un peso con 01 centavo'],
@@ -39,10 +49,12 @@ describe('amountToWords', () => {
 	it('supports currency: dolares', () => {
 		expect(amountToWords(1, { currency: 'dolares' })).toBe('un dólar')
 		expect(amountToWords(2, { currency: 'dolares' })).toBe('dos dólares')
+		expect(amountToWords(3_000_000, { currency: 'dolares' })).toBe('tres millones de dólares')
 	})
 
 	it('supports currency: none', () => {
 		expect(amountToWords(1, { currency: 'none' })).toBe('un')
+		expect(amountToWords(1_000_000, { currency: 'none' })).toBe('un millón')
 		expect(amountToWords(1234.56, { currency: 'none' })).toBe(
 			'mil doscientos treinta y cuatro con 56 centavos',
 		)
@@ -62,5 +74,9 @@ describe('amountToWords', () => {
 
 	it('throws DrUtilsError for values over 999,999,999.99', () => {
 		expect(() => amountToWords(1_000_000_000)).toThrow(DrUtilsError)
+	})
+
+	it.each([NaN, Infinity, -Infinity])('throws DrUtilsError for non-finite value %p', (value) => {
+		expect(() => amountToWords(value)).toThrow(DrUtilsError)
 	})
 })

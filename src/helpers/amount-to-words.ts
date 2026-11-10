@@ -75,7 +75,8 @@ function convertUpTo99(n: number): string {
 function convertGroup(n: number): string {
 	const hundreds = Math.floor(n / 100)
 	const remainder = n % 100
-	const centuryPart = hundreds === 0 ? '' : hundreds === 1 && remainder > 0 ? 'ciento' : CENTENAS[hundreds]!
+	const centuryPart =
+		hundreds === 0 ? '' : hundreds === 1 && remainder > 0 ? 'ciento' : CENTENAS[hundreds]!
 	return [centuryPart, convertUpTo99(remainder)].filter(Boolean).join(' ')
 }
 
@@ -112,29 +113,33 @@ export interface AmountToWordsOptions {
  * @param value {number} the amount to convert (0–999,999,999.99)
  * @param options {AmountToWordsOptions} controls currency suffix. Defaults to `{ currency: 'pesos' }`.
  * @returns {string} e.g. `"mil doscientos treinta y cuatro pesos con 56 centavos"`
- * @throws {DrUtilsError} if `value` is negative or exceeds 999,999,999.99
+ * @throws {DrUtilsError} if `value` is not a finite number, is negative, or exceeds 999,999,999.99
  */
 export function amountToWords(value: number, options: AmountToWordsOptions = {}): string {
 	const { currency = 'pesos' } = options
 
-	if (value < 0 || value > 999_999_999.99) {
+	if (!Number.isFinite(value) || value < 0 || value > 999_999_999.99) {
 		throw new DrUtilsError(
 			'AMOUNT_TO_WORDS_OUT_OF_RANGE',
 			`Value ${value} is out of range (0–999,999,999.99).`,
 		)
 	}
 
-	const intPart = Math.floor(value)
-	const centsPart = Math.round((value - intPart) * 100)
+	// Round to whole cents first so e.g. 2.999 becomes 3 pesos, not "2 pesos con 100 centavos"
+	const totalCents = Math.round(value * 100)
+	const intPart = Math.floor(totalCents / 100)
+	const centsPart = totalCents % 100
 
 	let result = convertInteger(intPart)
 
 	if (currency !== 'none') {
 		const isPlural = intPart !== 1
+		// Exact millions take "de": "un millón de pesos", "dos millones de dólares"
+		const de = intPart > 0 && intPart % 1_000_000 === 0 ? ' de' : ''
 		if (currency === 'pesos') {
-			result += isPlural ? ' pesos' : ' peso'
+			result += `${de}${isPlural ? ' pesos' : ' peso'}`
 		} else {
-			result += isPlural ? ' dólares' : ' dólar'
+			result += `${de}${isPlural ? ' dólares' : ' dólar'}`
 		}
 	}
 

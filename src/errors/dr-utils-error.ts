@@ -9,7 +9,10 @@ export type DrUtilsErrorCode =
 	| 'FORMAT_NCF_FAILED'
 	| 'FORMAT_PHONE_FAILED'
 	| 'FORMAT_PLATE_FAILED'
+	| 'FORMAT_DOP_FAILED'
 	| 'ITBIS_NEGATIVE'
+	| 'ITBIS_INVALID_AMOUNT'
+	| 'ITBIS_INVALID_RATE'
 	| 'AMOUNT_TO_WORDS_OUT_OF_RANGE'
 
 export class DrUtilsError extends Error {

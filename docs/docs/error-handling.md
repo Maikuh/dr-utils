@@ -36,8 +36,11 @@ try {
 | `FORMAT_NCF_FAILED` | `formatNCF` |
 | `FORMAT_PHONE_FAILED` | `formatPhoneNumber` |
 | `FORMAT_PLATE_FAILED` | `formatPlate` |
+| `FORMAT_DOP_FAILED` | `formatDOP` (non-finite value) |
 | `ITBIS_NEGATIVE` | `applyItbis`, `removeItbis`, `splitItbis` |
-| `AMOUNT_TO_WORDS_OUT_OF_RANGE` | `amountToWords` |
+| `ITBIS_INVALID_AMOUNT` | `applyItbis`, `removeItbis`, `splitItbis` (non-finite amount) |
+| `ITBIS_INVALID_RATE` | `applyItbis`, `removeItbis`, `splitItbis` (negative or non-finite rate) |
+| `AMOUNT_TO_WORDS_OUT_OF_RANGE` | `amountToWords` (negative, non-finite, or over 999,999,999.99) |
 
 ## Using safe parsers to avoid throws
 
