@@ -41,7 +41,7 @@ export function safeParseCedula(input: string): Result<ParsedCedula & { raw: Ced
 export function safeParseRNC(input: string): Result<ParsedRNC & { raw: RNC }> {
 	try {
 		const value = parseRNC(input)
-		const raw = input.replace(/\D/g, '') as RNC
+		const raw = stripDashes(input) as RNC
 		return { ok: true, value: { ...value, raw } }
 	} catch (e) {
 		return { ok: false, error: toErrorMessage(e) }

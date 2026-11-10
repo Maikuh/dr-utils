@@ -27,6 +27,10 @@ describe('maskRNC', () => {
 	it('throws on invalid RNC', () => {
 		expect(() => maskRNC('130502395')).toThrow()
 	})
+
+	it('throws on RNC with non-digit characters', () => {
+		expect(() => maskRNC('130720754abc')).toThrow()
+	})
 })
 
 describe('maskPhoneNumber', () => {
