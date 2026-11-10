@@ -36,6 +36,9 @@
       ],
       "validators": [
         "lib/validators/index.d.ts"
+      ],
+      "schemas": [
+        "lib/schemas/index.d.ts"
       ]
     }
   },
@@ -161,6 +164,16 @@
       "require": {
         "types": "./lib/validators/index.d.ts",
         "default": "./lib/validators/index.js"
+      }
+    },
+    "./schemas": {
+      "import": {
+        "types": "./lib/schemas/index.d.mts",
+        "default": "./lib/schemas/index.mjs"
+      },
+      "require": {
+        "types": "./lib/schemas/index.d.ts",
+        "default": "./lib/schemas/index.js"
       }
     },
     "./package.json": "./package.json"
