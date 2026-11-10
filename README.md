@@ -1,11 +1,13 @@
 # Dominican Republic Utils
 
-<a href="https://www.npmjs.com/package/dr-utils" target="_blank"><img src="https://badgen.net/npm/v/dr-utils"></a>
-<a href="https://www.npmjs.com/package/dr-utils" target="_blank"><img src="https://badgen.net/npm/dm/dr-utils"></a>
-<a href="https://www.npmjs.com/package/dr-utils" target="_blank"><img src="https://badgen.net/npm/types/dr-utils"></a>
-<a href="https://bundlephobia.com/package/dr-utils" target="_blank"><img src="https://badgen.net/bundlephobia/minzip/dr-utils"></a>
-![Release and NPM Publish Action](https://github.com/Maikuh/dr-utils/actions/workflows/release-and-publish.yaml/badge.svg)
-<a href="LICENSE" target="_blank"><img src="https://badgen.net/static/license/MIT/green"></a>
+<a href="https://www.npmjs.com/package/dr-utils" target="_blank"><img alt="npm version" src="https://badgen.net/npm/v/dr-utils"></a>
+<a href="https://www.npmjs.com/package/dr-utils" target="_blank"><img alt="npm downloads" src="https://badgen.net/npm/dm/dr-utils"></a>
+<a href="https://www.npmjs.com/package/dr-utils" target="_blank"><img alt="TypeScript types included" src="https://badgen.net/npm/types/dr-utils"></a>
+<a href="https://www.npmjs.com/package/dr-utils?activeTab=dependencies" target="_blank"><img alt="zero dependencies" src="https://badgen.net/static/dependencies/0/green"></a>
+<a href="https://bundlejs.com/?q=dr-utils" target="_blank"><img alt="minified + gzipped size" src="https://img.shields.io/bundlejs/size/dr-utils"></a>
+<a href="https://github.com/Maikuh/dr-utils/actions/workflows/ci.yaml" target="_blank"><img alt="CI status" src="https://github.com/Maikuh/dr-utils/actions/workflows/ci.yaml/badge.svg"></a>
+<a href="https://github.com/Maikuh/dr-utils/actions/workflows/release-and-publish.yaml" target="_blank"><img alt="Release and npm publish status" src="https://github.com/Maikuh/dr-utils/actions/workflows/release-and-publish.yaml/badge.svg"></a>
+<a href="LICENSE" target="_blank"><img alt="MIT license" src="https://badgen.net/static/license/MIT/green"></a>
 
 Language: **English** / [Español](https://maikuh.github.io/dr-utils/es/)
 
