@@ -14,6 +14,8 @@ export type DrUtilsErrorCode =
 	| 'ITBIS_INVALID_AMOUNT'
 	| 'ITBIS_INVALID_RATE'
 	| 'AMOUNT_TO_WORDS_OUT_OF_RANGE'
+	| 'PAYROLL_INVALID_AMOUNT'
+	| 'PAYROLL_INVALID_OPTION'
 
 export class DrUtilsError extends Error {
 	readonly code: DrUtilsErrorCode
